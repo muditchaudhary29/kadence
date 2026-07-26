@@ -183,33 +183,30 @@ h1, h2, h3, h4, h5, .font-heading {
 ───────────────────────────────────────────────────────────── */
 .light .hero-metrics-card {
   background-color: #FACC15 !important; /* Electric Sunshine Yellow */
-  color: #0F172A !important;
   border: 3px solid #0F172A !important;
   box-shadow: 6px 6px 0px #0F172A !important;
 }
 
 .dark .hero-metrics-card {
   background-color: #F59E0B !important; /* Electric Amber Gold */
-  color: #0F172A !important;
   border: 3px solid #0F172A !important;
   box-shadow: 6px 6px 0px #000000 !important;
 }
 
-.hero-metrics-card h1,
-.hero-metrics-card h2,
-.hero-metrics-card h3,
-.hero-metrics-card h4,
-.hero-metrics-card p,
-.hero-metrics-card div,
-.hero-metrics-card span:not(.hero-badge-text) {
-  color: #0F172A !important;
+.hero-metrics-card,
+.hero-metrics-card *:not(.hero-badge-text),
+.light .hero-metrics-card,
+.light .hero-metrics-card *:not(.hero-badge-text),
+.dark .hero-metrics-card,
+.dark .hero-metrics-card *:not(.hero-badge-text) {
+  color: #000000 !important;
 }
 
 /* PRACTICE METRICS Badge Text: Pure White Text on Pitch Black Badge */
 .hero-badge-text,
 .hero-metrics-card .hero-badge-text {
   color: #FFFFFF !important;
-  background-color: #0F172A !important;
+  background-color: #000000 !important;
 }
 
 /* ─────────────────────────────────────────────────────────────
