@@ -507,23 +507,23 @@ export default function App() {
                 </div>
               </div>
 
-              <div className="flex bg-slate-100 dark:bg-slate-800 p-1.5 rounded-xl border-2 border-slate-900 shadow-[2px_2px_0px_#0F172A]">
+              <div className="flex !bg-slate-100 dark:!bg-slate-800 p-1.5 rounded-xl border-2 border-slate-900 shadow-[2px_2px_0px_#0F172A]">
                 <button
                   onClick={() => setActiveTab('feedback')}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold font-heading transition-all ${
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-black font-heading transition-all ${
                     activeTab === 'feedback'
-                      ? 'bg-indigo-600 !text-white border border-slate-900 shadow-sm'
-                      : 'opacity-70 hover:opacity-100'
+                      ? '!bg-indigo-600 !text-white border border-slate-900 shadow-sm'
+                      : '!text-slate-900 dark:!text-slate-200 font-extrabold hover:!bg-slate-200 dark:hover:!bg-slate-700'
                   }`}
                 >
                   Feedback
                 </button>
                 <button
                   onClick={() => setActiveTab('rewrite')}
-                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold font-heading transition-all ${
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-black font-heading transition-all ${
                     activeTab === 'rewrite'
-                      ? 'bg-purple-600 !text-white border border-slate-900 shadow-sm'
-                      : 'opacity-70 hover:opacity-100'
+                      ? '!bg-purple-600 !text-white border border-slate-900 shadow-sm'
+                      : '!text-slate-900 dark:!text-slate-200 font-extrabold hover:!bg-slate-200 dark:hover:!bg-slate-700'
                   }`}
                 >
                   How To Say It Better
@@ -541,9 +541,9 @@ export default function App() {
                   </h4>
                   <div className="space-y-2.5">
                     {analysis.strengths.map((str, idx) => (
-                      <div key={idx} className="p-3.5 bg-emerald-100 dark:bg-emerald-950/60 border-2 border-emerald-600 rounded-xl flex items-start gap-3 text-xs font-bold text-emerald-950 dark:text-emerald-200 shadow-[2px_2px_0px_#0F172A]">
-                        <span className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-400 mt-1 shrink-0" />
-                        <span>{str}</span>
+                      <div key={idx} className="p-3.5 !bg-[#DCFCE7] dark:!bg-emerald-950/80 border-2 border-slate-900 rounded-xl flex items-start gap-3 text-xs font-black !text-[#064E3B] dark:!text-emerald-200 shadow-[2px_2px_0px_#0F172A]">
+                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 dark:bg-emerald-400 mt-1 shrink-0 border border-slate-900" />
+                        <span className="!text-[#064E3B] dark:!text-emerald-200 font-extrabold">{str}</span>
                       </div>
                     ))}
                   </div>
@@ -556,9 +556,9 @@ export default function App() {
                   </h4>
                   <div className="space-y-2.5">
                     {analysis.areasForImprovement.map((area, idx) => (
-                      <div key={idx} className="p-3.5 bg-amber-100 dark:bg-amber-950/60 border-2 border-amber-600 rounded-xl flex items-start gap-3 text-xs font-bold text-amber-950 dark:text-amber-200 shadow-[2px_2px_0px_#0F172A]">
-                        <span className="w-2 h-2 rounded-full bg-amber-600 dark:bg-amber-400 mt-1 shrink-0" />
-                        <span>{area}</span>
+                      <div key={idx} className="p-3.5 !bg-[#FEF3C7] dark:!bg-amber-950/80 border-2 border-slate-900 rounded-xl flex items-start gap-3 text-xs font-black !text-[#78350F] dark:!text-amber-200 shadow-[2px_2px_0px_#0F172A]">
+                        <span className="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-400 mt-1 shrink-0 border border-slate-900" />
+                        <span className="!text-[#78350F] dark:!text-amber-200 font-extrabold">{area}</span>
                       </div>
                     ))}
                   </div>
