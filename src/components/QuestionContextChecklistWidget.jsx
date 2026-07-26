@@ -50,35 +50,27 @@ export default function QuestionContextChecklistWidget({ contextEvaluation, sele
           </div>
         </div>
 
-        {/* Required Details Checklist Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-4">
+        {/* Required Details Checklist Grid (Vibrant Mint Tiles in Light Mode) */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
           {detailsChecklist.map((item, idx) => (
             <div 
               key={idx} 
-              className={`p-4 rounded-xl border-2 flex items-start gap-3.5 text-xs transition-all shadow-[2px_2px_0px_#0F172A] ${
+              className={`p-4 rounded-xl border-3 flex items-start gap-3.5 text-xs transition-all shadow-[3px_3px_0px_#0F172A] ${
                 item.isPresent 
-                  ? 'bg-emerald-100 dark:bg-emerald-950/60 border-emerald-600 text-emerald-950 dark:text-emerald-200' 
-                  : 'bg-rose-100 dark:bg-rose-950/60 border-rose-600 text-rose-950 dark:text-rose-200'
+                  ? '!bg-[#DCFCE7] dark:!bg-emerald-950/80 !border-slate-900 !text-slate-950 dark:!text-emerald-100' 
+                  : '!bg-[#FFE4E6] dark:!bg-rose-950/80 !border-slate-900 !text-slate-950 dark:!text-rose-100'
               }`}
             >
               {item.isPresent ? (
-                <CheckCircle className="w-5 h-5 text-emerald-700 dark:text-emerald-400 mt-0.5 shrink-0" />
+                <CheckCircle className="w-5 h-5 !text-emerald-700 dark:!text-emerald-400 mt-0.5 shrink-0 stroke-[2.5]" />
               ) : (
-                <XCircle className="w-5 h-5 text-rose-700 dark:text-rose-400 mt-0.5 shrink-0" />
+                <XCircle className="w-5 h-5 !text-rose-700 dark:!text-rose-400 mt-0.5 shrink-0 stroke-[2.5]" />
               )}
               <div>
-                <span className={`font-black font-heading text-sm block leading-snug ${
-                  item.isPresent
-                    ? 'text-emerald-950 dark:text-emerald-200'
-                    : 'text-rose-950 dark:text-rose-200'
-                }`}>
+                <span className="font-black font-heading text-sm block leading-snug !text-slate-950 dark:!text-emerald-100">
                   {item.label}
                 </span>
-                <span className={`text-xs font-bold block mt-1 leading-relaxed ${
-                  item.isPresent
-                    ? 'text-emerald-900 dark:text-emerald-300'
-                    : 'text-rose-900 dark:text-rose-300'
-                }`}>
+                <span className="text-xs font-bold block mt-1 leading-relaxed !text-slate-800 dark:!text-emerald-200">
                   {item.tip}
                 </span>
               </div>

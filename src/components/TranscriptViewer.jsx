@@ -54,7 +54,7 @@ export default function TranscriptViewer({ transcript, onTranscriptChange, fille
     const nonSpaceWords = wordTokens.filter(t => !t.isSpace);
 
     return (
-      <div className="leading-relaxed text-slate-950 dark:text-slate-100 text-sm font-medium font-sans tracking-wide">
+      <div className="leading-relaxed !text-slate-950 dark:!text-slate-100 text-sm font-medium font-sans tracking-wide">
         {wordTokens.map((token, index) => {
           if (token.isSpace) {
             return <span key={index}>{token.text}</span>;
@@ -72,7 +72,7 @@ export default function TranscriptViewer({ transcript, onTranscriptChange, fille
             return (
               <span
                 key={index}
-                className="inline-flex items-center px-2 py-0.5 mx-0.5 rounded-lg bg-amber-400 text-slate-950 border-2 border-slate-900 font-extrabold text-xs shadow-[1.5px_1.5px_0px_#0F172A] group relative cursor-help"
+                className="inline-flex items-center px-2 py-0.5 mx-0.5 rounded-lg !bg-amber-400 !text-slate-950 border-2 border-slate-900 font-extrabold text-xs shadow-[1.5px_1.5px_0px_#0F172A] group relative cursor-help"
               >
                 {token.text}
                 <span className="opacity-0 group-hover:opacity-100 transition-opacity absolute -top-8 left-1/2 transform -translate-x-1/2 bg-slate-950 text-amber-300 font-mono font-bold text-[10px] px-2 py-0.5 rounded border border-amber-400 whitespace-nowrap shadow-xl pointer-events-none z-20">
@@ -102,37 +102,40 @@ export default function TranscriptViewer({ transcript, onTranscriptChange, fille
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2.5">
           {fillerCount > 0 && (
             <span className="brutal-badge bg-amber-400 text-slate-950 border-2 border-slate-900 font-black text-xs px-3 py-1 shadow-[2px_2px_0px_#0F172A]">
               {fillerCount} Filler {fillerCount === 1 ? 'Word' : 'Words'}
             </span>
           )}
+          
+          {/* Action Buttons: High-Contrast Pop Neo-Brutalist Buttons */}
           <button
             onClick={() => setIsEditing(!isEditing)}
-            className="p-2 border-2 border-slate-900 rounded-xl bg-slate-100 dark:bg-slate-800 hover:scale-105 transition-transform shadow-[2px_2px_0px_#0F172A]"
+            className="p-2.5 border-2 border-slate-900 rounded-xl !bg-amber-400 !text-slate-950 hover:scale-105 transition-transform shadow-[2.5px_2.5px_0px_#0F172A]"
             title={isEditing ? "View Highlights" : "Edit / Paste Text"}
           >
-            <Edit3 className="w-4 h-4" />
+            <Edit3 className="w-4 h-4 !text-slate-950 stroke-[2.5]" />
           </button>
+
           <button
             onClick={handleCopy}
-            className="p-2 border-2 border-slate-900 rounded-xl bg-slate-100 dark:bg-slate-800 hover:scale-105 transition-transform shadow-[2px_2px_0px_#0F172A]"
+            className="p-2.5 border-2 border-slate-900 rounded-xl !bg-indigo-600 !text-white hover:scale-105 transition-transform shadow-[2.5px_2.5px_0px_#0F172A]"
             title="Copy Transcript"
           >
-            {copied ? <Check className="w-4 h-4 text-emerald-600 dark:text-emerald-400" /> : <Copy className="w-4 h-4" />}
+            {copied ? <Check className="w-4 h-4 !text-white stroke-[2.5]" /> : <Copy className="w-4 h-4 !text-white stroke-[2.5]" />}
           </button>
         </div>
       </div>
 
       {/* Transcript Text Content */}
-      <div className="my-3 neu-inset p-4 min-h-[130px] max-h-[240px] overflow-y-auto">
+      <div className="my-3 neu-inset p-4 min-h-[130px] max-h-[240px] overflow-y-auto !bg-slate-50 dark:!bg-slate-900 border-2 border-slate-900">
         {isEditing ? (
           <textarea
             value={transcript}
             onChange={(e) => onTranscriptChange(e.target.value)}
             placeholder="Paste your spoken speech or answer transcript here..."
-            className="w-full h-32 bg-transparent text-slate-950 dark:text-slate-100 font-medium text-sm focus:outline-none font-mono resize-none"
+            className="w-full h-32 bg-transparent !text-slate-950 dark:!text-slate-100 font-semibold text-sm focus:outline-none font-mono resize-none leading-relaxed"
           />
         ) : (
           renderHighlightedTranscript()
