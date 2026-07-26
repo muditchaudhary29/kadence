@@ -100,6 +100,31 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   SUMMARY RATING BADGE (Strict Mode-Aware Styling)
+───────────────────────────────────────────────────────────── */
+.light .summary-rating-badge {
+  background-color: #FACC15 !important;
+  color: #0F172A !important;
+  border: 3px solid #0F172A !important;
+  box-shadow: 4px 4px 0px #0F172A !important;
+}
+.light .summary-rating-badge * {
+  color: #0F172A !important;
+  fill: #0F172A !important;
+}
+
+.dark .summary-rating-badge {
+  background-color: #78350F !important;
+  color: #FEF08A !important;
+  border: 3px solid #0F172A !important;
+  box-shadow: 4px 4px 0px #000000 !important;
+}
+.dark .summary-rating-badge * {
+  color: #FEF08A !important;
+  fill: #F59E0B !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
    COLOR BLOCK CARDS (Scoped Vibrant Light & Dark Contrast)
 ───────────────────────────────────────────────────────────── */
 .light .brutal-block-violet {
