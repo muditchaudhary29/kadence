@@ -311,28 +311,28 @@ export default function App() {
     <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-6 space-y-6">
 
       {/* Category Selection Bar */}
-      <section className="glass-card rounded-2xl p-4 border border-zinc-800 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
-        <div className="flex items-center gap-2.5">
-          <div className="p-2 bg-indigo-500/10 text-indigo-400 rounded-lg shrink-0">
-            <HelpCircle className="w-4 h-4" />
+      <section className="brutal-card rounded-2xl p-5 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white border-2 border-slate-900 flex items-center justify-center shadow-[2px_2px_0px_#0F172A] shrink-0">
+            <HelpCircle className="w-5 h-5" />
           </div>
           <div>
-            <span className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Category Practice</span>
-            <h2 className="text-sm font-semibold text-zinc-100">{selectedQuestion.category}</h2>
+            <span className="text-xs font-mono font-extrabold uppercase tracking-wider opacity-80 block">Category Practice</span>
+            <h2 className="text-lg font-black font-heading leading-tight">{selectedQuestion.category}</h2>
           </div>
         </div>
 
-        <div className="flex items-center gap-2 flex-wrap w-full md:w-auto">
+        <div className="flex items-center gap-2.5 flex-wrap w-full md:w-auto">
           {CATEGORIES.map(cat => {
             const isSelected = selectedQuestion.category === cat;
             return (
               <button
                 key={cat}
                 onClick={() => handleSelectCategory(cat)}
-                className={`px-3.5 py-1.5 rounded-lg text-xs font-medium transition-all ${
+                className={`px-4 py-2 rounded-xl text-xs font-black font-heading transition-all ${
                   isSelected
-                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
-                    : 'bg-zinc-900/80 hover:bg-zinc-800 text-zinc-400 hover:text-zinc-200 border border-zinc-800'
+                    ? 'bg-indigo-600 !text-white border-2 border-slate-900 shadow-[3px_3px_0px_#0F172A]'
+                    : 'bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-slate-100 font-bold border-2 border-slate-900 hover:bg-slate-200 dark:hover:bg-slate-700 shadow-[2px_2px_0px_#0F172A]'
                 }`}
               >
                 {cat}

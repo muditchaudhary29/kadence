@@ -10,12 +10,12 @@ export default function QuestionContextChecklistWidget({ contextEvaluation, sele
         {/* Header */}
         <div className="flex flex-wrap items-center justify-between gap-3 pb-4 border-b-2 border-slate-700">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 rounded-xl bg-indigo-500 text-white border-2 border-slate-900 flex items-center justify-center shadow-[2px_2px_0px_#000]">
+            <div className="w-10 h-10 rounded-xl bg-indigo-600 text-white border-2 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#0F172A] shrink-0">
               <Target className="w-5 h-5" />
             </div>
             <div>
-              <h4 className="text-base font-bold font-heading">Question Context & Required Details</h4>
-              <p className="text-xs text-zinc-400">Did your response cover key STAR points for this interview prompt?</p>
+              <h4 className="text-lg font-black font-heading leading-tight">Question Context & Required Details</h4>
+              <p className="text-xs font-semibold opacity-80 mt-0.5">Did your response cover key STAR points for this interview prompt?</p>
             </div>
           </div>
 
@@ -23,15 +23,15 @@ export default function QuestionContextChecklistWidget({ contextEvaluation, sele
             {onSwapQuestion && (
               <button
                 onClick={onSwapQuestion}
-                className="px-3.5 py-1.5 bg-amber-400 text-slate-900 border-2 border-slate-900 rounded-xl text-xs font-bold font-heading flex items-center gap-1.5 shadow-[2px_2px_0px_#000] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all"
+                className="px-4 py-2 bg-amber-400 text-slate-950 border-2 border-slate-900 rounded-xl text-xs font-black font-heading flex items-center gap-1.5 shadow-[3px_3px_0px_#0F172A] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all"
                 title="Swap to another random question in this category"
               >
-                <RefreshCw className="w-3.5 h-3.5" />
+                <RefreshCw className="w-4 h-4" />
                 <span>Swap Question</span>
               </button>
             )}
-            <div className="brutal-badge bg-indigo-500/20 text-indigo-300 border-indigo-500/40 px-3 py-1 text-xs">
-              <Award className="w-4 h-4 text-indigo-400" />
+            <div className="brutal-badge bg-indigo-600 !text-white border-2 border-slate-900 px-3.5 py-1.5 text-xs font-black shadow-[3px_3px_0px_#0F172A]">
+              <Award className="w-4 h-4 text-amber-300" />
               <span>{completenessScore}% Completeness</span>
             </div>
           </div>
@@ -40,35 +40,47 @@ export default function QuestionContextChecklistWidget({ contextEvaluation, sele
         {/* Target Question Banner */}
         <div className="my-4 p-4 brutal-block-violet rounded-xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div className="flex items-center gap-2 shrink-0">
-            <span className="text-xs font-bold uppercase tracking-wider opacity-80">TARGET QUESTION:</span>
-            <span className="brutal-badge bg-indigo-500 text-white text-[10px]">
+            <span className="text-xs font-extrabold uppercase tracking-wider">TARGET QUESTION:</span>
+            <span className="brutal-badge bg-indigo-600 !text-white text-[10px] font-black border border-slate-900">
               {selectedQuestion.category}
             </span>
           </div>
-          <div className="text-sm font-bold font-heading leading-snug sm:text-right flex-1">
+          <div className="text-base font-extrabold font-heading leading-snug sm:text-right flex-1">
             {selectedQuestion.title}
           </div>
         </div>
 
         {/* Required Details Checklist Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-3">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-4">
           {detailsChecklist.map((item, idx) => (
             <div 
               key={idx} 
-              className={`p-3.5 rounded-xl border-2 flex items-start gap-3 text-xs transition-all ${
+              className={`p-4 rounded-xl border-2 flex items-start gap-3.5 text-xs transition-all shadow-[2px_2px_0px_#0F172A] ${
                 item.isPresent 
-                  ? 'bg-emerald-500/10 border-emerald-500/30 text-zinc-100' 
-                  : 'bg-rose-500/10 border-rose-500/30 text-zinc-200'
+                  ? 'bg-emerald-500/15 dark:bg-emerald-500/20 border-emerald-600' 
+                  : 'bg-rose-500/15 dark:bg-rose-500/20 border-rose-600'
               }`}
             >
               {item.isPresent ? (
-                <CheckCircle className="w-4 h-4 text-emerald-400 mt-0.5 shrink-0" />
+                <CheckCircle className="w-5 h-5 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
               ) : (
-                <XCircle className="w-4 h-4 text-rose-400 mt-0.5 shrink-0" />
+                <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 mt-0.5 shrink-0" />
               )}
               <div>
-                <span className="font-bold font-heading text-sm block">{item.label}</span>
-                <span className="text-xs text-zinc-400 block mt-0.5">{item.tip}</span>
+                <span className={`font-black font-heading text-sm block leading-snug ${
+                  item.isPresent
+                    ? 'text-emerald-950 dark:text-emerald-200'
+                    : 'text-rose-950 dark:text-rose-200'
+                }`}>
+                  {item.label}
+                </span>
+                <span className={`text-xs font-semibold block mt-1 leading-relaxed ${
+                  item.isPresent
+                    ? 'text-emerald-900/90 dark:text-emerald-300/90'
+                    : 'text-rose-900/90 dark:text-rose-300/90'
+                }`}>
+                  {item.tip}
+                </span>
               </div>
             </div>
           ))}
@@ -76,8 +88,8 @@ export default function QuestionContextChecklistWidget({ contextEvaluation, sele
       </div>
 
       {/* Feedback Footer */}
-      <div className="pt-3 border-t-2 border-slate-700/80 text-xs font-medium flex items-center gap-2">
-        <span className="w-2.5 h-2.5 rounded-full bg-indigo-400 shrink-0" />
+      <div className="pt-3.5 border-t-2 border-slate-700 text-xs font-bold flex items-center gap-2">
+        <span className="w-3 h-3 rounded-full bg-indigo-600 shrink-0 border border-slate-900" />
         <p className="leading-snug">{feedbackMessage}</p>
       </div>
     </div>
