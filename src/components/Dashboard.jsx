@@ -165,19 +165,19 @@ export default function Dashboard({ onNavigate }) {
 
             {/* Divider line spanning the elongated yellow card */}
             <div className="pt-3 border-t-2 border-slate-950/60 space-y-3">
-              <div className="flex items-center gap-3 text-xs sm:text-sm font-black !text-black" style={{ color: '#000000' }}>
+              <div className="text-xs sm:text-sm font-black flex items-center gap-2.5 !text-black" style={{ color: '#000000' }}>
                 <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Confidence:</span>
-                <span className="font-mono text-sm sm:text-base font-black !text-black" style={{ color: '#000000' }}>{avgConf}%</span>
+                <span className="font-mono text-sm sm:text-base font-black text-slate-950 !text-black" style={{ color: '#000000' }}>{avgConf}%</span>
               </div>
               
-              <div className="flex items-center gap-3 text-xs sm:text-sm font-black !text-black" style={{ color: '#000000' }}>
+              <div className="text-xs sm:text-sm font-black flex items-center gap-2.5 !text-black" style={{ color: '#000000' }}>
                 <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Speaking Speed:</span>
-                <span className="font-mono text-sm sm:text-base font-black !text-black" style={{ color: '#000000' }}>{avgWpm} WPM</span>
+                <span className="font-mono text-sm sm:text-base font-black text-slate-950 !text-black" style={{ color: '#000000' }}>{avgWpm} WPM</span>
               </div>
 
-              <div className="flex items-center gap-3 text-xs sm:text-sm font-black !text-black" style={{ color: '#000000' }}>
+              <div className="text-xs sm:text-sm font-black flex items-center gap-2.5 !text-black" style={{ color: '#000000' }}>
                 <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Filler Hesitation:</span>
-                <span className="font-mono text-sm sm:text-base font-black !text-black" style={{ color: '#000000' }}>{avgFill}%</span>
+                <span className="font-mono text-sm sm:text-base font-black text-slate-950 !text-black" style={{ color: '#000000' }}>{avgFill}%</span>
               </div>
             </div>
           </div>
