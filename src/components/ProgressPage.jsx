@@ -3,7 +3,7 @@ import {
   BarChart2, TrendingUp, Mic, Clock, Award,
   Zap, Flame, Target, ChevronDown, ChevronUp, Trash2
 } from 'lucide-react';
-import { deleteSession } from '../utils/storage';
+import { deleteSession, seedSampleSession } from '../utils/storage';
 
 function StatBar({ label, value, max, color, unit = '' }) {
   const pct = Math.min(100, Math.round((value / max) * 100));
@@ -91,6 +91,11 @@ function SessionRow({ session, onDelete }) {
 export default function ProgressPage({ sessions: initialSessions, profile }) {
   const [sessions, setSessions] = useState(initialSessions);
 
+  const handleAddSampleRecord = () => {
+    const newEntry = seedSampleSession();
+    setSessions(prev => [newEntry, ...prev]);
+  };
+
   const handleDelete = (id) => {
     deleteSession(id);
     setSessions(prev => prev.filter(s => s.id !== id));
@@ -124,17 +129,34 @@ export default function ProgressPage({ sessions: initialSessions, profile }) {
         </div>
         <h2 className="text-2xl font-bold font-heading">No sessions recorded yet</h2>
         <p className="text-sm max-w-xs opacity-80">
-          Complete your first practice session in <strong>Interview Practice</strong> and your progress analytics will appear here.
+          Complete your first practice session in <strong>Interview Practice</strong> or add a sample record below.
         </p>
+        <button
+          onClick={handleAddSampleRecord}
+          className="btn-primary text-xs shadow-[3px_3px_0px_#0F172A]"
+        >
+          <Zap className="w-4 h-4 text-amber-300" />
+          Add Sample Progress Record
+        </button>
       </div>
     );
   }
 
   return (
     <div className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 space-y-8">
-      <div>
-        <h2 className="text-3xl font-black font-heading">My Progress Analytics</h2>
-        <p className="text-sm font-mono mt-1 opacity-80">{sessions.length} session{sessions.length !== 1 ? 's' : ''} recorded in history</p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 className="text-3xl font-black font-heading">My Progress Analytics</h2>
+          <p className="text-sm font-mono mt-1 opacity-80">{sessions.length} session{sessions.length !== 1 ? 's' : ''} recorded in history</p>
+        </div>
+        
+        <button
+          onClick={handleAddSampleRecord}
+          className="px-4 py-2.5 bg-emerald-500 text-slate-950 border-3 border-slate-900 rounded-xl text-xs font-black font-heading flex items-center gap-2 shadow-[3px_3px_0px_#0F172A] hover:translate-x-[-1px] hover:translate-y-[-1px] transition-all shrink-0"
+        >
+          <Zap className="w-4 h-4 fill-slate-950" />
+          <span>Add Sample Progress Record</span>
+        </button>
       </div>
 
       {/* Metric Summary Cards */}
