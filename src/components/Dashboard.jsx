@@ -1,7 +1,7 @@
 import React, { useRef, useCallback } from 'react';
 import {
   Mic, BarChart2, MessageSquare, BookOpen,
-  ArrowRight, Sparkles, Target
+  ArrowRight, Sparkles
 } from 'lucide-react';
 import { getSessions, getProfile } from '../utils/storage';
 
@@ -161,7 +161,7 @@ export default function Dashboard({ onNavigate }) {
           </div>
         </div>
 
-        {/* Hero Interactive 3D Metric Box (Wide Horizontal Card matching Screenshot 2) */}
+        {/* Hero Interactive 3D Metric Box (Wide Horizontal Banner Card matching Screenshot) */}
         <Card3D className="hero-metrics-card w-full lg:w-[480px] p-6 sm:p-7 rounded-2xl border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] -rotate-1 shrink-0 cursor-pointer">
           <div className="flex items-center justify-between mb-4">
             <span className="hero-badge-text text-xs font-mono font-black uppercase tracking-wider px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
@@ -177,18 +177,18 @@ export default function Dashboard({ onNavigate }) {
 
             <div className="pt-3 border-t-2 border-slate-950/40 space-y-2.5">
               <div className="flex items-center justify-between text-xs sm:text-sm font-black" style={{ color: '#000000' }}>
-                <span className="font-bold !text-black" style={{ color: '#000000' }}>Avg Confidence:</span>
-                <span className="font-mono text-sm sm:text-base font-black !text-black pr-2" style={{ color: '#000000' }}>{avgConf}%</span>
+                <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Confidence:</span>
+                <span className="font-mono text-sm sm:text-base font-black !text-black" style={{ color: '#000000' }}>{avgConf}%</span>
               </div>
               
               <div className="flex items-center justify-between text-xs sm:text-sm font-black" style={{ color: '#000000' }}>
-                <span className="font-bold !text-black" style={{ color: '#000000' }}>Avg Speaking Speed:</span>
-                <span className="font-mono text-sm sm:text-base font-black !text-black pr-2" style={{ color: '#000000' }}>{avgWpm} WPM</span>
+                <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Speaking Speed:</span>
+                <span className="font-mono text-sm sm:text-base font-black !text-black" style={{ color: '#000000' }}>{avgWpm} WPM</span>
               </div>
 
               <div className="flex items-center justify-between text-xs sm:text-sm font-black" style={{ color: '#000000' }}>
-                <span className="font-bold !text-black" style={{ color: '#000000' }}>Filler Hesitation:</span>
-                <span className="font-mono text-sm sm:text-base font-black !text-black pr-2" style={{ color: '#000000' }}>{avgFill}%</span>
+                <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Filler Hesitation:</span>
+                <span className="font-mono text-sm sm:text-base font-black !text-black" style={{ color: '#000000' }}>{avgFill}%</span>
               </div>
             </div>
           </div>
