@@ -44,7 +44,7 @@ function Card3D({ children, className = '', onClick }) {
   );
 }
 
-/* ── Bento Card Data: Pure Pitch-Black Text on Vibrant Pastel Cards ── */
+/* ── Bento Card Data ─────────────────────────────────────── */
 const FEATURES = [
   {
     id: 'practice',
@@ -54,12 +54,8 @@ const FEATURES = [
     sub: 'LIVE STT & SPEECH ENGINE',
     desc: 'Practice 12 curated questions with real-time WPM pacing, STAR structure breakdown, and vocal hesitation tracking.',
     badge: '12 QUESTIONS',
-    badgeBg: '!bg-[#312E81] dark:!bg-[#312E81] !text-white',
-    iconBg: '!bg-[#312E81] dark:!bg-[#312E81] !text-white',
-    subColor: '!text-slate-950 dark:!text-[#C7D2FE]',
-    titleColor: '!text-slate-950 dark:!text-white',
-    descColor: '!text-slate-900 dark:!text-slate-200',
-    ctaColor: '!text-slate-950 dark:!text-white',
+    badgeBg: 'bg-[#312E81]',
+    iconBg: 'bg-[#312E81]',
     cta: 'Start Practicing',
   },
   {
@@ -70,12 +66,8 @@ const FEATURES = [
     sub: 'ANALYTICS & SCORE TRENDS',
     desc: 'Visualise confidence trends, WPM pacing history, filler rate breakdown, and performance metrics across categories.',
     badge: 'ANALYTICS',
-    badgeBg: '!bg-[#064E3B] dark:!bg-[#064E3B] !text-white',
-    iconBg: '!bg-[#064E3B] dark:!bg-[#064E3B] !text-white',
-    subColor: '!text-slate-950 dark:!text-[#A7F3D0]',
-    titleColor: '!text-slate-950 dark:!text-white',
-    descColor: '!text-slate-900 dark:!text-slate-200',
-    ctaColor: '!text-slate-950 dark:!text-white',
+    badgeBg: 'bg-[#064E3B]',
+    iconBg: 'bg-[#064E3B]',
     cta: 'View Progress',
   },
   {
@@ -86,12 +78,8 @@ const FEATURES = [
     sub: 'USER EXPERIENCE & RATING',
     desc: 'Share your feedback, rate your practice runs, and view reviews submitted by fellow interview practitioners.',
     badge: 'COMMUNITY',
-    badgeBg: '!bg-[#78350F] dark:!bg-[#78350F] !text-white',
-    iconBg: '!bg-[#78350F] dark:!bg-[#78350F] !text-white',
-    subColor: '!text-slate-950 dark:!text-[#FDE68A]',
-    titleColor: '!text-slate-950 dark:!text-white',
-    descColor: '!text-slate-900 dark:!text-slate-200',
-    ctaColor: '!text-slate-950 dark:!text-white',
+    badgeBg: 'bg-[#78350F]',
+    iconBg: 'bg-[#78350F]',
     cta: 'Submit Review',
   },
   {
@@ -102,12 +90,8 @@ const FEATURES = [
     sub: 'PDF & FILE QUESTION GENERATOR',
     desc: 'Upload study notes, PDFs, or text files — Kadence AI automatically extracts key topics and builds 8 custom questions.',
     badge: 'PDF / TXT / IMG',
-    badgeBg: '!bg-[#881337] dark:!bg-[#881337] !text-white',
-    iconBg: '!bg-[#881337] dark:!bg-[#881337] !text-white',
-    subColor: '!text-slate-950 dark:!text-[#FECDD3]',
-    titleColor: '!text-slate-950 dark:!text-white',
-    descColor: '!text-slate-900 dark:!text-slate-200',
-    ctaColor: '!text-slate-950 dark:!text-white',
+    badgeBg: 'bg-[#881337]',
+    iconBg: 'bg-[#881337]',
     cta: 'Upload Notes',
   },
 ];
@@ -208,28 +192,32 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
               {/* Badge Top */}
               <div className="flex items-start justify-between">
                 {/* Pop High-Contrast Icon Container */}
-                <div className={`w-13 h-13 p-3 rounded-2xl ${f.iconBg} border-2.5 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#0F172A]`}>
-                  <Icon className="w-6 h-6 stroke-[2.5] !text-white" />
+                <div className={`bento-emblem w-13 h-13 p-3 rounded-2xl ${f.iconBg} border-2.5 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#0F172A]`}>
+                  <Icon className="w-6 h-6 stroke-[2.5] text-white" />
                 </div>
 
-                <span className={`text-[11px] font-black font-mono px-3.5 py-1.5 rounded-xl border-2.5 border-slate-900 shadow-[3px_3px_0px_#0F172A] uppercase tracking-wider ${f.badgeBg}`}>
+                <span className={`bento-badge text-[11px] font-black font-mono px-3.5 py-1.5 rounded-xl border-2.5 border-slate-900 shadow-[3px_3px_0px_#0F172A] uppercase tracking-wider ${f.badgeBg} text-white`}>
                   {f.badge}
                 </span>
               </div>
 
               {/* Card Body: Pitch Black Text in Light Mode */}
               <div className="space-y-1.5">
-                <span className={`text-[11px] font-mono font-black tracking-widest uppercase block ${f.subColor}`}>
+                <span className="text-[11px] font-mono font-black tracking-widest uppercase block text-slate-950 dark:text-slate-200">
                   {f.sub}
                 </span>
-                <h2 className={`text-2xl font-black font-heading ${f.titleColor}`}>{f.title}</h2>
-                <p className={`text-xs sm:text-sm leading-relaxed font-extrabold ${f.descColor}`}>{f.desc}</p>
+                <h2 className="text-2xl font-black font-heading text-slate-950 dark:text-white">
+                  {f.title}
+                </h2>
+                <p className="text-xs sm:text-sm leading-relaxed font-extrabold text-slate-950 dark:text-slate-200">
+                  {f.desc}
+                </p>
               </div>
 
               {/* Footer CTA */}
-              <div className={`flex items-center gap-2 text-xs font-black font-heading group-hover:gap-3 transition-all pt-2 ${f.ctaColor}`}>
+              <div className="flex items-center gap-2 text-xs font-black font-heading group-hover:gap-3 transition-all pt-2 text-slate-950 dark:text-white">
                 <span>{f.cta}</span>
-                <ArrowRight className="w-4 h-4 stroke-[3]" />
+                <ArrowRight className="w-4 h-4 stroke-[3] text-slate-950 dark:text-white" />
               </div>
             </Card3D>
           );

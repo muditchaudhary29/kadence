@@ -159,23 +159,40 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   LIGHT MODE CARDS & FEEDBACK BOXES
+   LIGHT MODE BENTO CARD TYPOGRAPHY — 100% PITCH BLACK (#0F172A)
+───────────────────────────────────────────────────────────── */
+.light .brutal-block-violet h2,
+.light .brutal-block-violet p,
+.light .brutal-block-violet span:not(.brutal-badge-inner),
+.light .brutal-block-[#C7D2FE] h2,
+.light .brutal-block-[#C7D2FE] p,
+.light .brutal-block-emerald h2,
+.light .brutal-block-emerald p,
+.light .brutal-block-emerald span:not(.brutal-badge-inner),
+.light .brutal-block-amber h2,
+.light .brutal-block-amber p,
+.light .brutal-block-amber span:not(.brutal-badge-inner),
+.light .brutal-block-rose h2,
+.light .brutal-block-rose p,
+.light .brutal-block-rose span:not(.brutal-badge-inner),
+.light .card-3d h2,
+.light .card-3d p {
+  color: #0F172A !important;
+}
+
+/* Ensure text inside dark badges and icon boxes stay white */
+.light .brutal-badge *,
+.light .bento-emblem *,
+.light .bento-badge * {
+  color: #FFFFFF !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LIGHT MODE GENERAL CARDS & FEEDBACK BOXES
 ───────────────────────────────────────────────────────────── */
 .light .glass-card, .light .card-3d, .light .brutal-card {
   border-color: #0F172A;
   box-shadow: 5px 5px 0px #0F172A;
-}
-
-.light .text-zinc-100,
-.light .text-zinc-200,
-.light .text-zinc-300,
-.light .text-zinc-400,
-.light .text-zinc-500,
-.light .text-zinc-600,
-.light .text-slate-300,
-.light .text-slate-400,
-.light .text-slate-500 {
-  color: #0F172A;
 }
 
 .light .neu-inset {
@@ -193,14 +210,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border-color: #334155;
   box-shadow: 5px 5px 0px #000000;
   color: #FFFFFF;
-}
-
-.dark .text-zinc-100, .dark .text-zinc-200, .dark .text-white {
-  color: #FFFFFF !important;
-}
-
-.dark .text-zinc-300, .dark .text-zinc-400, .dark .text-zinc-500 {
-  color: #CBD5E1 !important;
 }
 
 /* ─────────────────────────────────────────────────────────────
