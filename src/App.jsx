@@ -11,7 +11,6 @@ import StarBreakdown from './components/StarBreakdown';
 import TranscriptViewer from './components/TranscriptViewer';
 import PacingInconsistencyWidget from './components/PacingInconsistencyWidget';
 import QuestionContextChecklistWidget from './components/QuestionContextChecklistWidget';
-import AiPromptArchitectureModal from './components/AiPromptArchitectureModal';
 import Dashboard from './components/Dashboard';
 import ProgressPage from './components/ProgressPage';
 import FeedbackPage from './components/FeedbackPage';
@@ -44,7 +43,6 @@ export default function App() {
   const [transcript, setTranscript] = useState(SAMPLE_QUESTIONS[0].sampleTranscript);
   const [durationSec, setDurationSec] = useState(SAMPLE_QUESTIONS[0].sampleDurationSec);
   const [isRecording, setIsRecording] = useState(false);
-  const [isAiModalOpen, setIsAiModalOpen] = useState(false);
   const [activeTab, setActiveTab] = useState('feedback');
 
   const timerRef = useRef(null);
@@ -263,15 +261,6 @@ export default function App() {
 
         {/* Right actions */}
         <div className="flex items-center gap-2 shrink-0">
-          {currentPage === 'practice' && (
-            <button
-              onClick={() => setIsAiModalOpen(true)}
-              className="px-3 py-1.5 rounded-xl glass-card border border-white/10 text-zinc-300 text-xs font-semibold flex items-center gap-1.5 hover:border-violet-500/40 transition-all"
-            >
-              <Cpu className="w-3.5 h-3.5 text-violet-400" />
-              <span className="hidden sm:block">AI API</span>
-            </button>
-          )}
           {sessions.length > 0 && (
             <button
               onClick={() => setCurrentPage('progress')}
@@ -626,19 +615,13 @@ export default function App() {
         )}
 
         {currentPage === 'feedback' && (
-          <FeedbackPage sessions={sessions} profile={profile} />
+          <FeedbackPage />
         )}
 
         {currentPage === 'notes' && (
           <NotesPage onStartPracticeWithQuestion={handleNotesQuestion} />
         )}
       </div>
-
-      {/* AI Architecture Modal */}
-      <AiPromptArchitectureModal
-        isOpen={isAiModalOpen}
-        onClose={() => setIsAiModalOpen(false)}
-      />
     </div>
   );
 }

@@ -102,4 +102,70 @@ export function getScoreTrend(n = 5) {
 export function clearAllData() {
   localStorage.removeItem(SESSIONS_KEY);
   localStorage.removeItem(PROFILE_KEY);
+  localStorage.removeItem(FEEDBACK_KEY);
+}
+
+const FEEDBACK_KEY = 'voicecraft_user_feedback';
+
+/** Save user feedback entry */
+export function saveUserFeedback(feedbackData) {
+  const list = getUserFeedbacks();
+  const entry = {
+    id: Date.now().toString(),
+    date: new Date().toISOString(),
+    name: feedbackData.name || 'Anonymous User',
+    role: feedbackData.role || 'Practitioner',
+    rating: feedbackData.rating || 5,
+    category: feedbackData.category || 'General Feedback',
+    comment: feedbackData.comment || '',
+  };
+  list.unshift(entry);
+  try {
+    localStorage.setItem(FEEDBACK_KEY, JSON.stringify(list));
+  } catch (e) {
+    console.warn('Could not save user feedback', e);
+  }
+  return entry;
+}
+
+/** Get user feedback entries */
+export function getUserFeedbacks() {
+  try {
+    const data = localStorage.getItem(FEEDBACK_KEY);
+    if (!data) return getInitialSampleFeedbacks();
+    const parsed = JSON.parse(data);
+    return parsed.length ? parsed : getInitialSampleFeedbacks();
+  } catch {
+    return getInitialSampleFeedbacks();
+  }
+}
+
+/** Delete user feedback */
+export function deleteUserFeedback(id) {
+  const updated = getUserFeedbacks().filter(f => f.id !== id);
+  localStorage.setItem(FEEDBACK_KEY, JSON.stringify(updated));
+  return updated;
+}
+
+function getInitialSampleFeedbacks() {
+  return [
+    {
+      id: 'sample_1',
+      date: new Date(Date.now() - 3600000 * 24 * 2).toISOString(),
+      name: 'Alex Rivera',
+      role: 'Software Engineer',
+      rating: 5,
+      category: 'Speech Recognition & Accuracy',
+      comment: 'The real-time STT engine and filler word detection is incredibly accurate! Helped me eliminate hesitation words during behavioral interview practice.'
+    },
+    {
+      id: 'sample_2',
+      date: new Date(Date.now() - 3600000 * 24 * 5).toISOString(),
+      name: 'Sarah Chen',
+      role: 'Product Manager',
+      rating: 5,
+      category: 'STAR Method Evaluation',
+      comment: 'Loved the STAR breakdown visualizer. It gives instant feedback on whether I included measurable results in my answers.'
+    }
+  ];
 }
