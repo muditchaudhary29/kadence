@@ -200,7 +200,8 @@ h1, h2, h3, h4, h5, .font-heading {
 .hero-metrics-card h3,
 .hero-metrics-card h4,
 .hero-metrics-card p,
-.hero-metrics-card div:not(.hero-badge-container) {
+.hero-metrics-card div,
+.hero-metrics-card span:not(.hero-badge-text) {
   color: #0F172A !important;
 }
 
