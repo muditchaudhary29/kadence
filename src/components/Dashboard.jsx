@@ -176,19 +176,25 @@ export default function Dashboard({ onNavigate }) {
               <div className="text-xs font-black uppercase tracking-wider !text-black" style={{ color: '#000000' }}>Total Practice Sessions</div>
             </div>
 
-            <div className="pt-2.5 border-t-2 border-slate-950/40 flex justify-between items-center text-xs font-black">
-              <span className="!text-black font-black" style={{ color: '#000000' }}>Avg Confidence:</span>
-              <span className="font-mono text-sm font-black !text-black" style={{ color: '#000000' }}>{avgConf}%</span>
+            <div className="pt-2.5 border-t-2 border-slate-950/40 flex items-center justify-between gap-4 text-xs font-black">
+              <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Confidence:</span>
+              <span className="font-mono text-xs sm:text-sm font-black !text-black px-2.5 py-0.5 rounded-lg bg-black/10 border border-slate-900 shadow-[1px_1px_0px_#000] shrink-0" style={{ color: '#000000' }}>
+                {avgConf}%
+              </span>
             </div>
             
-            <div className="flex justify-between items-center text-xs font-black">
-              <span className="!text-black font-black" style={{ color: '#000000' }}>Avg Speaking Speed:</span>
-              <span className="font-mono text-sm font-black !text-black" style={{ color: '#000000' }}>{avgWpm} WPM</span>
+            <div className="flex items-center justify-between gap-4 text-xs font-black">
+              <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Speaking Speed:</span>
+              <span className="font-mono text-xs sm:text-sm font-black !text-black px-2.5 py-0.5 rounded-lg bg-black/10 border border-slate-900 shadow-[1px_1px_0px_#000] shrink-0" style={{ color: '#000000' }}>
+                {avgWpm} WPM
+              </span>
             </div>
 
-            <div className="flex justify-between items-center text-xs font-black">
-              <span className="!text-black font-black" style={{ color: '#000000' }}>Filler Hesitation:</span>
-              <span className="font-mono text-sm font-black !text-black" style={{ color: '#000000' }}>{avgFill}%</span>
+            <div className="flex items-center justify-between gap-4 text-xs font-black">
+              <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Filler Hesitation:</span>
+              <span className="font-mono text-xs sm:text-sm font-black !text-black px-2.5 py-0.5 rounded-lg bg-black/10 border border-slate-900 shadow-[1px_1px_0px_#000] shrink-0" style={{ color: '#000000' }}>
+                {avgFill}%
+              </span>
             </div>
           </div>
         </Card3D>
