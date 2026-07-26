@@ -50,35 +50,27 @@ export default function QuestionContextChecklistWidget({ contextEvaluation, sele
           </div>
         </div>
 
-        {/* Required Details Checklist Grid (Red tiles get red text, Green tiles get green text) */}
+        {/* Required Details Checklist Grid (Strict Scoped Vibrant Mint & Coral Tiles) */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
           {detailsChecklist.map((item, idx) => (
             <div 
               key={idx} 
-              className={`p-4 rounded-xl border-3 flex items-start gap-3.5 text-xs transition-all shadow-[3px_3px_0px_#0F172A] ${
+              className={`p-4 rounded-xl flex items-start gap-3.5 text-xs transition-all ${
                 item.isPresent 
-                  ? '!bg-[#DCFCE7] dark:!bg-[#064E3B] !border-slate-900' 
-                  : '!bg-[#FFE4E6] dark:!bg-[#881337] !border-slate-900'
+                  ? 'checklist-green-tile' 
+                  : 'checklist-red-tile'
               }`}
             >
               {item.isPresent ? (
-                <CheckCircle className="w-5 h-5 !text-[#047857] dark:!text-[#DCFCE7] mt-0.5 shrink-0 stroke-[2.5]" />
+                <CheckCircle className="w-5 h-5 mt-0.5 shrink-0" />
               ) : (
-                <XCircle className="w-5 h-5 !text-[#BE123C] dark:!text-[#FFE4E6] mt-0.5 shrink-0 stroke-[2.5]" />
+                <XCircle className="w-5 h-5 mt-0.5 shrink-0" />
               )}
               <div>
-                <span className={`font-black font-heading text-sm block leading-snug ${
-                  item.isPresent
-                    ? '!text-[#064E3B] dark:!text-[#DCFCE7]'
-                    : '!text-[#991B1B] dark:!text-[#FFE4E6]'
-                }`}>
+                <span className="tile-title font-black font-heading text-sm block leading-snug">
                   {item.label}
                 </span>
-                <span className={`text-xs font-extrabold block mt-1 leading-relaxed ${
-                  item.isPresent
-                    ? '!text-[#047857] dark:!text-[#A7F3D0]'
-                    : '!text-[#9F1239] dark:!text-[#FECDD3]'
-                }`}>
+                <span className="tile-tip text-xs font-extrabold block mt-1 leading-relaxed">
                   {item.tip}
                 </span>
               </div>

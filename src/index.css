@@ -100,6 +100,85 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   STRICT SCOPED CHECKLIST & FEEDBACK TILES (NO MORE DULL TILES!)
+───────────────────────────────────────────────────────────── */
+/* Green Checklist Tiles */
+.light .checklist-green-tile {
+  background-color: #DCFCE7 !important; /* Fresh Bright Mint */
+  border: 3px solid #0F172A !important;
+  box-shadow: 3px 3px 0px #0F172A !important;
+}
+.light .checklist-green-tile .tile-title { color: #0F172A !important; }
+.light .checklist-green-tile .tile-tip { color: #065F46 !important; }
+.light .checklist-green-tile svg { color: #047857 !important; }
+
+.dark .checklist-green-tile {
+  background-color: #064E3B !important;
+  border: 3px solid #047857 !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+.dark .checklist-green-tile .tile-title { color: #DCFCE7 !important; }
+.dark .checklist-green-tile .tile-tip { color: #A7F3D0 !important; }
+.dark .checklist-green-tile svg { color: #34D399 !important; }
+
+/* Red Checklist Tiles */
+.light .checklist-red-tile {
+  background-color: #FFE4E6 !important; /* Fresh Bright Coral Pink */
+  border: 3px solid #0F172A !important;
+  box-shadow: 3px 3px 0px #0F172A !important;
+}
+.light .checklist-red-tile .tile-title { color: #0F172A !important; }
+.light .checklist-red-tile .tile-tip { color: #9F1239 !important; }
+.light .checklist-red-tile svg { color: #BE123C !important; }
+
+.dark .checklist-red-tile {
+  background-color: #881337 !important;
+  border: 3px solid #BE123C !important;
+  box-shadow: 3px 3px 0px #000000 !important;
+}
+.dark .checklist-red-tile .tile-title { color: #FFE4E6 !important; }
+.dark .checklist-red-tile .tile-tip { color: #FECDD3 !important; }
+.dark .checklist-red-tile svg { color: #F87171 !important; }
+
+/* AI Feedback Bullets: Strengths */
+.light .feedback-strength-tile {
+  background-color: #DCFCE7 !important; /* Bright Mint Lime */
+  border: 2.5px solid #0F172A !important;
+  box-shadow: 2.5px 2.5px 0px #0F172A !important;
+  color: #0F172A !important;
+}
+.light .feedback-strength-tile * { color: #0F172A !important; }
+.light .feedback-strength-tile .dot { background-color: #047857 !important; }
+
+.dark .feedback-strength-tile {
+  background-color: #064E3B !important;
+  border: 2.5px solid #047857 !important;
+  box-shadow: 2.5px 2.5px 0px #000000 !important;
+  color: #DCFCE7 !important;
+}
+.dark .feedback-strength-tile * { color: #DCFCE7 !important; }
+.dark .feedback-strength-tile .dot { background-color: #34D399 !important; }
+
+/* AI Feedback Bullets: Areas for Improvement */
+.light .feedback-improvement-tile {
+  background-color: #FEF3C7 !important; /* Bright Sunshine Gold */
+  border: 2.5px solid #0F172A !important;
+  box-shadow: 2.5px 2.5px 0px #0F172A !important;
+  color: #0F172A !important;
+}
+.light .feedback-improvement-tile * { color: #0F172A !important; }
+.light .feedback-improvement-tile .dot { background-color: #B45309 !important; }
+
+.dark .feedback-improvement-tile {
+  background-color: #78350F !important;
+  border: 2.5px solid #B45309 !important;
+  box-shadow: 2.5px 2.5px 0px #000000 !important;
+  color: #FEF08A !important;
+}
+.dark .feedback-improvement-tile * { color: #FEF08A !important; }
+.dark .feedback-improvement-tile .dot { background-color: #FBBF24 !important; }
+
+/* ─────────────────────────────────────────────────────────────
    HERO PRACTICE METRICS CARD (Strict Yellow/Gold Styling)
 ───────────────────────────────────────────────────────────── */
 .light .hero-metrics-card {

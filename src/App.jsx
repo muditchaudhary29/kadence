@@ -541,9 +541,9 @@ export default function App() {
                   </h4>
                   <div className="space-y-2.5">
                     {analysis.strengths.map((str, idx) => (
-                      <div key={idx} className="p-3.5 !bg-[#DCFCE7] dark:!bg-emerald-950/80 border-2 border-slate-900 rounded-xl flex items-start gap-3 text-xs font-black !text-[#064E3B] dark:!text-emerald-200 shadow-[2px_2px_0px_#0F172A]">
-                        <span className="w-2.5 h-2.5 rounded-full bg-emerald-600 dark:bg-emerald-400 mt-1 shrink-0 border border-slate-900" />
-                        <span className="!text-[#064E3B] dark:!text-emerald-200 font-extrabold">{str}</span>
+                      <div key={idx} className="feedback-strength-tile p-3.5 rounded-xl flex items-start gap-3 text-xs font-black">
+                        <span className="dot w-2.5 h-2.5 rounded-full mt-1 shrink-0 border border-slate-900" />
+                        <span className="font-extrabold">{str}</span>
                       </div>
                     ))}
                   </div>
@@ -556,9 +556,9 @@ export default function App() {
                   </h4>
                   <div className="space-y-2.5">
                     {analysis.areasForImprovement.map((area, idx) => (
-                      <div key={idx} className="p-3.5 !bg-[#FEF3C7] dark:!bg-amber-950/80 border-2 border-slate-900 rounded-xl flex items-start gap-3 text-xs font-black !text-[#78350F] dark:!text-amber-200 shadow-[2px_2px_0px_#0F172A]">
-                        <span className="w-2.5 h-2.5 rounded-full bg-amber-600 dark:bg-amber-400 mt-1 shrink-0 border border-slate-900" />
-                        <span className="!text-[#78350F] dark:!text-amber-200 font-extrabold">{area}</span>
+                      <div key={idx} className="feedback-improvement-tile p-3.5 rounded-xl flex items-start gap-3 text-xs font-black">
+                        <span className="dot w-2.5 h-2.5 rounded-full mt-1 shrink-0 border border-slate-900" />
+                        <span className="font-extrabold">{area}</span>
                       </div>
                     ))}
                   </div>
