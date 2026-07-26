@@ -77,7 +77,7 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-heading tracking-tight leading-tight">
             Master Your Next <br className="hidden sm:inline" />
-            <span className="inline-block px-4 py-1.5 bg-amber-400 text-slate-900 border-3 border-slate-900 shadow-[4px_4px_0px_#0F172A] rotate-1 mt-1">
+            <span className="inline-block px-4 py-1.5 bg-[#A3E635] text-slate-950 border-3 border-slate-900 shadow-[4px_4px_0px_#0F172A] rotate-1 mt-1 font-bold">
               Interview Game 🔥
             </span>
           </h1>

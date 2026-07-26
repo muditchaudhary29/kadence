@@ -241,33 +241,7 @@ export default function App() {
 
   // ---- Render helpers ----
   const renderHeader = () => (
-    <>
-      {/* Neo-Brutalism Marquee Ticker */}
-      <div className="ticker-banner">
-        <div className="ticker-track">
-          <span>⚡ KADENCE AI SPEECH COACH</span>
-          <span>•</span>
-          <span>🎙️ REAL-TIME STT SPEECH ENGINE</span>
-          <span>•</span>
-          <span>⚡ WPM PACING GAUGE</span>
-          <span>•</span>
-          <span>⭐ STAR METHOD BREAKDOWN</span>
-          <span>•</span>
-          <span>📚 NOTES & PDF QUESTION GENERATOR</span>
-          <span>•</span>
-          <span>💬 INTERACTIVE USER REVIEWS</span>
-          <span>•</span>
-          <span>⚡ KADENCE AI SPEECH COACH</span>
-          <span>•</span>
-          <span>🎙️ REAL-TIME STT SPEECH ENGINE</span>
-          <span>•</span>
-          <span>⚡ WPM PACING GAUGE</span>
-          <span>•</span>
-          <span>⭐ STAR METHOD BREAKDOWN</span>
-        </div>
-      </div>
-
-      <header className="sticky top-0 z-40 glass-panel px-4 sm:px-6 py-3">
+    <header className="sticky top-0 z-40 glass-panel px-4 sm:px-6 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
           {/* Logo */}
           <button onClick={() => setCurrentPage('dashboard')} className="flex items-center gap-3 shrink-0 group">
@@ -323,7 +297,6 @@ export default function App() {
           </div>
         </div>
       </header>
-    </>
   );
 
   // ---- Page: Practice (full original UI) ----
