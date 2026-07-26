@@ -104,7 +104,7 @@ h1, h2, h3, h4, h5, .font-heading {
 ───────────────────────────────────────────────────────────── */
 .light .brutal-block-violet {
   background-color: #C7D2FE !important; /* Vivid Light Indigo */
-  color: #1E1B4B !important;
+  color: #0F172A !important;
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
@@ -118,7 +118,7 @@ h1, h2, h3, h4, h5, .font-heading {
 
 .light .brutal-block-emerald {
   background-color: #A7F3D0 !important; /* Vivid Light Emerald Green */
-  color: #064E3B !important;
+  color: #0F172A !important;
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
@@ -132,7 +132,7 @@ h1, h2, h3, h4, h5, .font-heading {
 
 .light .brutal-block-amber {
   background-color: #FDE68A !important; /* Vivid Light Warm Amber */
-  color: #713F12 !important;
+  color: #0F172A !important;
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
@@ -146,7 +146,7 @@ h1, h2, h3, h4, h5, .font-heading {
 
 .light .brutal-block-rose {
   background-color: #FECDD3 !important; /* Vivid Light Coral Rose */
-  color: #881337 !important;
+  color: #0F172A !important;
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
