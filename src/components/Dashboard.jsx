@@ -161,40 +161,42 @@ export default function Dashboard({ onNavigate }) {
           </div>
         </div>
 
-        {/* Hero Interactive 3D Metric Box (Brighter Sunshine Yellow in Light Mode, Electric Amber Gold in Dark Mode) */}
-        <Card3D className="hero-metrics-card w-full md:w-76 p-6 rounded-2xl border-3 border-slate-900 rotate-2 shrink-0 cursor-pointer">
-          <div className="flex items-center justify-between mb-4">
-            <span className="hero-badge-text text-xs font-mono font-black uppercase tracking-wider px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
+        {/* Hero Interactive 3D Metric Box (Fixed md:w-80 max-w-sm with grid-cols-[1fr_auto] layout) */}
+        <Card3D className="hero-metrics-card w-full md:w-80 max-w-sm p-5 sm:p-6 rounded-2xl border-3 border-slate-900 rotate-2 shrink-0 cursor-pointer">
+          <div className="flex items-center justify-between mb-3">
+            <span className="hero-badge-text text-[11px] font-mono font-black uppercase tracking-wider px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
               PRACTICE METRICS
             </span>
-            <Target className="w-6 h-6 stroke-[2.5]" style={{ color: '#000000' }} />
+            <Target className="w-5 h-5 stroke-[2.5]" style={{ color: '#000000' }} />
           </div>
 
           <div className="space-y-3">
             <div>
-              <div className="text-4xl font-black font-mono tracking-tight !text-black" style={{ color: '#000000' }}>{total}</div>
-              <div className="text-xs font-black uppercase tracking-wider !text-black" style={{ color: '#000000' }}>Total Practice Sessions</div>
+              <div className="text-3xl sm:text-4xl font-black font-mono tracking-tight !text-black" style={{ color: '#000000' }}>{total}</div>
+              <div className="text-[11px] font-black uppercase tracking-wider !text-black" style={{ color: '#000000' }}>Total Practice Sessions</div>
             </div>
 
-            <div className="pt-2.5 border-t-2 border-slate-950/40 flex items-center justify-between gap-4 text-xs font-black">
-              <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Confidence:</span>
-              <span className="font-mono text-xs sm:text-sm font-black !text-black px-2.5 py-0.5 rounded-lg bg-black/10 border border-slate-900 shadow-[1px_1px_0px_#000] shrink-0" style={{ color: '#000000' }}>
-                {avgConf}%
-              </span>
-            </div>
-            
-            <div className="flex items-center justify-between gap-4 text-xs font-black">
-              <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Speaking Speed:</span>
-              <span className="font-mono text-xs sm:text-sm font-black !text-black px-2.5 py-0.5 rounded-lg bg-black/10 border border-slate-900 shadow-[1px_1px_0px_#000] shrink-0" style={{ color: '#000000' }}>
-                {avgWpm} WPM
-              </span>
-            </div>
+            <div className="pt-2 border-t-2 border-slate-950/40 space-y-2">
+              <div className="grid grid-cols-[1fr_auto] items-center gap-2 text-xs font-black">
+                <span className="font-extrabold truncate !text-black" style={{ color: '#000000' }}>Avg Confidence:</span>
+                <span className="font-mono text-xs font-black !text-black px-2.5 py-0.5 rounded-md bg-black/10 border border-slate-900 shadow-[1px_1px_0px_#000]" style={{ color: '#000000' }}>
+                  {avgConf}%
+                </span>
+              </div>
+              
+              <div className="grid grid-cols-[1fr_auto] items-center gap-2 text-xs font-black">
+                <span className="font-extrabold truncate !text-black" style={{ color: '#000000' }}>Avg Speaking Speed:</span>
+                <span className="font-mono text-xs font-black !text-black px-2.5 py-0.5 rounded-md bg-black/10 border border-slate-900 shadow-[1px_1px_0px_#000]" style={{ color: '#000000' }}>
+                  {avgWpm} WPM
+                </span>
+              </div>
 
-            <div className="flex items-center justify-between gap-4 text-xs font-black">
-              <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Filler Hesitation:</span>
-              <span className="font-mono text-xs sm:text-sm font-black !text-black px-2.5 py-0.5 rounded-lg bg-black/10 border border-slate-900 shadow-[1px_1px_0px_#000] shrink-0" style={{ color: '#000000' }}>
-                {avgFill}%
-              </span>
+              <div className="grid grid-cols-[1fr_auto] items-center gap-2 text-xs font-black">
+                <span className="font-extrabold truncate !text-black" style={{ color: '#000000' }}>Filler Hesitation:</span>
+                <span className="font-mono text-xs font-black !text-black px-2.5 py-0.5 rounded-md bg-black/10 border border-slate-900 shadow-[1px_1px_0px_#000]" style={{ color: '#000000' }}>
+                  {avgFill}%
+                </span>
+              </div>
             </div>
           </div>
         </Card3D>
