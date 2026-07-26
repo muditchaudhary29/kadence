@@ -1,8 +1,48 @@
-import React from 'react';
+import React, { useRef, useCallback } from 'react';
 import {
   Mic, BarChart2, MessageSquare, BookOpen,
   ArrowRight, Sparkles, Target, Zap, ShieldCheck
 } from 'lucide-react';
+
+/* ── Interactive 3D Tilt Card Component ────────────────────── */
+function Card3D({ children, className = '', onClick }) {
+  const ref = useRef(null);
+
+  const onMove = useCallback((e) => {
+    const el = ref.current;
+    if (!el) return;
+    const r = el.getBoundingClientRect();
+    const x = (e.clientX - r.left) / r.width;   // 0..1
+    const y = (e.clientY - r.top)  / r.height;  // 0..1
+    const rotY =  (x - 0.5) * 16;  // –8..+8 deg
+    const rotX = -(y - 0.5) * 12;  // –6..+6 deg
+    el.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(10px)`;
+    el.style.boxShadow = `
+      ${6 + rotY / 2}px ${6 + rotX / 2}px 0px var(--shadow-color),
+      0 16px 36px rgba(0,0,0,0.2)
+    `;
+  }, []);
+
+  const onLeave = useCallback(() => {
+    const el = ref.current;
+    if (!el) return;
+    el.style.transform = '';
+    el.style.boxShadow = '';
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      onMouseMove={onMove}
+      onMouseLeave={onLeave}
+      onClick={onClick}
+      className={`card-3d ${className}`}
+      style={{ transition: 'transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease' }}
+    >
+      {children}
+    </div>
+  );
+}
 
 /* ── Bento Card Data ────────────────────────────────────────── */
 const FEATURES = [
@@ -16,7 +56,6 @@ const FEATURES = [
     badge: '12 QUESTIONS',
     badgeBg: 'bg-indigo-600 text-white',
     cta: 'Start Practicing',
-    rotate: '-rotate-1',
   },
   {
     id: 'progress',
@@ -28,7 +67,6 @@ const FEATURES = [
     badge: 'ANALYTICS',
     badgeBg: 'bg-emerald-600 text-white',
     cta: 'View Progress',
-    rotate: 'rotate-1',
   },
   {
     id: 'feedback',
@@ -40,7 +78,6 @@ const FEATURES = [
     badge: 'COMMUNITY',
     badgeBg: 'bg-amber-400 text-slate-900',
     cta: 'Submit Review',
-    rotate: '-rotate-2',
   },
   {
     id: 'notes',
@@ -52,7 +89,6 @@ const FEATURES = [
     badge: 'PDF / TXT / IMG',
     badgeBg: 'bg-rose-500 text-white',
     cta: 'Upload Notes',
-    rotate: 'rotate-2',
   },
 ];
 
@@ -104,8 +140,8 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
           </div>
         </div>
 
-        {/* Hero Metric Box */}
-        <div className="w-full md:w-76 p-6 rounded-2xl bg-amber-400 text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0">
+        {/* Hero Interactive 3D Metric Box */}
+        <Card3D className="w-full md:w-76 p-6 rounded-2xl bg-amber-400 text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0 cursor-pointer">
           <div className="flex items-center justify-between mb-4">
             <span className="text-xs font-mono font-extrabold uppercase tracking-wider bg-slate-900 text-white px-2.5 py-1 rounded-md">
               PRACTICE METRICS
@@ -115,39 +151,39 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
 
           <div className="space-y-3">
             <div>
-              <div className="text-4xl font-black font-mono tracking-tight text-slate-900">{total}</div>
-              <div className="text-xs font-bold uppercase text-slate-900">Total Practice Sessions</div>
+              <div className="text-4xl font-black font-mono tracking-tight text-slate-950">{total}</div>
+              <div className="text-xs font-extrabold uppercase text-slate-950">Total Practice Sessions</div>
             </div>
 
-            <div className="pt-2 border-t-2 border-slate-900 flex justify-between text-xs font-bold text-slate-900">
+            <div className="pt-2 border-t-2 border-slate-900 flex justify-between text-xs font-extrabold text-slate-950">
               <span>Avg Confidence:</span>
               <span className="font-mono text-sm">{avgConf}%</span>
             </div>
             {avgWpm && (
-              <div className="flex justify-between text-xs font-bold text-slate-900">
+              <div className="flex justify-between text-xs font-extrabold text-slate-950">
                 <span>Avg Speaking Speed:</span>
                 <span className="font-mono text-sm">{avgWpm} WPM</span>
               </div>
             )}
             {avgFill !== null && (
-              <div className="flex justify-between text-xs font-bold text-slate-900">
+              <div className="flex justify-between text-xs font-extrabold text-slate-950">
                 <span>Filler Hesitation:</span>
                 <span className="font-mono text-sm">{avgFill}%</span>
               </div>
             )}
           </div>
-        </div>
+        </Card3D>
       </section>
 
-      {/* ── BENTO CARDS GRID ───────────────────────────────────── */}
+      {/* ── BENTO CARDS GRID WITH 3D TILT ─────────────────────── */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {FEATURES.map((f) => {
           const Icon = f.Icon;
           return (
-            <div
+            <Card3D
               key={f.id}
               onClick={() => onNavigate(f.id)}
-              className={`brutal-card p-7 cursor-pointer group ${f.colorClass} relative overflow-hidden transition-all duration-150 space-y-4`}
+              className={`p-7 cursor-pointer group ${f.colorClass} relative overflow-hidden transition-all duration-150 space-y-4`}
             >
               {/* Badge Top */}
               <div className="flex items-start justify-between">
@@ -155,7 +191,7 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
                   <Icon className="w-6 h-6" />
                 </div>
 
-                <span className={`text-[11px] font-bold font-mono px-3 py-1 rounded-xl border-2.5 border-slate-900 shadow-[3px_3px_0px_#0F172A] uppercase tracking-wider ${f.badgeBg} ${f.rotate}`}>
+                <span className={`text-[11px] font-bold font-mono px-3 py-1 rounded-xl border-2.5 border-slate-900 shadow-[3px_3px_0px_#0F172A] uppercase tracking-wider ${f.badgeBg}`}>
                   {f.badge}
                 </span>
               </div>
@@ -174,7 +210,7 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
                 <span>{f.cta}</span>
                 <ArrowRight className="w-4 h-4" />
               </div>
-            </div>
+            </Card3D>
           );
         })}
       </section>
