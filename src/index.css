@@ -22,19 +22,6 @@
   --text-sub:         #CBD5E1;
   --text-muted:       #94A3B8;
 
-  /* Vivid Neo-Brutalism Color Blocks (Dark Mode) */
-  --pop-violet:       #312E81;
-  --pop-emerald:      #064E3B;
-  --pop-yellow:       #78350F;
-  --pop-pink:         #881337;
-  --pop-cyan:         #164E63;
-
-  --text-on-pop-violet: #E0E7FF;
-  --text-on-pop-emerald:#D1FAE5;
-  --text-on-pop-yellow: #FEF08A;
-  --text-on-pop-pink:   #FFE4E6;
-  --text-on-pop-cyan:   #E0F2FE;
-
   --badge-bg:         #27273A;
 }
 
@@ -49,21 +36,8 @@
   --shadow-color:     #0F172A;
 
   --text-main:        #0F172A;
-  --text-sub:         #1E293B;
+  --text-sub:         #334155;
   --text-muted:       #475569;
-
-  /* Vivid Neo-Brutalism Color Blocks (Light Mode) */
-  --pop-violet:       #E0E7FF;
-  --pop-emerald:      #D1FAE5;
-  --pop-yellow:       #FEF08A;
-  --pop-pink:         #FFE4E6;
-  --pop-cyan:         #E0F2FE;
-
-  --text-on-pop-violet: #312E81;
-  --text-on-pop-emerald:#064E3B;
-  --text-on-pop-yellow: #713F12;
-  --text-on-pop-pink:   #881337;
-  --text-on-pop-cyan:   #0C4A6E;
 
   --badge-bg:         #E2E8F0;
 }
@@ -104,6 +78,7 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid var(--border-brutal);
   border-radius: 18px;
   box-shadow: 5px 5px 0px var(--shadow-color);
+  color: var(--text-main);
   transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, background-color 0.2s ease;
 }
 
@@ -118,83 +93,109 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .neu-inset {
-  background-color: var(--bg-inset) !important;
-  border: 2.5px solid var(--border-brutal) !important;
+  background-color: var(--bg-inset);
+  border: 2.5px solid var(--border-brutal);
   border-radius: 14px;
+  color: var(--text-main);
 }
 
 /* ─────────────────────────────────────────────────────────────
-   LIGHT MODE CONTRAST OVERRIDES
+   COLOR BLOCK CARDS (Scoped Text & Background Contrast)
 ───────────────────────────────────────────────────────────── */
-.light .glass-card, .light .card-3d, .light .brutal-card {
-  background-color: #FFFFFF !important;
-  border-color: #0F172A !important;
+.light .brutal-block-violet {
+  background-color: #EEF2FF !important;
+  color: #1E1B4B !important;
+  border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
+.light .brutal-block-violet * { color: #1E1B4B !important; }
 
-.light .glass-panel {
-  background-color: #FFFFFF !important;
-  border-bottom-color: #0F172A !important;
+.dark .brutal-block-violet {
+  background-color: #312E81 !important;
+  color: #EEF2FF !important;
+  border: 3px solid #4338CA !important;
+  box-shadow: 5px 5px 0px #000000 !important;
 }
+.dark .brutal-block-violet * { color: #EEF2FF !important; }
 
-.light .neu-inset {
-  background-color: #F8F9FA !important;
-  border-color: #0F172A !important;
+.light .brutal-block-emerald {
+  background-color: #ECFDF5 !important;
+  color: #064E3B !important;
+  border: 3px solid #0F172A !important;
+  box-shadow: 5px 5px 0px #0F172A !important;
 }
+.light .brutal-block-emerald * { color: #064E3B !important; }
 
-.light .text-zinc-100, 
-.light .text-zinc-200, 
-.light .text-zinc-300, 
-.light .text-zinc-400, 
-.light .text-zinc-500,
-.light .text-white:not(.btn-primary *):not(.nav-active *):not(.bg-slate-900 *):not(.bg-indigo-600 *):not(.bg-purple-500 *):not(.bg-rose-500 *):not(.bg-emerald-600 *) {
+.dark .brutal-block-emerald {
+  background-color: #064E3B !important;
+  color: #ECFDF5 !important;
+  border: 3px solid #047857 !important;
+  box-shadow: 5px 5px 0px #000000 !important;
+}
+.dark .brutal-block-emerald * { color: #ECFDF5 !important; }
+
+.light .brutal-block-amber {
+  background-color: #FEFCE8 !important;
+  color: #713F12 !important;
+  border: 3px solid #0F172A !important;
+  box-shadow: 5px 5px 0px #0F172A !important;
+}
+.light .brutal-block-amber * { color: #713F12 !important; }
+
+.dark .brutal-block-amber {
+  background-color: #78350F !important;
+  color: #FEF08A !important;
+  border: 3px solid #B45309 !important;
+  box-shadow: 5px 5px 0px #000000 !important;
+}
+.dark .brutal-block-amber * { color: #FEF08A !important; }
+
+.light .brutal-block-rose {
+  background-color: #FFF1F2 !important;
+  color: #881337 !important;
+  border: 3px solid #0F172A !important;
+  box-shadow: 5px 5px 0px #0F172A !important;
+}
+.light .brutal-block-rose * { color: #881337 !important; }
+
+.dark .brutal-block-rose {
+  background-color: #881337 !important;
+  color: #FFE4E6 !important;
+  border: 3px solid #BE123C !important;
+  box-shadow: 5px 5px 0px #000000 !important;
+}
+.dark .brutal-block-rose * { color: #FFE4E6 !important; }
+
+/* ─────────────────────────────────────────────────────────────
+   LIGHT MODE & DARK MODE CARD CONTRAST
+───────────────────────────────────────────────────────────── */
+.light .glass-card, .light .card-3d, .light .brutal-card {
+  background-color: #FFFFFF;
+  border-color: #0F172A;
+  box-shadow: 5px 5px 0px #0F172A;
+  color: #0F172A;
+}
+.light .glass-card *, .light .card-3d *, .light .brutal-card * {
+  color: inherit;
+}
+.light .text-zinc-400, .light .text-zinc-500, .light .text-zinc-600 {
+  color: #475569 !important;
+}
+.light .text-zinc-100, .light .text-zinc-200, .light .text-zinc-300 {
   color: #0F172A !important;
 }
 
-/* DARK MODE CONTRAST OVERRIDES */
-.dark .text-zinc-100, 
-.dark .text-zinc-200, 
-.dark .text-white {
+.dark .glass-card, .dark .card-3d, .dark .brutal-card {
+  background-color: #161622;
+  border-color: #334155;
+  box-shadow: 5px 5px 0px #000000;
+  color: #FFFFFF;
+}
+.dark .text-zinc-100, .dark .text-zinc-200, .dark .text-white {
   color: #FFFFFF !important;
 }
-
-.dark .text-zinc-300, 
-.dark .text-zinc-400, 
-.dark .text-zinc-500 {
+.dark .text-zinc-300, .dark .text-zinc-400, .dark .text-zinc-500 {
   color: #CBD5E1 !important;
-}
-
-/* ─────────────────────────────────────────────────────────────
-   FUNKY COLOR BLOCK CARDS
-───────────────────────────────────────────────────────────── */
-.brutal-block-violet {
-  background-color: var(--pop-violet) !important;
-  color: var(--text-on-pop-violet) !important;
-  border: 3px solid var(--border-brutal) !important;
-}
-
-.brutal-block-emerald {
-  background-color: var(--pop-emerald) !important;
-  color: var(--text-on-pop-emerald) !important;
-  border: 3px solid var(--border-brutal) !important;
-}
-
-.brutal-block-amber {
-  background-color: var(--pop-yellow) !important;
-  color: var(--text-on-pop-yellow) !important;
-  border: 3px solid var(--border-brutal) !important;
-}
-
-.brutal-block-rose {
-  background-color: var(--pop-pink) !important;
-  color: var(--text-on-pop-pink) !important;
-  border: 3px solid var(--border-brutal) !important;
-}
-
-.brutal-block-cyan {
-  background-color: var(--pop-cyan) !important;
-  color: var(--text-on-pop-cyan) !important;
-  border: 3px solid var(--border-brutal) !important;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -211,20 +212,20 @@ h1, h2, h3, h4, h5, .font-heading {
   font-weight: 800;
   color: #FFFFFF !important;
   background-color: #6366F1 !important;
-  border: 3px solid var(--border-black) !important;
-  box-shadow: 4px 4px 0px var(--shadow-color) !important;
+  border: 3px solid #0F172A !important;
+  box-shadow: 4px 4px 0px #0F172A !important;
   transition: all 0.12s ease;
   cursor: pointer;
 }
 
 .btn-primary:hover {
   transform: translate(-3px, -3px);
-  box-shadow: 7px 7px 0px var(--shadow-color) !important;
+  box-shadow: 7px 7px 0px #0F172A !important;
 }
 
 .btn-primary:active {
   transform: translate(2px, 2px);
-  box-shadow: 2px 2px 0px var(--shadow-color) !important;
+  box-shadow: 2px 2px 0px #0F172A !important;
 }
 
 /* Theme Toggle Button */
@@ -253,8 +254,8 @@ h1, h2, h3, h4, h5, .font-heading {
 .nav-active {
   background-color: #6366F1 !important;
   color: #FFFFFF !important;
-  border: 3px solid var(--border-black) !important;
-  box-shadow: 4px 4px 0px var(--shadow-color) !important;
+  border: 3px solid #0F172A !important;
+  box-shadow: 4px 4px 0px #0F172A !important;
   font-weight: 800 !important;
 }
 
@@ -271,13 +272,6 @@ h1, h2, h3, h4, h5, .font-heading {
   box-shadow: 3px 3px 0px var(--shadow-color) !important;
 }
 
-.text-gradient, .text-shimmer {
-  background: none !important;
-  -webkit-text-fill-color: initial !important;
-  color: var(--text-main) !important;
-}
-
-/* Funky Badge Tags */
 .brutal-badge {
   display: inline-flex;
   align-items: center;

@@ -3,7 +3,7 @@ import {
   Mic, Sparkles, Award, ShieldCheck, AlertCircle, RefreshCw, 
   HelpCircle, ChevronRight, Zap, ArrowUpRight, MessageSquare, 
   CheckCircle2, Flame, Cpu, FileText, BarChart2, BookOpen,
-  LayoutDashboard, ArrowLeft, Home, Sun, Moon
+  LayoutDashboard, ArrowLeft, Home, Sun, Moon, Activity
 } from 'lucide-react';
 import AudioVisualizer from './components/AudioVisualizer';
 import WpmGauge from './components/WpmGauge';
@@ -243,14 +243,28 @@ export default function App() {
   const renderHeader = () => (
     <header className="sticky top-0 z-40 glass-panel px-4 sm:px-6 py-3">
         <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-          {/* Logo */}
-          <button onClick={() => setCurrentPage('dashboard')} className="flex items-center gap-3 shrink-0 group">
-            <div className="w-10 h-10 rounded-xl bg-indigo-500 border-2 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#000]">
-              <Mic className="w-5 h-5 text-white" />
+          {/* Upgraded 3D Neo-Brutalism Logo */}
+          <button onClick={() => setCurrentPage('dashboard')} className="flex items-center gap-3.5 shrink-0 group focus:outline-none">
+            <div className="relative">
+              <div className="w-11 h-11 rounded-xl bg-indigo-600 border-3 border-slate-900 flex items-center justify-center shadow-[4px_4px_0px_#0F172A] group-hover:translate-x-[-2px] group-hover:translate-y-[-2px] group-hover:shadow-[6px_6px_0px_#0F172A] transition-all">
+                <div className="relative flex items-center justify-center">
+                  <Activity className="w-6 h-6 text-[#A3E635] absolute animate-pulse opacity-90" />
+                  <Mic className="w-5 h-5 text-white relative z-10" />
+                </div>
+              </div>
+              <span className="absolute -top-1 -right-1 w-3.5 h-3.5 rounded-full bg-[#A3E635] border-2 border-slate-900 shadow-[1px_1px_0px_#000]" />
             </div>
+
             <div className="hidden sm:block text-left">
-              <span className="text-lg font-bold font-heading tracking-tight block leading-none">Kadence AI</span>
-              <span className="text-[10px] font-mono font-bold text-indigo-500 uppercase tracking-widest">AI Speech Coach</span>
+              <div className="flex items-center gap-1.5">
+                <span className="text-xl font-black font-heading tracking-tight leading-none">KADENCE</span>
+                <span className="px-1.5 py-0.5 rounded-md bg-[#A3E635] text-slate-950 font-mono font-black text-[10px] border-1.5 border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
+                  AI
+                </span>
+              </div>
+              <span className="text-[9.5px] font-mono font-extrabold uppercase tracking-widest block mt-0.5 text-indigo-500">
+                SPEECH & INTERVIEW ENGINE
+              </span>
             </div>
           </button>
 
