@@ -98,14 +98,30 @@ const FEATURES = [
 ];
 
 export default function Dashboard({ onNavigate }) {
-  const sessions = getSessions();
+  const sessions = getSessions() || [];
   const profile  = getProfile() || {};
-  const total = (sessions && sessions.length) ? sessions.length : (profile.totalSessions || 3);
+
+  const total = sessions.length || profile.totalSessions || 3;
+  
+  const validConf = sessions.filter(s => s.confidenceScore > 0);
+  const avgConf = validConf.length
+    ? Math.round(validConf.reduce((a, s) => a + s.confidenceScore, 0) / validConf.length)
+    : (profile.avgConfidence || 83);
+  
+  const validWpm = sessions.filter(s => s.wpm > 0);
+  const avgWpm = validWpm.length
+    ? Math.round(validWpm.reduce((a, s) => a + s.wpm, 0) / validWpm.length)
+    : (profile.avgWpm || 137);
+  
+  const validFill = sessions.filter(s => s.fillerRate !== undefined && s.fillerRate !== null);
+  const avgFill = validFill.length
+    ? parseFloat((validFill.reduce((a, s) => a + s.fillerRate, 0) / validFill.length).toFixed(1))
+    : (profile.avgFiller ?? 2.0);
 
   return (
     <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-10">
 
-      {/* ── HERO BENTO HEADER (100% Exact Match to Image) ──────────── */}
+      {/* ── HERO BENTO HEADER ────────────────────────────────────── */}
       <section className="brutal-card p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-amber-500/10">
         
         <div className="space-y-4 max-w-2xl text-left z-10">
@@ -144,7 +160,7 @@ export default function Dashboard({ onNavigate }) {
           </div>
         </div>
 
-        {/* Practice Metrics Elongated Cut Card — 100% Exact Match to User Image */}
+        {/* Practice Metrics Elongated Cut Card with Left-Aligned Values */}
         <Card3D className="hero-metrics-card flex-1 w-full min-w-[320px] max-w-2xl p-6 sm:p-8 rounded-2xl border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] -rotate-1 shrink-0 cursor-pointer relative -mr-12 sm:-mr-20">
           {/* Top Badge */}
           <div className="mb-4">
@@ -163,7 +179,7 @@ export default function Dashboard({ onNavigate }) {
               </div>
             </div>
 
-            {/* Divider line spanning the elongated yellow card */}
+            {/* Divider line & Left-Aligned Metrics */}
             <div className="pt-3 border-t-2 border-slate-950/60 space-y-3">
               <div className="text-xs sm:text-sm font-black flex items-center gap-2.5 !text-black" style={{ color: '#000000' }}>
                 <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Confidence:</span>
