@@ -44,7 +44,7 @@ function Card3D({ children, className = '', onClick }) {
   );
 }
 
-/* ── Bento Card Data with Ultra High-Contrast Badges & Icons ── */
+/* ── Bento Card Data: Pure Pitch-Black Text on Vibrant Pastel Cards ── */
 const FEATURES = [
   {
     id: 'practice',
@@ -56,10 +56,10 @@ const FEATURES = [
     badge: '12 QUESTIONS',
     badgeBg: '!bg-[#312E81] dark:!bg-[#312E81] !text-white',
     iconBg: '!bg-[#312E81] dark:!bg-[#312E81] !text-white',
-    subColor: '!text-[#4338CA] dark:!text-[#C7D2FE]',
-    titleColor: '!text-[#1E1B4B] dark:!text-white',
-    descColor: '!text-[#312E81] dark:!text-slate-200',
-    ctaColor: '!text-[#1E1B4B] dark:!text-white',
+    subColor: '!text-slate-950 dark:!text-[#C7D2FE]',
+    titleColor: '!text-slate-950 dark:!text-white',
+    descColor: '!text-slate-900 dark:!text-slate-200',
+    ctaColor: '!text-slate-950 dark:!text-white',
     cta: 'Start Practicing',
   },
   {
@@ -72,10 +72,10 @@ const FEATURES = [
     badge: 'ANALYTICS',
     badgeBg: '!bg-[#064E3B] dark:!bg-[#064E3B] !text-white',
     iconBg: '!bg-[#064E3B] dark:!bg-[#064E3B] !text-white',
-    subColor: '!text-[#047857] dark:!text-[#A7F3D0]',
-    titleColor: '!text-[#064E3B] dark:!text-white',
-    descColor: '!text-[#065F46] dark:!text-slate-200',
-    ctaColor: '!text-[#064E3B] dark:!text-white',
+    subColor: '!text-slate-950 dark:!text-[#A7F3D0]',
+    titleColor: '!text-slate-950 dark:!text-white',
+    descColor: '!text-slate-900 dark:!text-slate-200',
+    ctaColor: '!text-slate-950 dark:!text-white',
     cta: 'View Progress',
   },
   {
@@ -88,10 +88,10 @@ const FEATURES = [
     badge: 'COMMUNITY',
     badgeBg: '!bg-[#78350F] dark:!bg-[#78350F] !text-white',
     iconBg: '!bg-[#78350F] dark:!bg-[#78350F] !text-white',
-    subColor: '!text-[#B45309] dark:!text-[#FDE68A]',
-    titleColor: '!text-[#713F12] dark:!text-white',
-    descColor: '!text-[#78350F] dark:!text-slate-200',
-    ctaColor: '!text-[#713F12] dark:!text-white',
+    subColor: '!text-slate-950 dark:!text-[#FDE68A]',
+    titleColor: '!text-slate-950 dark:!text-white',
+    descColor: '!text-slate-900 dark:!text-slate-200',
+    ctaColor: '!text-slate-950 dark:!text-white',
     cta: 'Submit Review',
   },
   {
@@ -104,10 +104,10 @@ const FEATURES = [
     badge: 'PDF / TXT / IMG',
     badgeBg: '!bg-[#881337] dark:!bg-[#881337] !text-white',
     iconBg: '!bg-[#881337] dark:!bg-[#881337] !text-white',
-    subColor: '!text-[#BE123C] dark:!text-[#FECDD3]',
-    titleColor: '!text-[#881337] dark:!text-white',
-    descColor: '!text-[#9F1239] dark:!text-slate-200',
-    ctaColor: '!text-[#881337] dark:!text-white',
+    subColor: '!text-slate-950 dark:!text-[#FECDD3]',
+    titleColor: '!text-slate-950 dark:!text-white',
+    descColor: '!text-slate-900 dark:!text-slate-200',
+    ctaColor: '!text-slate-950 dark:!text-white',
     cta: 'Upload Notes',
   },
 ];
@@ -217,7 +217,7 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
                 </span>
               </div>
 
-              {/* Card Body */}
+              {/* Card Body: Pitch Black Text in Light Mode */}
               <div className="space-y-1.5">
                 <span className={`text-[11px] font-mono font-black tracking-widest uppercase block ${f.subColor}`}>
                   {f.sub}
