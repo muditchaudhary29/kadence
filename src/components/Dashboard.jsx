@@ -154,12 +154,12 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
 
         {/* Heading */}
         <h1 className="animate-fade-up delay-100 opacity-0 text-5xl sm:text-6xl lg:text-7xl font-black tracking-tight leading-[1.05] mb-5">
-          <span className="block text-white">Master Your</span>
+          <span className="block" style={{ color: 'var(--text-main)' }}>Master Your</span>
           <span className="block text-shimmer">Interview Game</span>
         </h1>
 
         {/* Subtitle */}
-        <p className="animate-fade-up delay-200 opacity-0 text-zinc-400 max-w-lg mx-auto text-base leading-relaxed mb-8">
+        <p className="animate-fade-up delay-200 opacity-0 max-w-lg mx-auto text-base leading-relaxed mb-8" style={{ color: 'var(--text-muted)' }}>
           Real-time speech analysis, STAR coaching, filler detection, and AI-powered answer rewrites — all client-side, no backend needed.
         </p>
 
@@ -228,9 +228,9 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
                 </div>
 
                 {/* Text */}
-                <h2 className="text-lg font-bold text-white mb-1 group-hover:text-gradient transition-all">{f.title}</h2>
-                <p className="text-xs font-medium mb-3" style={{ color: f.accentLite }}>{f.sub}</p>
-                <p className="text-sm text-zinc-400 leading-relaxed mb-6">{f.desc}</p>
+                <h2 className="text-lg font-bold mb-1 transition-all" style={{ color: 'var(--text-main)' }}>{f.title}</h2>
+                <p className="text-xs font-medium mb-3" style={{ color: f.accent }}>{f.sub}</p>
+                <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--text-muted)' }}>{f.desc}</p>
 
                 {/* CTA */}
                 <div

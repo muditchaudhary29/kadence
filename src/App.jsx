@@ -3,7 +3,7 @@ import {
   Mic, Sparkles, Award, ShieldCheck, AlertCircle, RefreshCw, 
   HelpCircle, ChevronRight, Zap, ArrowUpRight, MessageSquare, 
   CheckCircle2, Flame, Cpu, FileText, BarChart2, BookOpen,
-  LayoutDashboard, ArrowLeft, Home
+  LayoutDashboard, ArrowLeft, Home, Sun, Moon
 } from 'lucide-react';
 import AudioVisualizer from './components/AudioVisualizer';
 import WpmGauge from './components/WpmGauge';
@@ -35,6 +35,19 @@ const NAV_ITEMS = [
 ];
 
 export default function App() {
+  // ---- Theme State ----
+  const [theme, setTheme] = useState(() => localStorage.getItem('kadence_theme') || 'dark');
+
+  const toggleTheme = () => {
+    const nextTheme = theme === 'dark' ? 'light' : 'dark';
+    setTheme(nextTheme);
+    localStorage.setItem('kadence_theme', nextTheme);
+  };
+
+  useEffect(() => {
+    document.documentElement.className = theme;
+  }, [theme]);
+
   // ---- Navigation ----
   const [currentPage, setCurrentPage] = useState('dashboard');
 
@@ -261,13 +274,26 @@ export default function App() {
 
         {/* Right actions */}
         <div className="flex items-center gap-2 shrink-0">
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleTheme}
+            className="p-2.5 rounded-xl theme-toggle-btn flex items-center justify-center transition-all"
+            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+          >
+            {theme === 'dark' ? (
+              <Sun className="w-4 h-4 text-amber-400" />
+            ) : (
+              <Moon className="w-4 h-4 text-indigo-600" />
+            )}
+          </button>
+
           {sessions.length > 0 && (
             <button
               onClick={() => setCurrentPage('progress')}
               className="px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all"
-              style={{ background: 'rgba(16,185,129,0.12)', border: '1px solid rgba(16,185,129,0.3)', color: '#34D399', boxShadow: '0 0 16px rgba(16,185,129,0.12)' }}
+              style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', color: 'var(--text-main)', boxShadow: 'var(--neu-shadow-flat)' }}
             >
-              <BarChart2 className="w-3.5 h-3.5" />
+              <BarChart2 className="w-3.5 h-3.5 text-emerald-500" />
               <span className="hidden sm:block">{sessions.length} sessions</span>
             </button>
           )}
@@ -583,18 +609,15 @@ export default function App() {
 
   // ---- Root render ----
   return (
-    <div className="min-h-screen flex flex-col font-sans selection:bg-violet-500/40 selection:text-white" style={{ background: 'var(--bg)', color: 'var(--text)' }}>
+    <div className={`min-h-screen flex flex-col font-sans transition-colors duration-300 ${theme}`}>
 
-      {/* ── ANIMATED BACKGROUND ───────────────────── */}
+      {/* ── ANIMATED NEUMORPHIC BACKGROUND ───────────────────── */}
       <div className="fixed inset-0 overflow-hidden pointer-events-none z-0" aria-hidden>
         {/* Dot grid mesh */}
-        <div className="absolute inset-0 dot-grid opacity-40" />
-        {/* Floating orbs */}
-        <div className="animate-orb-1 absolute top-1/4 left-[15%] w-[500px] h-[500px] rounded-full" style={{ background: 'rgba(124,58,237,0.12)', filter: 'blur(100px)' }} />
-        <div className="animate-orb-2 absolute bottom-1/4 right-[10%] w-[420px] h-[420px] rounded-full" style={{ background: 'rgba(6,182,212,0.08)', filter: 'blur(80px)' }} />
-        <div className="animate-orb-3 absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] rounded-full" style={{ background: 'rgba(168,85,247,0.07)', filter: 'blur(60px)' }} />
-        {/* Edge vignette */}
-        <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 40%, rgba(6,6,15,0.6) 100%)' }} />
+        <div className="absolute inset-0 dot-grid" />
+        {/* Floating soft ambient light orbs */}
+        <div className="animate-orb-1 absolute top-1/4 left-[15%] w-[500px] h-[500px] rounded-full" style={{ background: 'var(--orb-1)', filter: 'blur(100px)' }} />
+        <div className="animate-orb-2 absolute bottom-1/4 right-[10%] w-[420px] h-[420px] rounded-full" style={{ background: 'var(--orb-2)', filter: 'blur(80px)' }} />
       </div>
       {/* Page content sits above the fixed background */}
       <div className="relative z-10 flex flex-col flex-1">
