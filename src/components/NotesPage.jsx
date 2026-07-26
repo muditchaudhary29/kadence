@@ -1,86 +1,84 @@
 import React, { useState, useRef, useCallback } from 'react';
 import {
-  Upload, FileText, Image, X, Loader2, BookOpen,
-  Mic, ChevronRight, AlertCircle, CheckCircle2, RefreshCw
+  BookOpen, Upload, FileText, CheckCircle2, AlertCircle,
+  RefreshCw, Play, Sparkles, Image, X
 } from 'lucide-react';
 import { extractTextFromFile, extractKeywords, generateQuestionsFromKeywords } from '../utils/notesAnalyzer';
 
-const ACCEPTED = '.txt,.md,.pdf,.png,.jpg,.jpeg,.webp';
+const ACCEPTED_FILE_TYPES = '.txt,.md,.pdf,.png,.jpg,.jpeg,.webp';
 
-const TYPE_LABELS = {
-  behavioral: { label: 'Behavioral', color: 'text-indigo-400 bg-indigo-500/10 border-indigo-500/30' },
-  technical:  { label: 'Technical',  color: 'text-purple-400 bg-purple-500/10 border-purple-500/30' },
-  general:    { label: 'General',    color: 'text-zinc-400 bg-zinc-800 border-zinc-700' },
+const TYPE_CONFIG = {
+  behavioral: { label: 'Behavioral', color: 'bg-indigo-500 text-white' },
+  technical:  { label: 'Technical',  color: 'bg-purple-500 text-white' },
+  general:    { label: 'General',    color: 'bg-emerald-500 text-slate-900' },
 };
 
 function FilePreview({ file, onRemove }) {
-  const isImage = file.type.startsWith('image/');
-  const [imgSrc] = useState(() => isImage ? URL.createObjectURL(file) : null);
+  const isImg = file.type.startsWith('image/');
+  const [imgUrl] = useState(() => isImg ? URL.createObjectURL(file) : null);
 
   return (
-    <div className="flex items-center gap-3 p-3 bg-zinc-900 border border-zinc-800 rounded-xl">
-      {isImage
-        ? <img src={imgSrc} alt="" className="w-10 h-10 object-cover rounded-lg shrink-0" />
-        : (
-          <div className="p-2.5 bg-zinc-800 rounded-lg shrink-0">
-            <FileText className="w-5 h-5 text-indigo-400" />
-          </div>
-        )
-      }
+    <div className="flex items-center gap-3 p-3.5 neu-inset rounded-xl">
+      {isImg ? (
+        <img src={imgUrl} alt="" className="w-12 h-12 object-cover rounded-xl border-2 border-slate-900 shrink-0" />
+      ) : (
+        <div className="p-3 bg-indigo-500 text-white rounded-xl border-2 border-slate-900 shrink-0 shadow-[2px_2px_0px_#000]">
+          <FileText className="w-5 h-5" />
+        </div>
+      )}
       <div className="flex-1 min-w-0">
-        <div className="text-sm font-medium text-zinc-200 truncate">{file.name}</div>
-        <div className="text-xs text-zinc-500">{(file.size / 1024).toFixed(1)} KB · {file.type || 'file'}</div>
+        <div className="text-sm font-bold font-heading truncate">{file.name}</div>
+        <div className="text-xs font-mono opacity-75">{(file.size / 1024).toFixed(1)} KB · {file.type || 'file'}</div>
       </div>
-      <button onClick={onRemove} className="p-1.5 hover:bg-zinc-700 rounded-lg transition-colors">
-        <X className="w-4 h-4 text-zinc-400" />
+      <button onClick={onRemove} className="p-1.5 text-rose-500 hover:scale-110 transition-transform">
+        <X className="w-4 h-4" />
       </button>
     </div>
   );
 }
 
 export default function NotesPage({ onStartPracticeWithQuestion }) {
-  const [file, setFile]               = useState(null);
-  const [topicInput, setTopicInput]   = useState('');
-  const [extractedText, setExtracted] = useState('');
-  const [keywords, setKeywords]       = useState([]);
-  const [questions, setQuestions]     = useState([]);
-  const [loading, setLoading]         = useState(false);
-  const [error, setError]             = useState('');
-  const [dragOver, setDragOver]       = useState(false);
-  const [showText, setShowText]       = useState(false);
-  const fileInputRef = useRef(null);
+  const [file, setFile]                   = useState(null);
+  const [topicInput, setTopicInput]       = useState('');
+  const [extractedText, setExtractedText] = useState('');
+  const [keywords, setKeywords]           = useState([]);
+  const [questions, setQuestions]         = useState([]);
+  const [loading, setLoading]             = useState(false);
+  const [error, setError]                 = useState('');
+  const [dragActive, setDragActive]       = useState(false);
+  const [showText, setShowText]           = useState(false);
+
+  const inputRef = useRef(null);
 
   const processFile = useCallback(async (f) => {
     setFile(f);
     setError('');
     setQuestions([]);
     setKeywords([]);
-    setExtracted('');
+    setExtractedText('');
     setLoading(true);
 
     try {
-      const isImage = f.type.startsWith('image/');
-      let text = '';
-
-      if (!isImage) {
-        text = await extractTextFromFile(f);
+      const isImg = f.type.startsWith('image/');
+      let rawText = '';
+      if (!isImg) {
+        rawText = await extractTextFromFile(f);
       }
 
-      if (text.trim().length < 30 && !isImage) {
+      if (rawText.trim().length < 30 && !isImg) {
         setError('Could not extract readable text from this file. Please paste your notes in the text box below.');
         setLoading(false);
         return;
       }
 
-      if (!isImage) {
-        const kw = extractKeywords(text);
-        const qs = generateQuestionsFromKeywords(kw, text);
-        setExtracted(text);
+      if (!isImg) {
+        const kw = extractKeywords(rawText);
+        const q = generateQuestionsFromKeywords(kw, rawText);
+        setExtractedText(rawText);
         setKeywords(kw.slice(0, 12));
-        setQuestions(qs);
+        setQuestions(q);
       }
-      // If image, user fills in topicInput instead
-    } catch (e) {
+    } catch (err) {
       setError('Failed to read the file. Try a .txt or .md file, or paste your notes below.');
     } finally {
       setLoading(false);
@@ -89,71 +87,85 @@ export default function NotesPage({ onStartPracticeWithQuestion }) {
 
   const handleDrop = (e) => {
     e.preventDefault();
-    setDragOver(false);
+    setDragActive(false);
     const f = e.dataTransfer.files[0];
     if (f) processFile(f);
   };
 
   const handleGenerateFromTopic = () => {
-    const combined = topicInput + (extractedText ? '\n' + extractedText : '');
-    if (!combined.trim()) { setError('Please describe a topic or upload a file first.'); return; }
-    setError('');
+    const combined = topicInput + (extractedText ? `\n${extractedText}` : '');
+    if (!combined.trim()) return;
     const kw = extractKeywords(combined);
-    const qs = generateQuestionsFromKeywords(kw, combined);
+    const q = generateQuestionsFromKeywords(kw, combined);
     setKeywords(kw.slice(0, 12));
-    setQuestions(qs);
+    setQuestions(q);
   };
 
   const handleReset = () => {
-    setFile(null); setExtracted(''); setKeywords([]);
-    setQuestions([]); setError(''); setTopicInput(''); setShowText(false);
+    setFile(null);
+    setTopicInput('');
+    setExtractedText('');
+    setKeywords([]);
+    setQuestions([]);
+    setError('');
   };
 
-  const isImage = file?.type?.startsWith('image/');
+  const isImage = file?.type.startsWith('image/');
 
   return (
-    <div className="flex-1 max-w-4xl w-full mx-auto px-4 sm:px-6 py-8 space-y-8">
+    <div className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 space-y-8">
       {/* Header */}
-      <div>
-        <h2 className="text-2xl font-extrabold text-zinc-100">Study from Notes</h2>
-        <p className="text-sm text-zinc-400 mt-1">Upload your notes or describe a topic — get tailored interview questions.</p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h2 className="text-3xl font-black font-heading flex items-center gap-3">
+            <BookOpen className="w-8 h-8 text-rose-500" />
+            Study from Notes
+          </h2>
+          <p className="text-sm font-medium mt-1 opacity-80">
+            Upload notes, PDFs, or enter a topic — Kadence AI generates targeted practice questions instantly.
+          </p>
+        </div>
+
+        {questions.length > 0 && (
+          <button onClick={handleReset} className="brutal-badge bg-amber-400 text-slate-900 px-4 py-2 font-bold text-xs">
+            <RefreshCw className="w-4 h-4" />
+            Start Over
+          </button>
+        )}
       </div>
 
-      {/* Upload Zone */}
-      {!questions.length && (
-        <section className="space-y-4">
-          {/* Drop zone */}
+      {/* Input Section */}
+      {questions.length === 0 && (
+        <section className="brutal-card p-6 md:p-8 space-y-6">
+          {/* File Drag-and-Drop Area */}
           <div
-            onDragOver={e => { e.preventDefault(); setDragOver(true); }}
-            onDragLeave={() => setDragOver(false)}
+            onDragOver={(e) => { e.preventDefault(); setDragActive(true); }}
+            onDragLeave={() => setDragActive(false)}
             onDrop={handleDrop}
-            onClick={() => fileInputRef.current?.click()}
-            className={`
-              relative flex flex-col items-center justify-center gap-4 p-10 rounded-2xl border-2 border-dashed cursor-pointer transition-all
-              ${dragOver ? 'border-indigo-500 bg-indigo-500/5' : 'border-zinc-700 hover:border-zinc-500 bg-zinc-900/40'}
-            `}
+            onClick={() => inputRef.current?.click()}
+            className={`border-3 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all ${
+              dragActive
+                ? 'border-indigo-500 bg-indigo-500/10 scale-[0.99]'
+                : 'border-slate-700 hover:border-indigo-500'
+            }`}
           >
             <input
-              ref={fileInputRef}
+              ref={inputRef}
               type="file"
-              accept={ACCEPTED}
+              accept={ACCEPTED_FILE_TYPES}
+              onChange={(e) => e.target.files[0] && processFile(e.target.files[0])}
               className="hidden"
-              onChange={e => { if (e.target.files[0]) processFile(e.target.files[0]); }}
             />
-            {loading ? (
-              <Loader2 className="w-10 h-10 text-indigo-400 animate-spin" />
-            ) : file ? (
-              <CheckCircle2 className="w-10 h-10 text-emerald-400" />
-            ) : (
-              <div className="p-4 bg-zinc-800 rounded-2xl">
-                <Upload className="w-8 h-8 text-zinc-400" />
-              </div>
-            )}
-            <div className="text-center">
-              <p className="text-sm font-semibold text-zinc-200">
-                {loading ? 'Extracting text…' : file ? file.name : 'Drop your file here or click to upload'}
+
+            <div className="w-14 h-14 rounded-2xl bg-indigo-500 text-white border-2 border-slate-900 flex items-center justify-center mx-auto mb-4 shadow-[3px_3px_0px_#000]">
+              <Upload className="w-7 h-7" />
+            </div>
+
+            <div className="space-y-1">
+              <p className="text-base font-bold font-heading">
+                {loading ? 'Extracting text…' : file ? file.name : 'Drop your study file here or click to upload'}
               </p>
-              <p className="text-xs text-zinc-500 mt-1">
+              <p className="text-xs font-mono opacity-75">
                 Supports .txt, .md, .pdf · Images: JPG, PNG, WebP
               </p>
             </div>
@@ -164,57 +176,58 @@ export default function NotesPage({ onStartPracticeWithQuestion }) {
             <FilePreview file={file} onRemove={handleReset} />
           )}
 
-          {/* Image: needs topic text */}
           {isImage && !loading && (
-            <div className="p-4 bg-amber-500/5 border border-amber-500/20 rounded-xl text-xs text-amber-300 flex items-start gap-2">
+            <div className="p-3.5 bg-amber-400/20 border-2 border-amber-500 rounded-xl text-xs font-bold flex items-start gap-2">
               <Image className="w-4 h-4 shrink-0 mt-0.5" />
               Image uploaded. Describe the topic covered in the image below, then click Generate.
             </div>
           )}
 
           {error && (
-            <div className="flex items-start gap-2 p-3 bg-rose-500/10 border border-rose-500/20 rounded-xl text-xs text-rose-300">
+            <div className="flex items-start gap-2 p-3.5 bg-rose-500/20 border-2 border-rose-500 rounded-xl text-xs font-bold text-rose-400">
               <AlertCircle className="w-4 h-4 shrink-0 mt-0.5" />
               <span>{error}</span>
             </div>
           )}
 
           {/* Divider */}
-          <div className="flex items-center gap-3 text-xs text-zinc-600">
-            <div className="flex-1 h-px bg-zinc-800" /><span>OR describe your topic</span><div className="flex-1 h-px bg-zinc-800" />
+          <div className="flex items-center gap-3 text-xs font-mono font-bold opacity-75">
+            <div className="flex-1 h-0.5 bg-slate-700" />
+            <span>OR DESCRIBE YOUR TOPIC</span>
+            <div className="flex-1 h-0.5 bg-slate-700" />
           </div>
 
           {/* Topic input */}
-          <div className="space-y-3">
+          <div className="space-y-4">
             <textarea
               value={topicInput}
               onChange={e => setTopicInput(e.target.value)}
               placeholder="e.g. System design — scalable notification service using Kafka and Redis. I have 3 years of Node.js experience with microservices…"
               rows={4}
-              className="w-full bg-zinc-900 border border-zinc-800 rounded-xl p-4 text-sm text-zinc-200 placeholder-zinc-600 focus:outline-none focus:border-indigo-500/50 resize-none"
+              className="w-full neu-inset rounded-2xl p-4 text-xs font-semibold focus:outline-none resize-none"
             />
             <button
               onClick={handleGenerateFromTopic}
               disabled={!topicInput.trim() && !file}
-              className="w-full py-3 px-6 bg-gradient-to-r from-amber-600 to-orange-600 hover:from-amber-500 hover:to-orange-500 disabled:opacity-40 disabled:cursor-not-allowed text-white font-semibold rounded-xl transition-all shadow-md flex items-center justify-center gap-2"
+              className="w-full btn-primary text-sm justify-center py-3.5 disabled:opacity-40"
             >
-              <BookOpen className="w-4 h-4" />
-              Generate Interview Questions
+              <Sparkles className="w-4 h-4" />
+              Generate 8 Custom Practice Questions
             </button>
           </div>
         </section>
       )}
 
-      {/* Results */}
+      {/* Results Section */}
       {questions.length > 0 && (
         <section className="space-y-6">
           {/* Keywords */}
           {keywords.length > 0 && (
-            <div className="space-y-3">
-              <h3 className="text-xs font-semibold uppercase tracking-wider text-zinc-400">Detected Topics & Keywords</h3>
+            <div className="brutal-card p-5 space-y-3">
+              <h3 className="text-xs font-mono font-extrabold uppercase tracking-wider opacity-80">Detected Topics & Keywords</h3>
               <div className="flex flex-wrap gap-2">
                 {keywords.map((kw, i) => (
-                  <span key={i} className="px-3 py-1 bg-zinc-900 border border-zinc-700 rounded-full text-xs text-zinc-300">
+                  <span key={i} className="brutal-badge bg-rose-500/20 text-rose-400 border-rose-500/40 text-xs">
                     {kw}
                   </span>
                 ))}
@@ -222,57 +235,29 @@ export default function NotesPage({ onStartPracticeWithQuestion }) {
             </div>
           )}
 
-          {/* Extracted text toggle */}
-          {extractedText && (
-            <div className="space-y-2">
-              <button
-                onClick={() => setShowText(v => !v)}
-                className="text-xs text-zinc-500 hover:text-zinc-300 flex items-center gap-1.5 transition-colors"
-              >
-                <FileText className="w-3.5 h-3.5" />
-                {showText ? 'Hide' : 'Show'} extracted text ({extractedText.split(' ').length} words)
-              </button>
-              {showText && (
-                <div className="bg-zinc-900/60 border border-zinc-800 rounded-xl p-4 text-xs text-zinc-400 leading-relaxed max-h-48 overflow-y-auto">
-                  {extractedText.slice(0, 1500)}{extractedText.length > 1500 ? '…' : ''}
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Questions */}
-          <div className="space-y-3">
-            <div className="flex items-center justify-between">
-              <h3 className="text-sm font-semibold text-zinc-200">{questions.length} Practice Questions Generated</h3>
-              <button onClick={handleReset} className="flex items-center gap-1.5 text-xs text-zinc-500 hover:text-zinc-300 transition-colors">
-                <RefreshCw className="w-3.5 h-3.5" />
-                Start over
-              </button>
-            </div>
-            <div className="space-y-3">
+          {/* Questions Grid */}
+          <div className="space-y-4">
+            <h3 className="text-xl font-bold font-heading">{questions.length} Practice Questions Generated</h3>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {questions.map((q) => {
-                const badge = TYPE_LABELS[q.type] || TYPE_LABELS.general;
+                const cfg = TYPE_CONFIG[q.type] || TYPE_CONFIG.general;
                 return (
-                  <div
-                    key={q.id}
-                    className="glass-card rounded-xl border border-zinc-800 hover:border-zinc-600 p-4 space-y-3 transition-all group"
-                  >
-                    <div className="flex items-start justify-between gap-3">
-                      <p className="text-sm text-zinc-200 leading-relaxed flex-1">{q.question}</p>
-                      <span className={`text-[10px] font-bold px-2.5 py-1 rounded-full border shrink-0 ${badge.color}`}>
-                        {badge.label}
+                  <div key={q.id} className="brutal-card p-6 flex flex-col justify-between space-y-4">
+                    <div className="space-y-3">
+                      <span className={`brutal-badge text-[10px] font-bold ${cfg.color}`}>
+                        {cfg.label}
                       </span>
+                      <h4 className="text-base font-bold font-heading leading-snug">{q.question}</h4>
                     </div>
-                    {onStartPracticeWithQuestion && (
-                      <button
-                        onClick={() => onStartPracticeWithQuestion(q)}
-                        className="flex items-center gap-2 text-xs text-indigo-400 hover:text-indigo-300 font-semibold transition-colors group-hover:gap-3"
-                      >
-                        <Mic className="w-3.5 h-3.5" />
-                        <span>Practice this question</span>
-                        <ChevronRight className="w-3.5 h-3.5" />
-                      </button>
-                    )}
+
+                    <button
+                      onClick={() => onStartPracticeWithQuestion(q)}
+                      className="btn-primary text-xs w-full justify-center py-2.5"
+                    >
+                      <Play className="w-3.5 h-3.5 fill-white" />
+                      Practice This Question
+                    </button>
                   </div>
                 );
               })}

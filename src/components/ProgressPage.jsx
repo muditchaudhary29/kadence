@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import {
-  BarChart2, TrendingUp, TrendingDown, Mic, Clock, Award,
+  BarChart2, TrendingUp, Mic, Clock, Award,
   Zap, Flame, Target, ChevronDown, ChevronUp, Trash2
 } from 'lucide-react';
 import { deleteSession } from '../utils/storage';
@@ -9,13 +9,13 @@ function StatBar({ label, value, max, color, unit = '' }) {
   const pct = Math.min(100, Math.round((value / max) * 100));
   return (
     <div className="space-y-1.5">
-      <div className="flex items-center justify-between text-xs">
-        <span className="text-zinc-400">{label}</span>
-        <span className="font-semibold text-zinc-200">{value}{unit}</span>
+      <div className="flex items-center justify-between text-xs font-bold font-mono">
+        <span className="opacity-80">{label}</span>
+        <span className="font-extrabold">{value}{unit}</span>
       </div>
-      <div className="h-2 bg-zinc-800 rounded-full overflow-hidden">
+      <div className="h-3 neu-inset rounded-lg overflow-hidden p-0.5">
         <div
-          className={`h-full rounded-full transition-all duration-700 ${color}`}
+          className={`h-full rounded-md transition-all duration-700 ${color}`}
           style={{ width: `${pct}%` }}
         />
       </div>
@@ -33,50 +33,50 @@ function SessionRow({ session, onDelete }) {
   const compColor = session.completenessScore >= 75 ? 'text-emerald-400' : session.completenessScore >= 50 ? 'text-amber-400' : 'text-rose-400';
 
   return (
-    <div className="border border-zinc-800 rounded-xl overflow-hidden hover:border-zinc-700 transition-colors">
+    <div className="brutal-card overflow-hidden transition-all">
       <button
         onClick={() => setExpanded(e => !e)}
-        className="w-full flex items-center gap-3 p-4 text-left hover:bg-zinc-900/50 transition-colors"
+        className="w-full flex items-center gap-3 p-4 text-left font-sans hover:bg-black/5 dark:hover:bg-white/5 transition-colors"
       >
-        <div className="p-2 bg-zinc-800 rounded-lg shrink-0">
-          <Mic className="w-3.5 h-3.5 text-indigo-400" />
+        <div className="p-2.5 bg-indigo-500 text-white rounded-xl border-2 border-slate-900 shrink-0 shadow-[2px_2px_0px_#000]">
+          <Mic className="w-4 h-4" />
         </div>
         <div className="flex-1 min-w-0">
-          <div className="text-sm font-medium text-zinc-200 truncate">{session.questionTitle}</div>
-          <div className="text-xs text-zinc-500 mt-0.5">{session.category} · {dateStr} {timeStr}</div>
+          <div className="text-sm font-bold font-heading truncate">{session.questionTitle}</div>
+          <div className="text-xs opacity-75 font-mono mt-0.5">{session.category} · {dateStr} {timeStr}</div>
         </div>
-        <div className="flex items-center gap-4 shrink-0">
-          <span className={`text-sm font-bold font-mono ${confColor}`}>{session.confidenceScore}%</span>
-          <span className="text-xs text-zinc-500">{session.wpm ? `${session.wpm} WPM` : '—'}</span>
-          {expanded ? <ChevronUp className="w-4 h-4 text-zinc-500" /> : <ChevronDown className="w-4 h-4 text-zinc-500" />}
+        <div className="flex items-center gap-4 shrink-0 font-mono">
+          <span className={`text-sm font-black ${confColor}`}>{session.confidenceScore}%</span>
+          <span className="text-xs font-bold opacity-75">{session.wpm ? `${session.wpm} WPM` : '—'}</span>
+          {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
         </div>
       </button>
 
       {expanded && (
-        <div className="px-4 pb-4 space-y-3 border-t border-zinc-800/60 pt-3">
+        <div className="px-4 pb-4 space-y-3 border-t-2 border-slate-700 pt-3">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
             {[
               { label: 'Confidence', value: `${session.confidenceScore}%`, color: confColor },
               { label: 'Completeness', value: `${session.completenessScore}%`, color: compColor },
-              { label: 'WPM', value: session.wpm ? `${session.wpm}` : '—', color: 'text-cyan-400' },
-              { label: 'Fillers', value: `${session.fillerRate ?? '0'}%`, color: session.fillerRate <= 3 ? 'text-emerald-400' : 'text-amber-400' },
+              { label: 'WPM Pace', value: session.wpm ? `${session.wpm}` : '—', color: 'text-cyan-400' },
+              { label: 'Filler Rate', value: `${session.fillerRate ?? '0'}%`, color: session.fillerRate <= 3 ? 'text-emerald-400' : 'text-amber-400' },
             ].map(m => (
-              <div key={m.label} className="bg-zinc-900 rounded-xl p-3 text-center">
-                <div className={`text-lg font-bold font-mono ${m.color}`}>{m.value}</div>
-                <div className="text-[10px] text-zinc-500 mt-0.5">{m.label}</div>
+              <div key={m.label} className="neu-inset p-3 text-center rounded-xl">
+                <div className={`text-lg font-black font-mono ${m.color}`}>{m.value}</div>
+                <div className="text-[10px] font-bold uppercase opacity-75 mt-0.5">{m.label}</div>
               </div>
             ))}
           </div>
           {session.transcript && (
-            <div className="bg-zinc-900/60 rounded-xl p-3 text-xs text-zinc-400 leading-relaxed border border-zinc-800">
-              <span className="text-zinc-500 font-semibold block mb-1">Transcript excerpt</span>
-              {session.transcript.slice(0, 200)}{session.transcript.length > 200 ? '...' : ''}
+            <div className="neu-inset p-3 text-xs font-mono leading-relaxed border-2 border-slate-900 rounded-xl">
+              <span className="font-bold uppercase block mb-1 opacity-75">Transcript Excerpt:</span>
+              "{session.transcript.slice(0, 220)}{session.transcript.length > 220 ? '...' : ''}"
             </div>
           )}
           <div className="flex justify-end">
             <button
               onClick={() => onDelete(session.id)}
-              className="flex items-center gap-1.5 text-xs text-rose-400 hover:text-rose-300 transition-colors"
+              className="flex items-center gap-1.5 text-xs font-bold text-rose-500 hover:text-rose-600 transition-colors"
             >
               <Trash2 className="w-3.5 h-3.5" />
               Delete session
@@ -108,12 +108,10 @@ export default function ProgressPage({ sessions: initialSessions, profile }) {
     ? Math.round(recent.reduce((a, s) => a + (s.completenessScore || 0), 0) / recent.length)
     : 0;
 
-  // Category breakdown
   const catCounts = {};
   sessions.forEach(s => { catCounts[s.category] = (catCounts[s.category] || 0) + 1; });
   const catMax = Math.max(...Object.values(catCounts), 1);
 
-  // Trend
   const trend = sessions.length >= 2
     ? (sessions[0]?.confidenceScore || 0) - (sessions[sessions.length - 1]?.confidenceScore || 0)
     : null;
@@ -121,12 +119,12 @@ export default function ProgressPage({ sessions: initialSessions, profile }) {
   if (sessions.length === 0) {
     return (
       <div className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-16 flex flex-col items-center justify-center text-center space-y-4">
-        <div className="p-5 bg-zinc-900 rounded-2xl border border-zinc-800">
-          <BarChart2 className="w-10 h-10 text-zinc-600 mx-auto" />
+        <div className="brutal-card p-6 rounded-2xl bg-amber-400 text-slate-900">
+          <BarChart2 className="w-12 h-12 mx-auto" />
         </div>
-        <h2 className="text-xl font-bold text-zinc-200">No sessions yet</h2>
-        <p className="text-sm text-zinc-400 max-w-xs">
-          Complete your first practice session in <strong className="text-zinc-200">Interview Practice</strong> and your progress will appear here.
+        <h2 className="text-2xl font-bold font-heading">No sessions recorded yet</h2>
+        <p className="text-sm max-w-xs opacity-80">
+          Complete your first practice session in <strong>Interview Practice</strong> and your progress analytics will appear here.
         </p>
       </div>
     );
@@ -135,25 +133,25 @@ export default function ProgressPage({ sessions: initialSessions, profile }) {
   return (
     <div className="flex-1 max-w-5xl w-full mx-auto px-4 sm:px-6 py-8 space-y-8">
       <div>
-        <h2 className="text-2xl font-extrabold text-zinc-100">My Progress</h2>
-        <p className="text-sm text-zinc-400 mt-1">{sessions.length} session{sessions.length !== 1 ? 's' : ''} recorded</p>
+        <h2 className="text-3xl font-black font-heading">My Progress Analytics</h2>
+        <p className="text-sm font-mono mt-1 opacity-80">{sessions.length} session{sessions.length !== 1 ? 's' : ''} recorded in history</p>
       </div>
 
       {/* Metric Summary Cards */}
       <section className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[
-          { label: 'Avg Confidence', value: `${avgConf}%`, icon: Award, color: 'text-indigo-400', bg: 'bg-indigo-500/10' },
-          { label: 'Avg WPM',        value: avgWpm || '—', icon: Zap,   color: 'text-cyan-400',   bg: 'bg-cyan-500/10' },
-          { label: 'Filler Rate',    value: `${avgFill}%`, icon: Flame, color: avgFill <= 3 ? 'text-emerald-400' : 'text-amber-400', bg: avgFill <= 3 ? 'bg-emerald-500/10' : 'bg-amber-500/10' },
-          { label: 'Avg Completeness', value: `${avgComp}%`, icon: Target, color: 'text-purple-400', bg: 'bg-purple-500/10' },
+          { label: 'Avg Confidence',   value: `${avgConf}%`, icon: Award, colorClass: 'bg-indigo-500 text-white' },
+          { label: 'Avg WPM Speed',    value: avgWpm || '—', icon: Zap,   colorClass: 'bg-cyan-500 text-slate-900' },
+          { label: 'Filler Rate',      value: `${avgFill}%`, icon: Flame, colorClass: 'bg-rose-500 text-white' },
+          { label: 'Avg Completeness', value: `${avgComp}%`, icon: Target, colorClass: 'bg-emerald-500 text-slate-900' },
         ].map(m => (
-          <div key={m.label} className="glass-card rounded-2xl p-5 border border-zinc-800 flex flex-col gap-3">
-            <div className={`p-2 w-fit rounded-lg ${m.bg}`}>
-              <m.icon className={`w-4 h-4 ${m.color}`} />
+          <div key={m.label} className="brutal-card p-5 flex flex-col gap-3">
+            <div className={`p-2.5 w-fit rounded-xl border-2 border-slate-900 shadow-[2px_2px_0px_#000] ${m.colorClass}`}>
+              <m.icon className="w-5 h-5" />
             </div>
             <div>
-              <div className={`text-2xl font-extrabold font-mono ${m.color}`}>{m.value}</div>
-              <div className="text-xs text-zinc-400 mt-0.5">{m.label}</div>
+              <div className="text-3xl font-black font-mono tracking-tight">{m.value}</div>
+              <div className="text-xs font-bold uppercase opacity-80 mt-0.5">{m.label}</div>
             </div>
           </div>
         ))}
@@ -162,41 +160,41 @@ export default function ProgressPage({ sessions: initialSessions, profile }) {
       {/* Trend & Category Breakdown */}
       <section className="grid grid-cols-1 lg:grid-cols-2 gap-6">
         {/* Score trend over last 7 sessions */}
-        <div className="glass-card rounded-2xl p-5 border border-zinc-800 space-y-4">
+        <div className="brutal-card p-6 space-y-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-2">
-              <TrendingUp className="w-4 h-4 text-indigo-400" />
-              <h3 className="text-sm font-semibold text-zinc-200">Confidence Trend</h3>
+              <TrendingUp className="w-5 h-5 text-indigo-500" />
+              <h3 className="text-base font-bold font-heading">Confidence Score Trend</h3>
             </div>
             {trend !== null && (
-              <span className={`text-xs font-bold px-2 py-1 rounded-full ${trend >= 0 ? 'bg-emerald-500/10 text-emerald-400' : 'bg-rose-500/10 text-rose-400'}`}>
+              <span className={`brutal-badge text-xs font-mono font-bold ${trend >= 0 ? 'bg-emerald-500 text-slate-900' : 'bg-rose-500 text-white'}`}>
                 {trend >= 0 ? '+' : ''}{trend}% vs start
               </span>
             )}
           </div>
-          <div className="space-y-2.5">
+          <div className="space-y-3">
             {recent.map((s, i) => (
               <div key={s.id} className="flex items-center gap-3">
-                <span className="text-[10px] text-zinc-500 w-6 shrink-0">#{sessions.length - i}</span>
-                <div className="flex-1 h-2 bg-zinc-800 rounded-full overflow-hidden">
+                <span className="text-xs font-mono font-bold opacity-75 w-6 shrink-0">#{sessions.length - i}</span>
+                <div className="flex-1 h-3 neu-inset rounded-lg overflow-hidden p-0.5">
                   <div
-                    className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full transition-all"
+                    className="h-full bg-gradient-to-r from-indigo-500 to-purple-500 rounded-md transition-all"
                     style={{ width: `${s.confidenceScore || 0}%` }}
                   />
                 </div>
-                <span className="text-xs font-mono text-zinc-300 w-10 text-right">{s.confidenceScore || 0}%</span>
+                <span className="text-xs font-mono font-black w-10 text-right">{s.confidenceScore || 0}%</span>
               </div>
             ))}
           </div>
         </div>
 
         {/* Category breakdown */}
-        <div className="glass-card rounded-2xl p-5 border border-zinc-800 space-y-4">
+        <div className="brutal-card p-6 space-y-4">
           <div className="flex items-center gap-2">
-            <BarChart2 className="w-4 h-4 text-emerald-400" />
-            <h3 className="text-sm font-semibold text-zinc-200">Practice by Category</h3>
+            <BarChart2 className="w-5 h-5 text-emerald-500" />
+            <h3 className="text-base font-bold font-heading">Practice by Category</h3>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {Object.entries(catCounts).map(([cat, count]) => (
               <StatBar
                 key={cat}
@@ -211,23 +209,23 @@ export default function ProgressPage({ sessions: initialSessions, profile }) {
         </div>
       </section>
 
-      {/* Per-metric bars for last 7 sessions */}
-      <section className="glass-card rounded-2xl p-5 border border-zinc-800 space-y-4">
+      {/* Per-metric bars */}
+      <section className="brutal-card p-6 space-y-4">
         <div className="flex items-center gap-2">
-          <Clock className="w-4 h-4 text-cyan-400" />
-          <h3 className="text-sm font-semibold text-zinc-200">Last {recent.length} Session Metrics</h3>
+          <Clock className="w-5 h-5 text-cyan-500" />
+          <h3 className="text-base font-bold font-heading">Aggregate Performance Metrics</h3>
         </div>
-        <div className="space-y-3">
+        <div className="space-y-4">
           <StatBar label="Answer Completeness" value={avgComp} max={100} color="bg-gradient-to-r from-purple-500 to-pink-500" unit="%" />
           <StatBar label="Vocal Confidence"     value={avgConf} max={100} color="bg-gradient-to-r from-indigo-500 to-blue-500" unit="%" />
-          <StatBar label="Speaking Pace (WPM)"  value={avgWpm}  max={200} color="bg-gradient-to-r from-cyan-500 to-teal-500"   unit=" wpm" />
+          <StatBar label="Speaking Speed (WPM)" value={avgWpm}  max={200} color="bg-gradient-to-r from-cyan-500 to-teal-500"   unit=" WPM" />
         </div>
       </section>
 
       {/* Session History */}
-      <section className="space-y-3">
-        <h3 className="text-sm font-semibold text-zinc-300">Session History</h3>
-        <div className="space-y-2">
+      <section className="space-y-4">
+        <h3 className="text-lg font-bold font-heading">Session History Timeline</h3>
+        <div className="space-y-3">
           {sessions.map(s => (
             <SessionRow key={s.id} session={s} onDelete={handleDelete} />
           ))}
