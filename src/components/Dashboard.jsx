@@ -1,7 +1,7 @@
 import React, { useRef, useCallback } from 'react';
 import {
   Mic, BarChart2, MessageSquare, BookOpen,
-  ArrowRight, Sparkles, Target, Zap, ShieldCheck
+  ArrowRight, Sparkles, Target
 } from 'lucide-react';
 
 /* ── Interactive 3D Tilt Card Component ────────────────────── */
@@ -18,7 +18,7 @@ function Card3D({ children, className = '', onClick }) {
     const rotX = -(y - 0.5) * 12;  // –6..+6 deg
     el.style.transform = `perspective(900px) rotateX(${rotX}deg) rotateY(${rotY}deg) translateZ(10px)`;
     el.style.boxShadow = `
-      ${6 + rotY / 2}px ${6 + rotX / 2}px 0px var(--shadow-color),
+      ${6 + rotY / 2}px ${6 + rotX / 2}px 0px #0F172A,
       0 16px 36px rgba(0,0,0,0.2)
     `;
   }, []);
@@ -106,7 +106,7 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
         
         <div className="space-y-4 max-w-2xl text-left">
           {/* Sticker Tag */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl brutal-badge bg-indigo-600 text-white font-mono font-bold text-xs uppercase tracking-wider shadow-[3px_3px_0px_#0F172A] -rotate-1">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl brutal-badge bg-indigo-600 !text-white font-mono font-bold text-xs uppercase tracking-wider shadow-[3px_3px_0px_#0F172A] -rotate-1">
             <Sparkles className="w-4 h-4 text-amber-300" />
             AI SPEECH COACHING PLATFORM
           </div>
@@ -132,43 +132,43 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
             </button>
             <button
               onClick={() => onNavigate('notes')}
-              className="px-5 py-2.5 rounded-xl font-heading font-bold text-sm bg-zinc-900 text-white border-3 border-slate-900 shadow-[4px_4px_0px_#0F172A] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+              className="px-5 py-2.5 rounded-xl font-heading font-bold text-sm bg-purple-600 !text-white border-3 border-slate-900 shadow-[4px_4px_0px_#0F172A] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all flex items-center gap-2"
             >
-              <BookOpen className="w-4 h-4 inline mr-2 text-amber-400" />
+              <BookOpen className="w-4 h-4 text-amber-300" />
               Upload Study Notes
             </button>
           </div>
         </div>
 
-        {/* Hero Interactive 3D Metric Box */}
-        <Card3D className="w-full md:w-76 p-6 rounded-2xl bg-amber-400 text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0 cursor-pointer">
+        {/* Hero Interactive 3D Metric Box (High Contrast Lime Card) */}
+        <Card3D className="w-full md:w-76 p-6 rounded-2xl !bg-[#A3E635] !text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0 cursor-pointer">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs font-mono font-extrabold uppercase tracking-wider bg-slate-900 text-white px-2.5 py-1 rounded-md">
+            <span className="text-xs font-mono font-black uppercase tracking-wider !bg-slate-950 !text-white px-2.5 py-1 rounded-md border border-slate-900">
               PRACTICE METRICS
             </span>
-            <Target className="w-6 h-6 text-slate-900" />
+            <Target className="w-6 h-6 !text-slate-950" />
           </div>
 
           <div className="space-y-3">
             <div>
-              <div className="text-4xl font-black font-mono tracking-tight text-slate-950">{total}</div>
-              <div className="text-xs font-extrabold uppercase text-slate-950">Total Practice Sessions</div>
+              <div className="text-4xl font-black font-mono tracking-tight !text-slate-950">{total}</div>
+              <div className="text-xs font-black uppercase tracking-wider !text-slate-950">Total Practice Sessions</div>
             </div>
 
-            <div className="pt-2 border-t-2 border-slate-900 flex justify-between text-xs font-extrabold text-slate-950">
+            <div className="pt-2.5 border-t-2 border-slate-950/40 flex justify-between text-xs font-black !text-slate-950">
               <span>Avg Confidence:</span>
-              <span className="font-mono text-sm">{avgConf}%</span>
+              <span className="font-mono text-sm font-black">{avgConf}%</span>
             </div>
             {avgWpm && (
-              <div className="flex justify-between text-xs font-extrabold text-slate-950">
+              <div className="flex justify-between text-xs font-black !text-slate-950">
                 <span>Avg Speaking Speed:</span>
-                <span className="font-mono text-sm">{avgWpm} WPM</span>
+                <span className="font-mono text-sm font-black">{avgWpm} WPM</span>
               </div>
             )}
             {avgFill !== null && (
-              <div className="flex justify-between text-xs font-extrabold text-slate-950">
+              <div className="flex justify-between text-xs font-black !text-slate-950">
                 <span>Filler Hesitation:</span>
-                <span className="font-mono text-sm">{avgFill}%</span>
+                <span className="font-mono text-sm font-black">{avgFill}%</span>
               </div>
             )}
           </div>
@@ -188,7 +188,7 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
               {/* Badge Top */}
               <div className="flex items-start justify-between">
                 <div className="w-13 h-13 p-3 rounded-2xl bg-slate-900 text-white border-2.5 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#0F172A]">
-                  <Icon className="w-6 h-6" />
+                  <Icon className="w-6 h-6 text-white" />
                 </div>
 
                 <span className={`text-[11px] font-bold font-mono px-3 py-1 rounded-xl border-2.5 border-slate-900 shadow-[3px_3px_0px_#0F172A] uppercase tracking-wider ${f.badgeBg}`}>
@@ -198,11 +198,11 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
 
               {/* Card Body */}
               <div className="space-y-1.5">
-                <span className="text-[11px] font-mono font-extrabold tracking-widest uppercase opacity-75 block">
+                <span className="text-[11px] font-mono font-extrabold tracking-widest uppercase opacity-80 block">
                   {f.sub}
                 </span>
                 <h2 className="text-2xl font-bold font-heading">{f.title}</h2>
-                <p className="text-xs sm:text-sm leading-relaxed font-medium">{f.desc}</p>
+                <p className="text-xs sm:text-sm leading-relaxed font-medium opacity-90">{f.desc}</p>
               </div>
 
               {/* Footer CTA */}
