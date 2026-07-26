@@ -44,7 +44,7 @@ function Card3D({ children, className = '', onClick }) {
   );
 }
 
-/* ── Bento Card Data ────────────────────────────────────────── */
+/* ── Bento Card Data with Vibrant High-Contrast Icon Badges ── */
 const FEATURES = [
   {
     id: 'practice',
@@ -55,6 +55,7 @@ const FEATURES = [
     desc: 'Practice 12 curated questions with real-time WPM pacing, STAR structure breakdown, and vocal hesitation tracking.',
     badge: '12 QUESTIONS',
     badgeBg: 'bg-indigo-600 text-white',
+    iconBg: 'bg-indigo-600 text-white',
     cta: 'Start Practicing',
   },
   {
@@ -66,6 +67,7 @@ const FEATURES = [
     desc: 'Visualise confidence trends, WPM pacing history, filler rate breakdown, and performance metrics across categories.',
     badge: 'ANALYTICS',
     badgeBg: 'bg-emerald-600 text-white',
+    iconBg: 'bg-emerald-600 text-white',
     cta: 'View Progress',
   },
   {
@@ -77,6 +79,7 @@ const FEATURES = [
     desc: 'Share your feedback, rate your practice runs, and view reviews submitted by fellow interview practitioners.',
     badge: 'COMMUNITY',
     badgeBg: 'bg-amber-400 text-slate-900',
+    iconBg: 'bg-amber-500 text-slate-950',
     cta: 'Submit Review',
   },
   {
@@ -88,6 +91,7 @@ const FEATURES = [
     desc: 'Upload study notes, PDFs, or text files — Kadence AI automatically extracts key topics and builds 8 custom questions.',
     badge: 'PDF / TXT / IMG',
     badgeBg: 'bg-rose-500 text-white',
+    iconBg: 'bg-rose-600 text-white',
     cta: 'Upload Notes',
   },
 ];
@@ -140,33 +144,33 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
           </div>
         </div>
 
-        {/* Hero Interactive 3D Metric Box (High Contrast Lime Card) */}
-        <Card3D className="w-full md:w-76 p-6 rounded-2xl !bg-[#A3E635] !text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0 cursor-pointer">
+        {/* Hero Interactive 3D Metric Box (Mode-Aware Colors: Royal Indigo in Light Mode, Vivid Amber in Dark Mode) */}
+        <Card3D className="w-full md:w-76 p-6 rounded-2xl bg-indigo-600 text-white dark:bg-amber-400 dark:text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0 cursor-pointer">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs font-mono font-black uppercase tracking-wider !bg-slate-950 !text-white px-2.5 py-1 rounded-md border border-slate-900">
+            <span className="text-xs font-mono font-black uppercase tracking-wider bg-amber-400 text-slate-950 dark:bg-slate-950 dark:text-white px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
               PRACTICE METRICS
             </span>
-            <Target className="w-6 h-6 !text-slate-950" />
+            <Target className="w-6 h-6 text-white dark:text-slate-950" />
           </div>
 
           <div className="space-y-3">
             <div>
-              <div className="text-4xl font-black font-mono tracking-tight !text-slate-950">{total}</div>
-              <div className="text-xs font-black uppercase tracking-wider !text-slate-950">Total Practice Sessions</div>
+              <div className="text-4xl font-black font-mono tracking-tight text-white dark:text-slate-950">{total}</div>
+              <div className="text-xs font-black uppercase tracking-wider text-white/90 dark:text-slate-950">Total Practice Sessions</div>
             </div>
 
-            <div className="pt-2.5 border-t-2 border-slate-950/40 flex justify-between text-xs font-black !text-slate-950">
+            <div className="pt-2.5 border-t-2 border-white/30 dark:border-slate-950/40 flex justify-between text-xs font-black text-white dark:text-slate-950">
               <span>Avg Confidence:</span>
               <span className="font-mono text-sm font-black">{avgConf}%</span>
             </div>
             {avgWpm && (
-              <div className="flex justify-between text-xs font-black !text-slate-950">
+              <div className="flex justify-between text-xs font-black text-white dark:text-slate-950">
                 <span>Avg Speaking Speed:</span>
                 <span className="font-mono text-sm font-black">{avgWpm} WPM</span>
               </div>
             )}
             {avgFill !== null && (
-              <div className="flex justify-between text-xs font-black !text-slate-950">
+              <div className="flex justify-between text-xs font-black text-white dark:text-slate-950">
                 <span>Filler Hesitation:</span>
                 <span className="font-mono text-sm font-black">{avgFill}%</span>
               </div>
@@ -187,8 +191,9 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
             >
               {/* Badge Top */}
               <div className="flex items-start justify-between">
-                <div className="w-13 h-13 p-3 rounded-2xl bg-slate-900 text-white border-2.5 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#0F172A]">
-                  <Icon className="w-6 h-6 text-white" />
+                {/* Pop High-Contrast Icon Container */}
+                <div className={`w-13 h-13 p-3 rounded-2xl ${f.iconBg} border-2.5 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#0F172A]`}>
+                  <Icon className="w-6 h-6 stroke-[2.5]" />
                 </div>
 
                 <span className={`text-[11px] font-bold font-mono px-3 py-1 rounded-xl border-2.5 border-slate-900 shadow-[3px_3px_0px_#0F172A] uppercase tracking-wider ${f.badgeBg}`}>
