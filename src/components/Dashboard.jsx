@@ -163,7 +163,7 @@ export default function Dashboard({ onNavigate }) {
               </div>
             </div>
 
-            {/* Divider line spanning the elongated yellow card with left-aligned stats */}
+            {/* Divider line spanning the elongated yellow card */}
             <div className="pt-3 border-t-2 border-slate-950/60 space-y-3">
               <div className="flex items-center gap-3 text-xs sm:text-sm font-black !text-black" style={{ color: '#000000' }}>
                 <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Confidence:</span>
