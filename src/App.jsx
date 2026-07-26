@@ -238,7 +238,7 @@ export default function App() {
             </div>
           </div>
           <div className="hidden sm:block">
-            <span className="text-base font-black tracking-tight text-gradient">VoiceCraft</span>
+            <span className="text-base font-black tracking-tight text-gradient">Kadence AI</span>
             <span className="block text-[10px] text-zinc-500 -mt-0.5">AI Speech Coach</span>
           </div>
         </button>
@@ -567,7 +567,7 @@ export default function App() {
 
           {/* Footer Action CTA */}
           <div className="pt-4 border-t border-zinc-800 flex items-center justify-between text-xs">
-            <span className="text-zinc-400">VoiceCraft AI Engine v2.7</span>
+            <span className="text-zinc-400">Kadence AI Engine v2.7</span>
             <button
               onClick={handleSwapQuestion}
               className="px-4 py-2 bg-gradient-to-r from-indigo-600 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white font-semibold rounded-xl transition-all shadow-md shadow-indigo-600/20 flex items-center gap-2"

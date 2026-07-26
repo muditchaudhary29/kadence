@@ -1,5 +1,5 @@
 // ============================================================
-// VoiceCraft - Speech Analysis Engine (Refined, Multi-Question, Phonetic & Stem-Enhanced)
+// Kadence AI - Speech Analysis Engine (Refined, Multi-Question, Phonetic & Stem-Enhanced)
 // ============================================================
 
 // ----- SPEECH PHONETIC NORMALIZER -----

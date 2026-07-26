@@ -1,7 +1,7 @@
 // ---- localStorage Session & Profile Persistence ----
 
-const SESSIONS_KEY = 'voicecraft_sessions';
-const PROFILE_KEY  = 'voicecraft_profile';
+const SESSIONS_KEY = 'kadence_sessions';
+const PROFILE_KEY  = 'kadence_profile';
 
 /** Save a completed practice session */
 export function saveSession(sessionData) {
@@ -26,7 +26,8 @@ export function saveSession(sessionData) {
 /** Get all saved sessions */
 export function getSessions() {
   try {
-    return JSON.parse(localStorage.getItem(SESSIONS_KEY) || '[]');
+    const data = localStorage.getItem(SESSIONS_KEY) || localStorage.getItem('voicecraft_sessions');
+    return JSON.parse(data || '[]');
   } catch {
     return [];
   }
@@ -80,7 +81,8 @@ export function updateProfile() {
 /** Get aggregate profile stats */
 export function getProfile() {
   try {
-    return JSON.parse(localStorage.getItem(PROFILE_KEY) || 'null');
+    const data = localStorage.getItem(PROFILE_KEY) || localStorage.getItem('voicecraft_profile');
+    return JSON.parse(data || 'null');
   } catch {
     return null;
   }
@@ -105,7 +107,7 @@ export function clearAllData() {
   localStorage.removeItem(FEEDBACK_KEY);
 }
 
-const FEEDBACK_KEY = 'voicecraft_user_feedback';
+const FEEDBACK_KEY = 'kadence_user_feedback';
 
 /** Save user feedback entry */
 export function saveUserFeedback(feedbackData) {

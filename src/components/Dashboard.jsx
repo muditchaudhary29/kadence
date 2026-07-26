@@ -109,7 +109,7 @@ const FEATURES = [
     ring: 'rgba(217,119,6,0.5)',
     title: 'Study from Notes',
     sub: 'Upload & practice',
-    desc: 'Upload PDFs, text notes, or describe a topic — VoiceCraft extracts keywords and generates 8 targeted interview questions instantly.',
+    desc: 'Upload PDFs, text notes, or describe a topic — Kadence AI extracts keywords and generates 8 targeted interview questions instantly.',
     badge: 'PDF · TXT · IMG',
     badgeCls: 'bg-amber-500/15 text-amber-300 border-amber-500/30',
     cta: 'Upload Notes',

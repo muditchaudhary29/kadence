@@ -70,7 +70,7 @@ export default function FeedbackPage() {
             User Feedback & Reviews
           </h2>
           <p className="text-sm text-zinc-400 mt-1">
-            Share your experience, suggest new features, or report issues to help us improve VoiceCraft.
+            Share your experience, suggest new features, or report issues to help us improve Kadence AI.
           </p>
         </div>
 
