@@ -1,57 +1,75 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────────
-   NEO-BRUTALISM DESIGN SYSTEM — DARK & LIGHT MODE
+   ULTRA NEO-BRUTALISM DESIGN SYSTEM — DARK & LIGHT MODE
 ───────────────────────────────────────────────────────────── */
 
 :root, .dark {
-  --bg-main:          #121216;
-  --bg-card:          #1A1A22;
-  --bg-card-hover:    #22222D;
-  --bg-inset:         #0C0C0F;
-  --border-brutal:    #334155;
-  --shadow-brutal:    4px 4px 0px #000000;
-  --shadow-brutal-lg: 6px 6px 0px #000000;
+  --bg-main:          #0F0F14;
+  --bg-card:          #161620;
+  --bg-card-alt:      #1D1D2B;
+  --bg-inset:         #0A0A0E;
+  
+  --border-brutal:    #3B4252;
+  --shadow-brutal:    5px 5px 0px #000000;
+  --shadow-brutal-lg: 8px 8px 0px #000000;
   --shadow-hover:     2px 2px 0px #000000;
 
   --text-main:        #F8FAFC;
-  --text-sub:         #94A3B8;
-  --text-muted:       #64748B;
+  --text-sub:         #CBD5E1;
+  --text-muted:       #94A3B8;
 
-  --accent-violet:    #818CF8;
-  --accent-emerald:   #34D399;
-  --accent-amber:     #FBBF24;
-  --accent-rose:      #FB7185;
-  --accent-cyan:      #38BDF8;
+  /* Vivid Neo-Brutalism Color Blocks (Dark) */
+  --block-violet:     #312E81;
+  --block-emerald:    #064E3B;
+  --block-amber:      #78350F;
+  --block-rose:       #881337;
+  --block-cyan:       #164E63;
 
-  --badge-bg:         #272738;
+  --accent-violet:    #A5B4FC;
+  --accent-emerald:   #6EE7B7;
+  --accent-amber:     #FDE047;
+  --accent-rose:      #FDA4AF;
+  --accent-cyan:      #7DD3FC;
+
+  --ticker-bg:        #1E1B4B;
+  --ticker-text:      #C7D2FE;
 }
 
 .light {
-  --bg-main:          #FAF8F5;
+  --bg-main:          #FFFDF5;
   --bg-card:          #FFFFFF;
-  --bg-card-hover:    #FFFDF9;
-  --bg-inset:         #F1ECE4;
+  --bg-card-alt:      #FAF6ED;
+  --bg-inset:         #F3EDE0;
+  
   --border-brutal:    #0F172A;
-  --shadow-brutal:    4px 4px 0px #0F172A;
-  --shadow-brutal-lg: 6px 6px 0px #0F172A;
+  --shadow-brutal:    5px 5px 0px #0F172A;
+  --shadow-brutal-lg: 8px 8px 0px #0F172A;
   --shadow-hover:     2px 2px 0px #0F172A;
 
   --text-main:        #0F172A;
   --text-sub:         #334155;
   --text-muted:       #64748B;
 
-  --accent-violet:    #6366F1;
-  --accent-emerald:   #10B981;
-  --accent-amber:     #F59E0B;
-  --accent-rose:      #F43F5E;
-  --accent-cyan:      #06B6D4;
+  /* Vivid Neo-Brutalism Color Blocks (Light) */
+  --block-violet:     #EEF2FF;
+  --block-emerald:    #ECFDF5;
+  --block-amber:      #FEFCE8;
+  --block-rose:       #FFF1F2;
+  --block-cyan:       #F0F9FF;
 
-  --badge-bg:         #E2E8F0;
+  --accent-violet:    #4F46E5;
+  --accent-emerald:   #059669;
+  --accent-amber:     #D97706;
+  --accent-rose:      #E11D48;
+  --accent-cyan:      #0284C7;
+
+  --ticker-bg:        #FEF08A;
+  --ticker-text:      #854D0E;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -65,42 +83,74 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   background-color: var(--bg-main);
   color: var(--text-main);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, .font-heading {
+h1, h2, h3, h4, .font-heading {
   font-family: 'Space Grotesk', system-ui, sans-serif;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.03em;
 }
 
 /* ─────────────────────────────────────────────────────────────
    NEO-BRUTALIST CARDS & PANELS
 ───────────────────────────────────────────────────────────── */
-.glass-card, .card-3d {
+.glass-card, .card-3d, .brutal-card {
   background-color: var(--bg-card);
-  border: 2.5px solid var(--border-brutal);
-  border-radius: 14px;
+  border: 3px solid var(--border-brutal);
+  border-radius: 16px;
   box-shadow: var(--shadow-brutal);
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+  transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, background-color 0.2s ease;
 }
 
-.glass-card:hover, .card-3d:hover {
-  transform: translate(-2px, -2px);
+.glass-card:hover, .card-3d:hover, .brutal-card:hover {
+  transform: translate(-3px, -3px);
   box-shadow: var(--shadow-brutal-lg);
-  border-color: var(--border-brutal);
 }
 
 .glass-panel {
   background-color: var(--bg-card);
-  border-bottom: 2.5px solid var(--border-brutal);
+  border-bottom: 3px solid var(--border-brutal);
 }
 
 .neu-inset, .bg-zinc-900, .bg-zinc-950\/60, .bg-zinc-950\/80, .bg-zinc-950\/90 {
   background-color: var(--bg-inset) !important;
-  border: 2px solid var(--border-brutal) !important;
-  border-radius: 10px;
+  border: 2.5px solid var(--border-brutal) !important;
+  border-radius: 12px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   NEO-BRUTALIST COLOR BLOCKS
+───────────────────────────────────────────────────────────── */
+.brutal-block-violet {
+  background-color: var(--block-violet);
+  border: 2.5px solid var(--border-brutal);
+  color: var(--text-main);
+}
+
+.brutal-block-emerald {
+  background-color: var(--block-emerald);
+  border: 2.5px solid var(--border-brutal);
+  color: var(--text-main);
+}
+
+.brutal-block-amber {
+  background-color: var(--block-amber);
+  border: 2.5px solid var(--border-brutal);
+  color: var(--text-main);
+}
+
+.brutal-block-rose {
+  background-color: var(--block-rose);
+  border: 2.5px solid var(--border-brutal);
+  color: var(--text-main);
+}
+
+.brutal-block-cyan {
+  background-color: var(--block-cyan);
+  border: 2.5px solid var(--border-brutal);
+  color: var(--text-main);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -110,21 +160,21 @@ h1, h2, h3, .font-heading {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  padding: 10px 22px;
-  border-radius: 10px;
+  padding: 12px 24px;
+  border-radius: 12px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 700;
   color: #FFFFFF !important;
   background-color: var(--accent-violet) !important;
-  border: 2.5px solid var(--border-brutal) !important;
+  border: 3px solid var(--border-brutal) !important;
   box-shadow: var(--shadow-brutal) !important;
   transition: all 0.12s ease;
   cursor: pointer;
 }
 
 .btn-primary:hover {
-  transform: translate(-2px, -2px);
+  transform: translate(-3px, -3px);
   box-shadow: var(--shadow-brutal-lg) !important;
 }
 
@@ -136,10 +186,10 @@ h1, h2, h3, .font-heading {
 /* Theme Toggle Button */
 .theme-toggle-btn {
   background-color: var(--bg-card);
-  border: 2.5px solid var(--border-brutal);
+  border: 3px solid var(--border-brutal);
   box-shadow: var(--shadow-brutal);
   color: var(--text-main);
-  border-radius: 10px;
+  border-radius: 12px;
   transition: all 0.12s ease;
 }
 
@@ -159,25 +209,53 @@ h1, h2, h3, .font-heading {
 .nav-active {
   background-color: var(--accent-violet) !important;
   color: #FFFFFF !important;
-  border: 2px solid var(--border-brutal) !important;
-  box-shadow: 3px 3px 0px var(--border-brutal) !important;
-  font-weight: 700 !important;
+  border: 2.5px solid var(--border-brutal) !important;
+  box-shadow: 4px 4px 0px var(--border-brutal) !important;
+  font-weight: 800 !important;
 }
 
 .nav-inactive {
   color: var(--text-sub) !important;
-  border: 2px solid transparent !important;
-  font-weight: 600 !important;
+  border: 2.5px solid transparent !important;
+  font-weight: 700 !important;
 }
 
 .nav-inactive:hover {
   color: var(--text-main) !important;
   background-color: var(--bg-card-hover) !important;
   border-color: var(--border-brutal) !important;
+  box-shadow: 2px 2px 0px var(--border-brutal) !important;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   TEXT & ACCENTS
+   NEO-BRUTALIST TICKER BANNER
+───────────────────────────────────────────────────────────── */
+.ticker-banner {
+  background-color: var(--ticker-bg);
+  color: var(--ticker-text);
+  border-bottom: 3px solid var(--border-brutal);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 6px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 32px;
+  animation: ticker 30s linear infinite;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TEXT & BADGES
 ───────────────────────────────────────────────────────────── */
 .text-zinc-100, .text-zinc-200, .text-white {
   color: var(--text-main) !important;
@@ -193,28 +271,33 @@ h1, h2, h3, .font-heading {
   color: var(--text-main) !important;
 }
 
-/* Grid Lines Background for Neo-Brutalism */
+.brutal-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 8px;
+  border: 2px solid var(--border-brutal);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.75rem;
+  font-weight: 800;
+  box-shadow: 2px 2px 0px var(--border-brutal);
+}
+
+/* Background Grid Lines */
 .dot-grid {
   background-image: 
-    linear-gradient(to right, var(--border-brutal) 1px, transparent 1px),
-    linear-gradient(to bottom, var(--border-brutal) 1px, transparent 1px);
-  background-size: 40px 40px;
-  opacity: 0.12;
+    linear-gradient(to right, var(--border-brutal) 1.5px, transparent 1.5px),
+    linear-gradient(to bottom, var(--border-brutal) 1.5px, transparent 1.5px);
+  background-size: 32px 32px;
+  opacity: 0.15;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   ANIMATIONS & SCROLLBAR
-───────────────────────────────────────────────────────────── */
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(12px); }
-  to   { opacity: 1; transform: translateY(0); }
-}
-
-.animate-fade-up { animation: fade-up 0.35s ease forwards; }
-
+/* Custom Scrollbar */
 ::-webkit-scrollbar { width: 8px; height: 8px; }
 ::-webkit-scrollbar-track { background: var(--bg-main); }
 ::-webkit-scrollbar-thumb {
-  background: var(--border-brutal);
+  background: var(--accent-violet);
+  border: 2px solid var(--border-brutal);
   border-radius: 4px;
 }

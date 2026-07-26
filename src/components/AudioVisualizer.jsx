@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Mic, Square, Volume2, Sparkles } from 'lucide-react';
+import { Mic, Square, Volume2 } from 'lucide-react';
 
 export default function AudioVisualizer({ isRecording, onToggleRecording, durationSec }) {
   const canvasRef = useRef(null);
@@ -19,7 +19,7 @@ export default function AudioVisualizer({ isRecording, onToggleRecording, durati
       const height = canvas.height;
       ctx.clearRect(0, 0, width, height);
       const numBars = 42;
-      const barGap = 3;
+      const barGap = 4;
       const totalBarWidth = (width - numBars * barGap) / numBars;
 
       for (let i = 0; i < numBars; i++) {
@@ -39,17 +39,17 @@ export default function AudioVisualizer({ isRecording, onToggleRecording, durati
 
         const grad = ctx.createLinearGradient(0, y, 0, y + barHeight);
         if (isRecording) {
-          grad.addColorStop(0,   '#A78BFA'); // violet-400
-          grad.addColorStop(0.5, '#7C3AED'); // violet-600
-          grad.addColorStop(1,   '#06B6D4'); // cyan-500
+          grad.addColorStop(0,   '#F43F5E'); // Rose
+          grad.addColorStop(0.5, '#6366F1'); // Indigo
+          grad.addColorStop(1,   '#10B981'); // Emerald
         } else {
-          grad.addColorStop(0, 'rgba(124,58,237,0.18)');
-          grad.addColorStop(1, 'rgba(6,182,212,0.08)');
+          grad.addColorStop(0, '#64748B');
+          grad.addColorStop(1, '#334155');
         }
 
         ctx.fillStyle = grad;
         ctx.beginPath();
-        ctx.roundRect(x, y, totalBarWidth, barHeight, 3);
+        ctx.roundRect(x, y, totalBarWidth, barHeight, 2);
         ctx.fill();
       }
     };
@@ -100,31 +100,16 @@ export default function AudioVisualizer({ isRecording, onToggleRecording, durati
   };
 
   return (
-    <div
-      className="glass-card rounded-2xl p-6 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-6"
-      style={{ border: '1px solid rgba(124,58,237,0.25)' }}
-    >
-      {/* Background glows */}
-      <div className="absolute -top-20 -left-20 w-52 h-52 rounded-full pointer-events-none"
-           style={{ background: 'rgba(124,58,237,0.12)', filter: 'blur(50px)' }} />
-      <div className="absolute -bottom-20 -right-20 w-52 h-52 rounded-full pointer-events-none"
-           style={{ background: 'rgba(6,182,212,0.08)', filter: 'blur(50px)' }} />
-
-      <div className="flex items-center gap-5 z-10">
+    <div className="brutal-card p-6 flex flex-col md:flex-row items-center justify-between gap-6">
+      <div className="flex items-center gap-5">
         {/* Record button */}
         <button
           onClick={onToggleRecording}
-          className={`relative flex items-center justify-center w-16 h-16 rounded-2xl font-semibold transition-all duration-300 active:scale-95 ${
+          className={`w-16 h-16 rounded-2xl flex items-center justify-center border-3 border-slate-900 font-bold transition-all active:translate-x-1 active:translate-y-1 ${
             isRecording
-              ? 'bg-rose-500 hover:bg-rose-600 text-white'
-              : ''
+              ? 'bg-rose-500 text-white shadow-[4px_4px_0px_#000]'
+              : 'bg-indigo-500 hover:bg-indigo-600 text-white shadow-[4px_4px_0px_#000]'
           }`}
-          style={!isRecording ? {
-            background: 'linear-gradient(135deg, #7C3AED, #5B21B6)',
-            boxShadow: '0 4px 24px rgba(124,58,237,0.5), 0 0 0 1px rgba(124,58,237,0.4) inset'
-          } : {
-            boxShadow: '0 4px 24px rgba(239,68,68,0.5)'
-          }}
           title={isRecording ? 'Stop Recording' : 'Start Recording'}
         >
           {isRecording ? (
@@ -132,45 +117,37 @@ export default function AudioVisualizer({ isRecording, onToggleRecording, durati
           ) : (
             <Mic className="w-7 h-7 text-white" />
           )}
-
-          {isRecording && (
-            <>
-              <span className="absolute inset-0 rounded-2xl border-2 border-rose-400 animate-ping opacity-70 pointer-events-none" />
-              <span className="absolute inset-0 rounded-2xl border border-rose-300 animate-ping opacity-40 pointer-events-none" style={{ animationDelay: '0.3s' }} />
-            </>
-          )}
         </button>
 
         <div>
           <div className="flex items-center gap-2">
-            <span className={`inline-block w-2.5 h-2.5 rounded-full ${isRecording ? 'bg-rose-500 animate-ping' : 'bg-zinc-600'}`} />
-            <h3 className="text-base font-bold text-zinc-100">
-              {isRecording ? 'Live Recording' : 'Audio Capture Ready'}
+            <span className={`inline-block w-3 h-3 rounded-full border-2 border-slate-900 ${isRecording ? 'bg-rose-500 animate-ping' : 'bg-zinc-500'}`} />
+            <h3 className="text-lg font-bold font-heading">
+              {isRecording ? 'Live Speech Stream' : 'Audio Capture Ready'}
             </h3>
           </div>
-          <p className="text-xs mt-1" style={{ color: isRecording ? '#FDA4AF' : 'var(--text-muted)' }}>
+          <p className="text-xs text-zinc-400 mt-1">
             {isRecording
               ? 'Recording in progress — speak clearly'
-              : 'Click to record or paste a transcript below'}
+              : 'Click button to start recording or paste transcript below'}
           </p>
           {micPermissionDenied && (
-            <p className="text-[10px] text-amber-400 mt-1">⚠ Mic blocked — using animated fallback</p>
+            <p className="text-xs text-amber-400 mt-1 font-mono">⚠ Mic blocked — using animated fallback</p>
           )}
         </div>
       </div>
 
       {/* Canvas + timer */}
-      <div className="flex-1 w-full max-w-md flex flex-col items-center md:items-end gap-2 z-10">
-        <div className="w-full h-16 rounded-xl p-2 flex items-center justify-center"
-             style={{ background: 'rgba(0,0,0,0.35)', border: '1px solid rgba(255,255,255,0.06)' }}>
+      <div className="flex-1 w-full max-w-md flex flex-col items-center md:items-end gap-2">
+        <div className="w-full h-16 neu-inset p-2 flex items-center justify-center">
           <canvas ref={canvasRef} width={380} height={48} className="w-full h-full" />
         </div>
-        <div className="flex items-center justify-between w-full text-xs px-1" style={{ color: 'var(--text-muted)' }}>
-          <span className="font-mono flex items-center gap-1">
-            <Volume2 className="w-3.5 h-3.5 text-violet-400" />
-            {isRecording ? 'Web Audio API Live' : 'Mic Idle'}
+        <div className="flex items-center justify-between w-full text-xs font-mono px-1">
+          <span className="flex items-center gap-1.5 font-bold">
+            <Volume2 className="w-4 h-4 text-indigo-400" />
+            {isRecording ? 'WEB AUDIO LIVE' : 'MIC IDLE'}
           </span>
-          <span className="font-mono font-bold text-sm" style={{ color: '#A78BFA' }}>
+          <span className="brutal-badge bg-amber-400 text-slate-900 font-extrabold text-sm">
             {formatTimer(durationSec)}
           </span>
         </div>

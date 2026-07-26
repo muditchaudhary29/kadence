@@ -241,65 +241,89 @@ export default function App() {
 
   // ---- Render helpers ----
   const renderHeader = () => (
-    <header className="sticky top-0 z-40 glass-panel border-b border-white/[0.06] px-4 sm:px-6 py-3">
-      <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
-        {/* Logo */}
-        <button onClick={() => setCurrentPage('dashboard')} className="flex items-center gap-3 shrink-0 group">
-          <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-violet-600 via-purple-600 to-cyan-500 p-[1.5px] shadow-lg" style={{ boxShadow: '0 0 20px rgba(124,58,237,0.4)' }}>
-            <div className="w-full h-full bg-[#07070F] rounded-[10px] flex items-center justify-center">
-              <Mic className="w-4 h-4 text-violet-400" />
-            </div>
-          </div>
-          <div className="hidden sm:block">
-            <span className="text-base font-black tracking-tight text-gradient">Kadence AI</span>
-            <span className="block text-[10px] text-zinc-500 -mt-0.5">AI Speech Coach</span>
-          </div>
-        </button>
-
-        {/* Nav tabs */}
-        <nav className="flex items-center gap-1">
-          {NAV_ITEMS.map(({ id, label, Icon }) => (
-            <button
-              key={id}
-              onClick={() => setCurrentPage(id)}
-              className={`flex items-center gap-1.5 px-3 py-1.5 rounded-xl text-xs font-semibold transition-all duration-200 ${
-                currentPage === id ? 'nav-active' : 'nav-inactive'
-              }`}
-            >
-              <Icon className="w-3.5 h-3.5" />
-              <span className="hidden sm:block">{label}</span>
-            </button>
-          ))}
-        </nav>
-
-        {/* Right actions */}
-        <div className="flex items-center gap-2 shrink-0">
-          {/* Theme Toggle Button */}
-          <button
-            onClick={toggleTheme}
-            className="p-2.5 rounded-xl theme-toggle-btn flex items-center justify-center transition-all"
-            title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
-          >
-            {theme === 'dark' ? (
-              <Sun className="w-4 h-4 text-amber-400" />
-            ) : (
-              <Moon className="w-4 h-4 text-indigo-600" />
-            )}
-          </button>
-
-          {sessions.length > 0 && (
-            <button
-              onClick={() => setCurrentPage('progress')}
-              className="px-3 py-1.5 rounded-xl text-xs font-semibold flex items-center gap-1.5 transition-all"
-              style={{ background: 'var(--card-bg)', border: '1px solid var(--card-border)', color: 'var(--text-main)', boxShadow: 'var(--neu-shadow-flat)' }}
-            >
-              <BarChart2 className="w-3.5 h-3.5 text-emerald-500" />
-              <span className="hidden sm:block">{sessions.length} sessions</span>
-            </button>
-          )}
+    <>
+      {/* Neo-Brutalism Marquee Ticker */}
+      <div className="ticker-banner">
+        <div className="ticker-track">
+          <span>⚡ KADENCE AI SPEECH COACH</span>
+          <span>•</span>
+          <span>🎙️ REAL-TIME STT SPEECH ENGINE</span>
+          <span>•</span>
+          <span>⚡ WPM PACING GAUGE</span>
+          <span>•</span>
+          <span>⭐ STAR METHOD BREAKDOWN</span>
+          <span>•</span>
+          <span>📚 NOTES & PDF QUESTION GENERATOR</span>
+          <span>•</span>
+          <span>💬 INTERACTIVE USER REVIEWS</span>
+          <span>•</span>
+          <span>⚡ KADENCE AI SPEECH COACH</span>
+          <span>•</span>
+          <span>🎙️ REAL-TIME STT SPEECH ENGINE</span>
+          <span>•</span>
+          <span>⚡ WPM PACING GAUGE</span>
+          <span>•</span>
+          <span>⭐ STAR METHOD BREAKDOWN</span>
         </div>
       </div>
-    </header>
+
+      <header className="sticky top-0 z-40 glass-panel px-4 sm:px-6 py-3">
+        <div className="max-w-7xl mx-auto flex items-center justify-between gap-4">
+          {/* Logo */}
+          <button onClick={() => setCurrentPage('dashboard')} className="flex items-center gap-3 shrink-0 group">
+            <div className="w-10 h-10 rounded-xl bg-indigo-500 border-2 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#000]">
+              <Mic className="w-5 h-5 text-white" />
+            </div>
+            <div className="hidden sm:block text-left">
+              <span className="text-lg font-bold font-heading tracking-tight block leading-none">Kadence AI</span>
+              <span className="text-[10px] font-mono font-bold text-indigo-500 uppercase tracking-widest">AI Speech Coach</span>
+            </div>
+          </button>
+
+          {/* Nav tabs */}
+          <nav className="flex items-center gap-1.5">
+            {NAV_ITEMS.map(({ id, label, Icon }) => (
+              <button
+                key={id}
+                onClick={() => setCurrentPage(id)}
+                className={`flex items-center gap-2 px-3.5 py-1.5 rounded-xl text-xs font-bold font-heading transition-all ${
+                  currentPage === id ? 'nav-active' : 'nav-inactive'
+                }`}
+              >
+                <Icon className="w-4 h-4" />
+                <span className="hidden sm:block">{label}</span>
+              </button>
+            ))}
+          </nav>
+
+          {/* Right actions */}
+          <div className="flex items-center gap-2.5 shrink-0">
+            {/* Theme Toggle Button */}
+            <button
+              onClick={toggleTheme}
+              className="p-2 rounded-xl theme-toggle-btn flex items-center justify-center transition-all"
+              title={`Switch to ${theme === 'dark' ? 'Light' : 'Dark'} Mode`}
+            >
+              {theme === 'dark' ? (
+                <Sun className="w-4 h-4 text-amber-400" />
+              ) : (
+                <Moon className="w-4 h-4 text-indigo-600" />
+              )}
+            </button>
+
+            {sessions.length > 0 && (
+              <button
+                onClick={() => setCurrentPage('progress')}
+                className="px-3 py-1.5 rounded-xl text-xs font-bold font-mono brutal-badge bg-emerald-500/10 text-emerald-400 border-emerald-500/30 flex items-center gap-1.5"
+              >
+                <BarChart2 className="w-3.5 h-3.5 text-emerald-500" />
+                <span className="hidden sm:block">{sessions.length} SESSIONS</span>
+              </button>
+            )}
+          </div>
+        </div>
+      </header>
+    </>
   );
 
   // ---- Page: Practice (full original UI) ----
