@@ -144,8 +144,8 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
           </div>
         </div>
 
-        {/* Hero Interactive 3D Metric Box (Vivid Amber Gold) */}
-        <Card3D className="w-full md:w-76 p-6 rounded-2xl !bg-[#F59E0B] !text-slate-950 dark:!bg-[#F59E0B] dark:!text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0 cursor-pointer">
+        {/* Hero Interactive 3D Metric Box (Brighter Sunshine Yellow in Light Mode, Electric Amber Gold in Dark Mode) */}
+        <Card3D className="w-full md:w-76 p-6 rounded-2xl !bg-[#FACC15] dark:!bg-[#F59E0B] !text-slate-950 dark:!text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0 cursor-pointer">
           <div className="flex items-center justify-between mb-4">
             <span className="text-xs font-mono font-black uppercase tracking-wider !bg-slate-950 !text-white px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
               PRACTICE METRICS

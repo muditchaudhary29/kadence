@@ -114,14 +114,14 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .dark .summary-rating-badge {
-  background-color: #78350F !important;
-  color: #FEF08A !important;
+  background-color: #F59E0B !important; /* Electric Amber Gold in Dark Mode */
+  color: #0F172A !important;
   border: 3px solid #0F172A !important;
   box-shadow: 4px 4px 0px #000000 !important;
 }
 .dark .summary-rating-badge * {
-  color: #FEF08A !important;
-  fill: #F59E0B !important;
+  color: #0F172A !important;
+  fill: #0F172A !important;
 }
 
 /* ─────────────────────────────────────────────────────────────
