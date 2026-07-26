@@ -380,27 +380,27 @@ export default function App() {
         />
 
         {/* Confidence & Vocal Tone Meter */}
-        <div className="glass-card rounded-2xl p-5 border border-zinc-800 flex flex-col justify-between">
+        <div className="brutal-card rounded-2xl p-5 flex flex-col justify-between space-y-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="p-2 bg-emerald-500/10 text-emerald-400 rounded-lg">
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-xl bg-emerald-600 text-white border-2 border-slate-900 flex items-center justify-center shadow-[2px_2px_0px_#0F172A] shrink-0">
                 <ShieldCheck className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-zinc-200">Vocal Confidence</h4>
-                <p className="text-xs text-zinc-400">Assertive tone score</p>
+                <h4 className="text-base font-black font-heading leading-tight">Vocal Confidence</h4>
+                <p className="text-xs font-semibold opacity-80 mt-0.5">Assertive tone score</p>
               </div>
             </div>
-            <span className="text-xs font-semibold px-2.5 py-1 bg-emerald-500/10 text-emerald-400 border border-emerald-500/30 rounded-full">
+            <span className="brutal-badge bg-emerald-600 !text-white text-[10px] font-black border border-slate-900">
               {analysis.confidenceScore >= 80 ? 'High Assurance' : analysis.confidenceScore >= 60 ? 'Moderate' : 'Low'}
             </span>
           </div>
 
-          <div className="my-4 text-center">
-            <div className="text-4xl font-extrabold font-mono text-white tracking-tight">
+          <div className="my-2 text-center">
+            <div className="text-4xl font-black font-mono tracking-tight">
               {analysis.confidenceScore}%
             </div>
-            <div className="w-full bg-zinc-800 h-2 rounded-full mt-3 overflow-hidden p-0.5 border border-zinc-700">
+            <div className="w-full bg-slate-200 dark:bg-slate-800 h-3 rounded-full mt-3 overflow-hidden p-0.5 border-2 border-slate-900">
               <div 
                 className="bg-gradient-to-r from-indigo-500 to-emerald-400 h-full rounded-full transition-all duration-700" 
                 style={{ width: `${analysis.confidenceScore}%` }}
@@ -408,75 +408,75 @@ export default function App() {
             </div>
           </div>
 
-          <div className="pt-2 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-400">
-            <span>Minimal hesitation</span>
-            <span className="text-emerald-400 font-medium">+14% vs avg</span>
+          <div className="pt-3 border-t-2 border-slate-700 flex items-center justify-between text-xs font-bold">
+            <span className="opacity-80">Minimal hesitation</span>
+            <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">+14% vs avg</span>
           </div>
         </div>
 
         {/* Filler Word Summary */}
-        <div className="glass-card rounded-2xl p-5 border border-zinc-800 flex flex-col justify-between">
+        <div className="brutal-card rounded-2xl p-5 flex flex-col justify-between space-y-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="p-2 bg-amber-500/10 text-amber-400 rounded-lg">
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-xl bg-amber-500 text-slate-950 border-2 border-slate-900 flex items-center justify-center shadow-[2px_2px_0px_#0F172A] shrink-0">
                 <Flame className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-zinc-200">Filler Words</h4>
-                <p className="text-xs text-zinc-400">Hesitation count</p>
+                <h4 className="text-base font-black font-heading leading-tight">Filler Words</h4>
+                <p className="text-xs font-semibold opacity-80 mt-0.5">Hesitation count</p>
               </div>
             </div>
-            <span className="text-xs font-semibold px-2.5 py-1 bg-amber-500/10 text-amber-400 border border-amber-500/30 rounded-full">
+            <span className="brutal-badge bg-amber-400 text-slate-950 text-[10px] font-black border border-slate-900">
               {analysis.fillerPercentage}% of text
             </span>
           </div>
 
-          <div className="my-4 text-center">
-            <div className="text-4xl font-extrabold font-mono text-amber-400 tracking-tight">
+          <div className="my-2 text-center">
+            <div className="text-4xl font-black font-mono text-amber-600 dark:text-amber-400 tracking-tight">
               {analysis.fillerCount}
             </div>
-            <p className="text-xs text-zinc-400 mt-1">
+            <p className="text-xs font-bold opacity-80 mt-1">
               {analysis.fillerCount === 0 
                 ? "Flawless delivery! No crutch words." 
                 : `Detected: ${Object.keys(analysis.fillerBreakdown).slice(0, 3).join(', ')}`}
             </p>
           </div>
 
-          <div className="pt-2 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-400">
-            <span>Target: &lt; 2 fillers per min</span>
-            <span className="text-amber-400 font-medium">Pause intentionally</span>
+          <div className="pt-3 border-t-2 border-slate-700 flex items-center justify-between text-xs font-bold">
+            <span className="opacity-80">Target: &lt; 2 fillers per min</span>
+            <span className="text-amber-600 dark:text-amber-400 font-extrabold">Pause intentionally</span>
           </div>
         </div>
 
         {/* Total Words & Speech Duration */}
-        <div className="glass-card rounded-2xl p-5 border border-zinc-800 flex flex-col justify-between">
+        <div className="brutal-card rounded-2xl p-5 flex flex-col justify-between space-y-4">
           <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <div className="p-2 bg-cyan-500/10 text-cyan-400 rounded-lg">
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-xl bg-cyan-500 text-slate-950 border-2 border-slate-900 flex items-center justify-center shadow-[2px_2px_0px_#0F172A] shrink-0">
                 <Zap className="w-5 h-5" />
               </div>
               <div>
-                <h4 className="text-sm font-semibold text-zinc-200">Speech Volume</h4>
-                <p className="text-xs text-zinc-400">Total word count</p>
+                <h4 className="text-base font-black font-heading leading-tight">Speech Volume</h4>
+                <p className="text-xs font-semibold opacity-80 mt-0.5">Total word count</p>
               </div>
             </div>
-            <span className="text-xs font-semibold px-2.5 py-1 bg-cyan-500/10 text-cyan-400 border border-cyan-500/30 rounded-full">
+            <span className="brutal-badge bg-cyan-400 text-slate-950 text-[10px] font-black border border-slate-900">
               {durationSec || analysis.durationSeconds}s Total
             </span>
           </div>
 
-          <div className="my-4 text-center">
-            <div className="text-4xl font-extrabold font-mono text-white tracking-tight">
+          <div className="my-2 text-center">
+            <div className="text-4xl font-black font-mono tracking-tight">
               {analysis.totalWords}
             </div>
-            <p className="text-xs text-zinc-400 mt-1">
+            <p className="text-xs font-bold opacity-80 mt-1">
               {analysis.wpm !== null ? `Avg ~${analysis.wpm} WPM` : 'Record to measure WPM'}
             </p>
           </div>
 
-          <div className="pt-2 border-t border-zinc-800/80 flex items-center justify-between text-xs text-zinc-400">
-            <span>Ideal response length</span>
-            <span className="text-cyan-400 font-medium">45-90 seconds</span>
+          <div className="pt-3 border-t-2 border-slate-700 flex items-center justify-between text-xs font-bold">
+            <span className="opacity-80">Ideal response length</span>
+            <span className="text-cyan-600 dark:text-cyan-400 font-extrabold">45-90 seconds</span>
           </div>
         </div>
       </section>
@@ -493,37 +493,37 @@ export default function App() {
         </div>
 
         {/* AI Feedback & How To Say It Better Panel (7 cols on lg) */}
-        <div className="lg:col-span-7 glass-card rounded-2xl p-6 border border-zinc-800 flex flex-col justify-between">
+        <div className="lg:col-span-7 brutal-card p-6 flex flex-col justify-between space-y-4">
           <div>
             {/* Tab Navigation Header */}
-            <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
-              <div className="flex items-center gap-2">
-                <div className="p-2 bg-gradient-to-tr from-indigo-500 to-purple-600 text-white rounded-lg shadow-md shadow-indigo-500/20">
+            <div className="flex items-center justify-between pb-4 border-b-2 border-slate-700">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl bg-purple-600 text-white border-2 border-slate-900 flex items-center justify-center shadow-[2px_2px_0px_#0F172A] shrink-0">
                   <Sparkles className="w-5 h-5" />
                 </div>
                 <div>
-                  <h3 className="text-base font-bold text-zinc-100">AI Speech Feedback & Executive Suggestions</h3>
-                  <p className="text-xs text-zinc-400">Personalized coaching insights & answer optimization</p>
+                  <h3 className="text-lg font-black font-heading leading-tight">AI Speech Feedback & Executive Suggestions</h3>
+                  <p className="text-xs font-semibold opacity-80 mt-0.5">Personalized coaching insights & answer optimization</p>
                 </div>
               </div>
 
-              <div className="flex bg-zinc-900/80 p-1 rounded-xl border border-zinc-800">
+              <div className="flex bg-slate-100 dark:bg-slate-800 p-1.5 rounded-xl border-2 border-slate-900 shadow-[2px_2px_0px_#0F172A]">
                 <button
                   onClick={() => setActiveTab('feedback')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold font-heading transition-all ${
                     activeTab === 'feedback'
-                      ? 'bg-indigo-600 text-white shadow-sm'
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-indigo-600 !text-white border border-slate-900 shadow-sm'
+                      : 'opacity-70 hover:opacity-100'
                   }`}
                 >
                   Feedback
                 </button>
                 <button
                   onClick={() => setActiveTab('rewrite')}
-                  className={`px-3 py-1.5 rounded-lg text-xs font-semibold transition-all ${
+                  className={`px-3.5 py-1.5 rounded-lg text-xs font-bold font-heading transition-all ${
                     activeTab === 'rewrite'
-                      ? 'bg-purple-600 text-white shadow-sm'
-                      : 'text-zinc-400 hover:text-white'
+                      ? 'bg-purple-600 !text-white border border-slate-900 shadow-sm'
+                      : 'opacity-70 hover:opacity-100'
                   }`}
                 >
                   How To Say It Better
@@ -536,13 +536,13 @@ export default function App() {
               <div className="my-5 space-y-6">
                 {/* Strengths */}
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-emerald-400 mb-3 flex items-center gap-1.5">
+                  <h4 className="text-xs font-black font-heading uppercase tracking-wider text-emerald-600 dark:text-emerald-400 mb-3 flex items-center gap-1.5">
                     <CheckCircle2 className="w-4 h-4" /> Key Strengths
                   </h4>
                   <div className="space-y-2.5">
                     {analysis.strengths.map((str, idx) => (
-                      <div key={idx} className="p-3 bg-emerald-500/5 border border-emerald-500/20 rounded-xl flex items-start gap-3 text-xs text-zinc-200">
-                        <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 mt-1.5 shrink-0" />
+                      <div key={idx} className="p-3.5 bg-emerald-100 dark:bg-emerald-950/60 border-2 border-emerald-600 rounded-xl flex items-start gap-3 text-xs font-bold text-emerald-950 dark:text-emerald-200 shadow-[2px_2px_0px_#0F172A]">
+                        <span className="w-2 h-2 rounded-full bg-emerald-600 dark:bg-emerald-400 mt-1 shrink-0" />
                         <span>{str}</span>
                       </div>
                     ))}
@@ -551,13 +551,13 @@ export default function App() {
 
                 {/* Areas for Improvement */}
                 <div>
-                  <h4 className="text-xs font-semibold uppercase tracking-wider text-amber-400 mb-3 flex items-center gap-1.5">
+                  <h4 className="text-xs font-black font-heading uppercase tracking-wider text-amber-600 dark:text-amber-400 mb-3 flex items-center gap-1.5">
                     <AlertCircle className="w-4 h-4" /> Areas for Improvement
                   </h4>
                   <div className="space-y-2.5">
                     {analysis.areasForImprovement.map((area, idx) => (
-                      <div key={idx} className="p-3 bg-amber-500/5 border border-amber-500/20 rounded-xl flex items-start gap-3 text-xs text-zinc-200">
-                        <span className="w-1.5 h-1.5 rounded-full bg-amber-400 mt-1.5 shrink-0" />
+                      <div key={idx} className="p-3.5 bg-amber-100 dark:bg-amber-950/60 border-2 border-amber-600 rounded-xl flex items-start gap-3 text-xs font-bold text-amber-950 dark:text-amber-200 shadow-[2px_2px_0px_#0F172A]">
+                        <span className="w-2 h-2 rounded-full bg-amber-600 dark:bg-amber-400 mt-1 shrink-0" />
                         <span>{area}</span>
                       </div>
                     ))}

@@ -15,7 +15,7 @@ export default function QuestionContextChecklistWidget({ contextEvaluation, sele
             </div>
             <div>
               <h4 className="text-lg font-black font-heading leading-tight">Question Context & Required Details</h4>
-              <p className="text-xs font-semibold opacity-80 mt-0.5">Did your response cover key STAR points for this interview prompt?</p>
+              <p className="text-xs font-semibold opacity-90 mt-0.5">Did your response cover key STAR points for this interview prompt?</p>
             </div>
           </div>
 
@@ -57,14 +57,14 @@ export default function QuestionContextChecklistWidget({ contextEvaluation, sele
               key={idx} 
               className={`p-4 rounded-xl border-2 flex items-start gap-3.5 text-xs transition-all shadow-[2px_2px_0px_#0F172A] ${
                 item.isPresent 
-                  ? 'bg-emerald-500/15 dark:bg-emerald-500/20 border-emerald-600' 
-                  : 'bg-rose-500/15 dark:bg-rose-500/20 border-rose-600'
+                  ? 'bg-emerald-100 dark:bg-emerald-950/60 border-emerald-600 text-emerald-950 dark:text-emerald-200' 
+                  : 'bg-rose-100 dark:bg-rose-950/60 border-rose-600 text-rose-950 dark:text-rose-200'
               }`}
             >
               {item.isPresent ? (
-                <CheckCircle className="w-5 h-5 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0" />
+                <CheckCircle className="w-5 h-5 text-emerald-700 dark:text-emerald-400 mt-0.5 shrink-0" />
               ) : (
-                <XCircle className="w-5 h-5 text-rose-600 dark:text-rose-400 mt-0.5 shrink-0" />
+                <XCircle className="w-5 h-5 text-rose-700 dark:text-rose-400 mt-0.5 shrink-0" />
               )}
               <div>
                 <span className={`font-black font-heading text-sm block leading-snug ${
@@ -74,10 +74,10 @@ export default function QuestionContextChecklistWidget({ contextEvaluation, sele
                 }`}>
                   {item.label}
                 </span>
-                <span className={`text-xs font-semibold block mt-1 leading-relaxed ${
+                <span className={`text-xs font-bold block mt-1 leading-relaxed ${
                   item.isPresent
-                    ? 'text-emerald-900/90 dark:text-emerald-300/90'
-                    : 'text-rose-900/90 dark:text-rose-300/90'
+                    ? 'text-emerald-900 dark:text-emerald-300'
+                    : 'text-rose-900 dark:text-rose-300'
                 }`}>
                   {item.tip}
                 </span>
