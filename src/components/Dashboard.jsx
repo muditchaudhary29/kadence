@@ -3,6 +3,7 @@ import {
   Mic, BarChart2, MessageSquare, BookOpen,
   ArrowRight, Sparkles, Target
 } from 'lucide-react';
+import { getSessions, getProfile } from '../utils/storage';
 
 /* ── Interactive 3D Tilt Card Component ────────────────────── */
 function Card3D({ children, className = '', onClick }) {
@@ -96,28 +97,27 @@ const FEATURES = [
   },
 ];
 
-export default function Dashboard({ onNavigate, profile, recentSessions = [] }) {
-  const total = (profile && profile.totalSessions > 0)
-    ? profile.totalSessions
-    : (recentSessions && recentSessions.length > 0 ? recentSessions.length : 3);
+export default function Dashboard({ onNavigate }) {
+  // Always fetch real live sessions & profile directly from storage
+  const sessions = getSessions();
+  const profile  = getProfile() || {};
+
+  const total = sessions.length || profile.totalSessions || 3;
   
-  const avgConf = (profile && profile.avgConfidence > 0)
-    ? profile.avgConfidence 
-    : (recentSessions && recentSessions.length > 0
-        ? Math.round(recentSessions.reduce((a, s) => a + (s.confidenceScore || 0), 0) / recentSessions.length)
-        : 83);
+  const validConfSessions = sessions.filter(s => s.confidenceScore > 0);
+  const avgConf = validConfSessions.length
+    ? Math.round(validConfSessions.reduce((a, s) => a + s.confidenceScore, 0) / validConfSessions.length)
+    : (profile.avgConfidence || 83);
   
-  const avgWpm = (profile && profile.avgWpm > 0)
-    ? profile.avgWpm 
-    : (recentSessions && recentSessions.filter(s => s.wpm).length > 0
-        ? Math.round(recentSessions.filter(s => s.wpm).reduce((a, s) => a + s.wpm, 0) / recentSessions.filter(s => s.wpm).length)
-        : 137);
+  const validWpmSessions = sessions.filter(s => s.wpm > 0);
+  const avgWpm = validWpmSessions.length
+    ? Math.round(validWpmSessions.reduce((a, s) => a + s.wpm, 0) / validWpmSessions.length)
+    : (profile.avgWpm || 137);
   
-  const avgFill = (profile && profile.avgFiller !== undefined && profile.avgFiller !== null)
-    ? profile.avgFiller 
-    : (recentSessions && recentSessions.length > 0
-        ? parseFloat((recentSessions.reduce((a, s) => a + (s.fillerRate || 0), 0) / recentSessions.length).toFixed(1))
-        : 2.0);
+  const validFillerSessions = sessions.filter(s => s.fillerRate !== undefined && s.fillerRate !== null);
+  const avgFill = validFillerSessions.length
+    ? parseFloat((validFillerSessions.reduce((a, s) => a + s.fillerRate, 0) / validFillerSessions.length).toFixed(1))
+    : (profile.avgFiller ?? 2.0);
 
   return (
     <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-10">
@@ -167,28 +167,28 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
             <span className="hero-badge-text text-xs font-mono font-black uppercase tracking-wider px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
               PRACTICE METRICS
             </span>
-            <Target className="w-6 h-6 stroke-[2.5]" style={{ color: '#0F172A' }} />
+            <Target className="w-6 h-6 stroke-[2.5]" style={{ color: '#000000' }} />
           </div>
 
           <div className="space-y-3">
             <div>
-              <div className="text-4xl font-black font-mono tracking-tight !text-slate-950" style={{ color: '#0F172A' }}>{total}</div>
-              <div className="text-xs font-black uppercase tracking-wider !text-slate-950" style={{ color: '#0F172A' }}>Total Practice Sessions</div>
+              <div className="text-4xl font-black font-mono tracking-tight !text-black" style={{ color: '#000000' }}>{total}</div>
+              <div className="text-xs font-black uppercase tracking-wider !text-black" style={{ color: '#000000' }}>Total Practice Sessions</div>
             </div>
 
             <div className="pt-2.5 border-t-2 border-slate-950/40 flex justify-between items-center text-xs font-black">
-              <span className="!text-slate-950 font-black" style={{ color: '#0F172A' }}>Avg Confidence:</span>
-              <span className="font-mono text-sm font-black !text-slate-950" style={{ color: '#0F172A' }}>{avgConf}%</span>
+              <span className="!text-black font-black" style={{ color: '#000000' }}>Avg Confidence:</span>
+              <span className="font-mono text-sm font-black !text-black" style={{ color: '#000000' }}>{avgConf}%</span>
             </div>
             
             <div className="flex justify-between items-center text-xs font-black">
-              <span className="!text-slate-950 font-black" style={{ color: '#0F172A' }}>Avg Speaking Speed:</span>
-              <span className="font-mono text-sm font-black !text-slate-950" style={{ color: '#0F172A' }}>{avgWpm} WPM</span>
+              <span className="!text-black font-black" style={{ color: '#000000' }}>Avg Speaking Speed:</span>
+              <span className="font-mono text-sm font-black !text-black" style={{ color: '#000000' }}>{avgWpm} WPM</span>
             </div>
 
             <div className="flex justify-between items-center text-xs font-black">
-              <span className="!text-slate-950 font-black" style={{ color: '#0F172A' }}>Filler Hesitation:</span>
-              <span className="font-mono text-sm font-black !text-slate-950" style={{ color: '#0F172A' }}>{avgFill}%</span>
+              <span className="!text-black font-black" style={{ color: '#000000' }}>Filler Hesitation:</span>
+              <span className="font-mono text-sm font-black !text-black" style={{ color: '#000000' }}>{avgFill}%</span>
             </div>
           </div>
         </Card3D>
