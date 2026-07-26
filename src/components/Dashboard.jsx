@@ -105,7 +105,7 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
         </div>
 
         {/* Hero Metric Box */}
-        <div className="w-full md:w-76 brutal-card p-6 bg-amber-400 text-slate-900 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0">
+        <div className="w-full md:w-76 p-6 rounded-2xl bg-amber-400 text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0">
           <div className="flex items-center justify-between mb-4">
             <span className="text-xs font-mono font-extrabold uppercase tracking-wider bg-slate-900 text-white px-2.5 py-1 rounded-md">
               PRACTICE METRICS

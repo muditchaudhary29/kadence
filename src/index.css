@@ -23,11 +23,11 @@
   --text-muted:       #94A3B8;
 
   /* Vivid Neo-Brutalism Color Blocks (Dark Mode) */
-  --pop-violet:       #4338CA;
-  --pop-emerald:      #047857;
-  --pop-yellow:       #B45309;
-  --pop-pink:         #BE123C;
-  --pop-cyan:         #0369A1;
+  --pop-violet:       #312E81;
+  --pop-emerald:      #064E3B;
+  --pop-yellow:       #78350F;
+  --pop-pink:         #881337;
+  --pop-cyan:         #164E63;
 
   --text-on-pop-violet: #E0E7FF;
   --text-on-pop-emerald:#D1FAE5;
@@ -75,11 +75,18 @@
 
 html { scroll-behavior: smooth; }
 
+html.light, body.light, .light {
+  background-color: #FFFFFF !important;
+  color: #0F172A !important;
+}
+
+html.dark, body.dark, .dark {
+  background-color: #0D0D12 !important;
+  color: #FFFFFF !important;
+}
+
 body {
   font-family: 'Inter', system-ui, sans-serif;
-  background-color: var(--bg-main);
-  color: var(--text-main);
-  transition: background-color 0.2s ease, color 0.2s ease;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
@@ -110,10 +117,51 @@ h1, h2, h3, h4, h5, .font-heading {
   border-bottom: 3.5px solid var(--border-brutal);
 }
 
-.neu-inset, .bg-zinc-900, .bg-zinc-950, .bg-zinc-950\/60, .bg-zinc-950\/80, .bg-zinc-950\/90 {
+.neu-inset {
   background-color: var(--bg-inset) !important;
   border: 2.5px solid var(--border-brutal) !important;
   border-radius: 14px;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LIGHT MODE CONTRAST OVERRIDES
+───────────────────────────────────────────────────────────── */
+.light .glass-card, .light .card-3d, .light .brutal-card {
+  background-color: #FFFFFF !important;
+  border-color: #0F172A !important;
+  box-shadow: 5px 5px 0px #0F172A !important;
+}
+
+.light .glass-panel {
+  background-color: #FFFFFF !important;
+  border-bottom-color: #0F172A !important;
+}
+
+.light .neu-inset {
+  background-color: #F8F9FA !important;
+  border-color: #0F172A !important;
+}
+
+.light .text-zinc-100, 
+.light .text-zinc-200, 
+.light .text-zinc-300, 
+.light .text-zinc-400, 
+.light .text-zinc-500,
+.light .text-white:not(.btn-primary *):not(.nav-active *):not(.bg-slate-900 *):not(.bg-indigo-600 *):not(.bg-purple-500 *):not(.bg-rose-500 *):not(.bg-emerald-600 *) {
+  color: #0F172A !important;
+}
+
+/* DARK MODE CONTRAST OVERRIDES */
+.dark .text-zinc-100, 
+.dark .text-zinc-200, 
+.dark .text-white {
+  color: #FFFFFF !important;
+}
+
+.dark .text-zinc-300, 
+.dark .text-zinc-400, 
+.dark .text-zinc-500 {
+  color: #CBD5E1 !important;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -221,30 +269,6 @@ h1, h2, h3, h4, h5, .font-heading {
   background-color: var(--bg-card-alt) !important;
   border-color: var(--border-brutal) !important;
   box-shadow: 3px 3px 0px var(--shadow-color) !important;
-}
-
-/* ─────────────────────────────────────────────────────────────
-   TEXT VISIBILITY OVERRIDES FOR LIGHT & DARK MODE
-───────────────────────────────────────────────────────────── */
-.light .text-zinc-100, 
-.light .text-zinc-200, 
-.light .text-zinc-300, 
-.light .text-zinc-400, 
-.light .text-zinc-500,
-.light .text-white:not(.btn-primary *):not(.nav-active *):not(.brutal-badge-dark *) {
-  color: var(--text-main) !important;
-}
-
-.dark .text-zinc-100, 
-.dark .text-zinc-200, 
-.dark .text-white {
-  color: #FFFFFF !important;
-}
-
-.dark .text-zinc-300, 
-.dark .text-zinc-400, 
-.dark .text-zinc-500 {
-  color: #CBD5E1 !important;
 }
 
 .text-gradient, .text-shimmer {
