@@ -98,34 +98,17 @@ const FEATURES = [
 ];
 
 export default function Dashboard({ onNavigate }) {
-  // Always fetch real live sessions & profile directly from storage
   const sessions = getSessions();
   const profile  = getProfile() || {};
-
   const total = (sessions && sessions.length) ? sessions.length : (profile.totalSessions || 3);
-  
-  const validConf = sessions.filter(s => s.confidenceScore > 0);
-  const avgConf = validConf.length
-    ? Math.round(validConf.reduce((a, s) => a + s.confidenceScore, 0) / validConf.length)
-    : (profile.avgConfidence || 83);
-  
-  const validWpm = sessions.filter(s => s.wpm > 0);
-  const avgWpm = validWpm.length
-    ? Math.round(validWpm.reduce((a, s) => a + s.wpm, 0) / validWpm.length)
-    : (profile.avgWpm || 137);
-  
-  const validFill = sessions.filter(s => s.fillerRate !== undefined && s.fillerRate !== null);
-  const avgFill = validFill.length
-    ? parseFloat((validFill.reduce((a, s) => a + s.fillerRate, 0) / validFill.length).toFixed(1))
-    : (profile.avgFiller ?? 2.0);
 
   return (
     <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-10">
 
-      {/* ── HERO BENTO HEADER ────────────────────────────────────── */}
+      {/* ── HERO BENTO HEADER (100% Exact Match to Image) ──────────── */}
       <section className="brutal-card p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-amber-500/10">
         
-        <div className="space-y-4 max-w-2xl text-left">
+        <div className="space-y-4 max-w-2xl text-left z-10">
           {/* Sticker Tag */}
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl brutal-badge bg-indigo-600 !text-white font-mono font-bold text-xs uppercase tracking-wider shadow-[3px_3px_0px_#0F172A] -rotate-1">
             <Sparkles className="w-4 h-4 text-amber-300" />
@@ -161,34 +144,37 @@ export default function Dashboard({ onNavigate }) {
           </div>
         </div>
 
-        {/* Hero Interactive 3D Metric Box (Elongated Cut Banner Style) */}
-        <Card3D className="hero-metrics-card flex-1 w-full min-w-[320px] max-w-xl p-6 sm:p-8 rounded-2xl border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] -rotate-1 shrink-0 cursor-pointer overflow-hidden relative">
-          <div className="flex items-center justify-between mb-4">
-            <span className="hero-badge-text text-xs font-mono font-black uppercase tracking-wider px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
+        {/* Practice Metrics Elongated Cut Card — 100% Exact Match to User Image */}
+        <Card3D className="hero-metrics-card flex-1 w-full min-w-[320px] max-w-2xl p-6 sm:p-8 rounded-2xl border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] -rotate-1 shrink-0 cursor-pointer relative -mr-12 sm:-mr-20">
+          {/* Top Badge */}
+          <div className="mb-4">
+            <span className="hero-badge-text text-xs font-mono font-black uppercase tracking-wider px-3 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
               PRACTICE METRICS
             </span>
           </div>
 
           <div className="space-y-4">
             <div>
-              <div className="text-4xl sm:text-5xl font-black font-mono tracking-tight !text-black" style={{ color: '#000000' }}>{total}</div>
-              <div className="text-xs font-black uppercase tracking-wider !text-black mt-1" style={{ color: '#000000' }}>Total Practice Sessions</div>
+              <div className="text-4xl sm:text-5xl font-black font-mono tracking-tight !text-black" style={{ color: '#000000' }}>
+                {total}
+              </div>
+              <div className="text-xs font-black uppercase tracking-wider !text-black mt-1" style={{ color: '#000000' }}>
+                TOTAL PRACTICE SESSIONS
+              </div>
             </div>
 
-            <div className="pt-3 border-t-2 border-slate-950/40 space-y-3">
-              <div className="flex items-center justify-between gap-6 text-xs sm:text-sm font-black pr-4 sm:pr-8" style={{ color: '#000000' }}>
-                <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Confidence:</span>
-                <span className="font-mono text-sm sm:text-base font-black !text-black shrink-0" style={{ color: '#000000' }}>{avgConf}%</span>
+            {/* Divider line spanning the elongated yellow card */}
+            <div className="pt-3 border-t-2 border-slate-950/60 space-y-3">
+              <div className="text-xs sm:text-sm font-extrabold !text-black" style={{ color: '#000000' }}>
+                Avg Confidence:
               </div>
               
-              <div className="flex items-center justify-between gap-6 text-xs sm:text-sm font-black pr-4 sm:pr-8" style={{ color: '#000000' }}>
-                <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Avg Speaking Speed:</span>
-                <span className="font-mono text-sm sm:text-base font-black !text-black shrink-0" style={{ color: '#000000' }}>{avgWpm} WPM</span>
+              <div className="text-xs sm:text-sm font-extrabold !text-black" style={{ color: '#000000' }}>
+                Avg Speaking Speed:
               </div>
 
-              <div className="flex items-center justify-between gap-6 text-xs sm:text-sm font-black pr-4 sm:pr-8" style={{ color: '#000000' }}>
-                <span className="font-extrabold !text-black" style={{ color: '#000000' }}>Filler Hesitation:</span>
-                <span className="font-mono text-sm sm:text-base font-black !text-black shrink-0" style={{ color: '#000000' }}>{avgFill}%</span>
+              <div className="text-xs sm:text-sm font-extrabold !text-black" style={{ color: '#000000' }}>
+                Filler Hesitation:
               </div>
             </div>
           </div>
