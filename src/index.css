@@ -39,10 +39,10 @@
 }
 
 .light {
-  --bg-main:          #F4F4F0; /* Clean Crisp Light Off-White Canvas */
+  --bg-main:          #FFFFFF; /* Pure Crisp White Canvas */
   --bg-card:          #FFFFFF;
-  --bg-card-alt:      #FAF8F5;
-  --bg-inset:         #EBE8E0;
+  --bg-card-alt:      #F8F9FA;
+  --bg-inset:         #F1F3F5;
   
   --border-brutal:    #0F172A;
   --border-black:     #0F172A;
