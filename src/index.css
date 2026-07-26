@@ -103,6 +103,7 @@ h1, h2, h3, h4, h5, .font-heading {
    COLOR BLOCK CARDS (Scoped Vibrant Light & Dark Contrast)
 ───────────────────────────────────────────────────────────── */
 .light .brutal-block-violet {
+  --bento-text: #0F172A !important;
   background-color: #C7D2FE !important; /* Vivid Light Indigo */
   color: #0F172A !important;
   border: 3px solid #0F172A !important;
@@ -110,6 +111,7 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .dark .brutal-block-violet {
+  --bento-text: #FFFFFF !important;
   background-color: #312E81 !important;
   color: #EEF2FF !important;
   border: 3px solid #4338CA !important;
@@ -117,6 +119,7 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .light .brutal-block-emerald {
+  --bento-text: #0F172A !important;
   background-color: #A7F3D0 !important; /* Vivid Light Emerald Green */
   color: #0F172A !important;
   border: 3px solid #0F172A !important;
@@ -124,6 +127,7 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .dark .brutal-block-emerald {
+  --bento-text: #FFFFFF !important;
   background-color: #064E3B !important;
   color: #ECFDF5 !important;
   border: 3px solid #047857 !important;
@@ -131,6 +135,7 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .light .brutal-block-amber {
+  --bento-text: #0F172A !important;
   background-color: #FDE68A !important; /* Vivid Light Warm Amber */
   color: #0F172A !important;
   border: 3px solid #0F172A !important;
@@ -138,6 +143,7 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .dark .brutal-block-amber {
+  --bento-text: #FFFFFF !important;
   background-color: #78350F !important;
   color: #FEF08A !important;
   border: 3px solid #B45309 !important;
@@ -145,6 +151,7 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .light .brutal-block-rose {
+  --bento-text: #0F172A !important;
   background-color: #FECDD3 !important; /* Vivid Light Coral Rose */
   color: #0F172A !important;
   border: 3px solid #0F172A !important;
@@ -152,6 +159,7 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .dark .brutal-block-rose {
+  --bento-text: #FFFFFF !important;
   background-color: #881337 !important;
   color: #FFE4E6 !important;
   border: 3px solid #BE123C !important;
@@ -159,36 +167,7 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   LIGHT MODE BENTO CARD TYPOGRAPHY — 100% PITCH BLACK (#0F172A)
-───────────────────────────────────────────────────────────── */
-.light .brutal-block-violet h2,
-.light .brutal-block-violet p,
-.light .brutal-block-violet span:not(.brutal-badge-inner),
-.light .brutal-block-[#C7D2FE] h2,
-.light .brutal-block-[#C7D2FE] p,
-.light .brutal-block-emerald h2,
-.light .brutal-block-emerald p,
-.light .brutal-block-emerald span:not(.brutal-badge-inner),
-.light .brutal-block-amber h2,
-.light .brutal-block-amber p,
-.light .brutal-block-amber span:not(.brutal-badge-inner),
-.light .brutal-block-rose h2,
-.light .brutal-block-rose p,
-.light .brutal-block-rose span:not(.brutal-badge-inner),
-.light .card-3d h2,
-.light .card-3d p {
-  color: #0F172A !important;
-}
-
-/* Ensure text inside dark badges and icon boxes stay white */
-.light .brutal-badge *,
-.light .bento-emblem *,
-.light .bento-badge * {
-  color: #FFFFFF !important;
-}
-
-/* ─────────────────────────────────────────────────────────────
-   LIGHT MODE GENERAL CARDS & FEEDBACK BOXES
+   LIGHT MODE CARDS & FEEDBACK BOXES
 ───────────────────────────────────────────────────────────── */
 .light .glass-card, .light .card-3d, .light .brutal-card {
   border-color: #0F172A;
