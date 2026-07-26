@@ -1,58 +1,58 @@
 import React from 'react';
 import {
   Mic, BarChart2, MessageSquare, BookOpen,
-  ArrowRight, Sparkles, Star, TrendingUp, Zap, Target
+  ArrowRight, Sparkles, Target, Zap, ShieldCheck
 } from 'lucide-react';
 
-/* ── Bento Card Data with Neo-Brutalism Colors ──────────────── */
+/* ── Bento Card Data ────────────────────────────────────────── */
 const FEATURES = [
   {
     id: 'practice',
     Icon: Mic,
     colorClass: 'brutal-block-violet',
-    accentText: 'text-indigo-400',
     title: 'Interview Practice',
     sub: 'LIVE STT & SPEECH ENGINE',
     desc: 'Practice 12 curated questions with real-time WPM pacing, STAR structure breakdown, and vocal hesitation tracking.',
     badge: '12 QUESTIONS',
-    badgeBg: 'bg-indigo-500 text-white',
+    badgeBg: 'bg-indigo-600 text-white',
     cta: 'Start Practicing',
+    rotate: '-rotate-1',
   },
   {
     id: 'progress',
     Icon: BarChart2,
     colorClass: 'brutal-block-emerald',
-    accentText: 'text-emerald-400',
     title: 'My Progress',
     sub: 'ANALYTICS & SCORE TRENDS',
     desc: 'Visualise confidence trends, WPM pacing history, filler rate breakdown, and performance metrics across categories.',
     badge: 'ANALYTICS',
-    badgeBg: 'bg-emerald-500 text-white',
+    badgeBg: 'bg-emerald-600 text-white',
     cta: 'View Progress',
+    rotate: 'rotate-1',
   },
   {
     id: 'feedback',
     Icon: MessageSquare,
     colorClass: 'brutal-block-amber',
-    accentText: 'text-amber-400',
     title: 'Feedback & Reviews',
     sub: 'USER EXPERIENCE & RATING',
     desc: 'Share your feedback, rate your practice runs, and view reviews submitted by fellow interview practitioners.',
     badge: 'COMMUNITY',
-    badgeBg: 'bg-amber-500 text-black',
+    badgeBg: 'bg-amber-400 text-slate-900',
     cta: 'Submit Review',
+    rotate: '-rotate-2',
   },
   {
     id: 'notes',
     Icon: BookOpen,
     colorClass: 'brutal-block-rose',
-    accentText: 'text-rose-400',
     title: 'Study from Notes',
     sub: 'PDF & FILE QUESTION GENERATOR',
     desc: 'Upload study notes, PDFs, or text files — Kadence AI automatically extracts key topics and builds 8 custom questions.',
     badge: 'PDF / TXT / IMG',
     badgeBg: 'bg-rose-500 text-white',
     cta: 'Upload Notes',
+    rotate: 'rotate-2',
   },
 ];
 
@@ -66,67 +66,73 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
     <div className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 py-8 space-y-10">
 
       {/* ── HERO BENTO HEADER ────────────────────────────────────── */}
-      <section className="brutal-card p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-br from-indigo-500/10 via-purple-500/5 to-amber-500/10">
+      <section className="brutal-card p-8 md:p-12 relative overflow-hidden flex flex-col md:flex-row items-center justify-between gap-8 bg-gradient-to-br from-indigo-500/10 via-purple-500/10 to-amber-500/10">
         
         <div className="space-y-4 max-w-2xl text-left">
           {/* Sticker Tag */}
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg brutal-badge bg-indigo-500 text-white font-mono font-bold text-xs uppercase tracking-wider shadow-[3px_3px_0px_#000] -rotate-1">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-xl brutal-badge bg-indigo-600 text-white font-mono font-bold text-xs uppercase tracking-wider shadow-[3px_3px_0px_#0F172A] -rotate-1">
+            <Sparkles className="w-4 h-4 text-amber-300" />
             AI SPEECH COACHING PLATFORM
           </div>
 
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black font-heading tracking-tight leading-tight">
             Master Your Next <br className="hidden sm:inline" />
-            <span className="inline-block px-3 py-1 bg-amber-400 text-black border-2 border-slate-900 shadow-[4px_4px_0px_#000] rotate-1 mt-1">
-              Interview Game
+            <span className="inline-block px-4 py-1.5 bg-amber-400 text-slate-900 border-3 border-slate-900 shadow-[4px_4px_0px_#0F172A] rotate-1 mt-1">
+              Interview Game 🔥
             </span>
           </h1>
 
-          <p className="text-sm sm:text-base leading-relaxed max-w-xl text-zinc-300">
-            Real-time speech transcription, STAR method scoring, WPM pacing gauge, filler detection, and custom notes question generation.
+          <p className="text-sm sm:text-base leading-relaxed max-w-xl font-medium" style={{ color: 'var(--text-sub)' }}>
+            Real-time speech transcription, STAR method scoring, WPM pacing gauge, filler word detection, and custom notes question generator.
           </p>
 
-          <div className="flex items-center gap-3 pt-2 flex-wrap">
+          <div className="flex items-center gap-4 pt-2 flex-wrap">
             <button
               onClick={() => onNavigate('practice')}
-              className="btn-primary text-sm shadow-[4px_4px_0px_#000]"
+              className="btn-primary text-sm shadow-[4px_4px_0px_#0F172A]"
             >
               <Mic className="w-4 h-4" />
               Start Practicing Now
             </button>
             <button
               onClick={() => onNavigate('notes')}
-              className="px-5 py-2.5 rounded-xl font-heading font-bold text-sm bg-zinc-900 border-2 border-slate-900 shadow-[3px_3px_0px_#000] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
+              className="px-5 py-2.5 rounded-xl font-heading font-bold text-sm bg-zinc-900 text-white border-3 border-slate-900 shadow-[4px_4px_0px_#0F172A] hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all"
             >
-              <BookOpen className="w-4 h-4 inline mr-2" />
-              Study Notes
+              <BookOpen className="w-4 h-4 inline mr-2 text-amber-400" />
+              Upload Study Notes
             </button>
           </div>
         </div>
 
         {/* Hero Metric Box */}
-        <div className="w-full md:w-72 brutal-card p-6 bg-amber-400 text-slate-900 border-3 border-slate-900 shadow-[6px_6px_0px_#000] rotate-2 shrink-0">
+        <div className="w-full md:w-76 brutal-card p-6 bg-amber-400 text-slate-900 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs font-mono font-bold uppercase tracking-wider bg-slate-900 text-white px-2 py-0.5 rounded">
-              PRACTICE STATS
+            <span className="text-xs font-mono font-extrabold uppercase tracking-wider bg-slate-900 text-white px-2.5 py-1 rounded-md">
+              PRACTICE METRICS
             </span>
-            <Target className="w-5 h-5 text-slate-900" />
+            <Target className="w-6 h-6 text-slate-900" />
           </div>
 
           <div className="space-y-3">
             <div>
-              <div className="text-4xl font-black font-mono tracking-tight">{total}</div>
-              <div className="text-xs font-bold uppercase">Sessions Completed</div>
+              <div className="text-4xl font-black font-mono tracking-tight text-slate-900">{total}</div>
+              <div className="text-xs font-bold uppercase text-slate-900">Total Practice Sessions</div>
             </div>
 
-            <div className="pt-2 border-t-2 border-slate-900 flex justify-between text-xs font-bold">
+            <div className="pt-2 border-t-2 border-slate-900 flex justify-between text-xs font-bold text-slate-900">
               <span>Avg Confidence:</span>
-              <span className="font-mono">{avgConf}%</span>
+              <span className="font-mono text-sm">{avgConf}%</span>
             </div>
             {avgWpm && (
-              <div className="flex justify-between text-xs font-bold">
-                <span>Avg Speaking Pace:</span>
-                <span className="font-mono">{avgWpm} WPM</span>
+              <div className="flex justify-between text-xs font-bold text-slate-900">
+                <span>Avg Speaking Speed:</span>
+                <span className="font-mono text-sm">{avgWpm} WPM</span>
+              </div>
+            )}
+            {avgFill !== null && (
+              <div className="flex justify-between text-xs font-bold text-slate-900">
+                <span>Filler Hesitation:</span>
+                <span className="font-mono text-sm">{avgFill}%</span>
               </div>
             )}
           </div>
@@ -135,37 +141,36 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
 
       {/* ── BENTO CARDS GRID ───────────────────────────────────── */}
       <section className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {FEATURES.map((f, idx) => {
+        {FEATURES.map((f) => {
           const Icon = f.Icon;
-          const rotateClass = idx % 2 === 0 ? '-rotate-1' : 'rotate-1';
           return (
             <div
               key={f.id}
               onClick={() => onNavigate(f.id)}
-              className={`brutal-card p-7 cursor-pointer group ${f.colorClass} relative overflow-hidden transition-all duration-150`}
+              className={`brutal-card p-7 cursor-pointer group ${f.colorClass} relative overflow-hidden transition-all duration-150 space-y-4`}
             >
               {/* Badge Top */}
-              <div className="flex items-start justify-between mb-5">
-                <div className="w-12 h-12 rounded-xl bg-slate-900 text-white border-2 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#000]">
+              <div className="flex items-start justify-between">
+                <div className="w-13 h-13 p-3 rounded-2xl bg-slate-900 text-white border-2.5 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#0F172A]">
                   <Icon className="w-6 h-6" />
                 </div>
 
-                <span className={`text-[10px] font-bold font-mono px-3 py-1 rounded-lg border-2 border-slate-900 shadow-[2px_2px_0px_#000] uppercase tracking-wider ${f.badgeBg} ${rotateClass}`}>
+                <span className={`text-[11px] font-bold font-mono px-3 py-1 rounded-xl border-2.5 border-slate-900 shadow-[3px_3px_0px_#0F172A] uppercase tracking-wider ${f.badgeBg} ${f.rotate}`}>
                   {f.badge}
                 </span>
               </div>
 
               {/* Card Body */}
-              <div className="space-y-2 mb-6">
-                <span className="text-[11px] font-mono font-bold tracking-widest uppercase opacity-80 block">
+              <div className="space-y-1.5">
+                <span className="text-[11px] font-mono font-extrabold tracking-widest uppercase opacity-75 block">
                   {f.sub}
                 </span>
                 <h2 className="text-2xl font-bold font-heading">{f.title}</h2>
-                <p className="text-xs sm:text-sm leading-relaxed opacity-90">{f.desc}</p>
+                <p className="text-xs sm:text-sm leading-relaxed font-medium">{f.desc}</p>
               </div>
 
               {/* Footer CTA */}
-              <div className="flex items-center gap-2 text-xs font-extrabold font-heading group-hover:gap-3 transition-all">
+              <div className="flex items-center gap-2 text-xs font-extrabold font-heading group-hover:gap-3 transition-all pt-2">
                 <span>{f.cta}</span>
                 <ArrowRight className="w-4 h-4" />
               </div>

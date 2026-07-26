@@ -7,30 +7,19 @@ export default function WpmGauge({ wpm, status, statusColor }) {
   const clampedWpm = hasWpm ? Math.min(Math.max(wpm, minWpm), maxWpm) : minWpm;
   const percentage = (clampedWpm - minWpm) / (maxWpm - minWpm);
 
-  const statusStyle = 
-    status === 'Optimal'       ? { bg: 'rgba(16,185,129,0.12)', color: '#34D399', border: 'rgba(16,185,129,0.35)' }
-    : status === 'Too Fast'    ? { bg: 'rgba(244,63,94,0.12)',  color: '#FB7185', border: 'rgba(244,63,94,0.35)' }
-    : status === 'Slightly Fast'?{ bg: 'rgba(234,179,8,0.12)',  color: '#FDE047', border: 'rgba(234,179,8,0.35)' }
-    : status === 'N/A'         ? { bg: 'rgba(255,255,255,0.05)',color: '#71717A', border: 'rgba(255,255,255,0.1)' }
-    :                            { bg: 'rgba(245,158,11,0.12)', color: '#FCD34D', border: 'rgba(245,158,11,0.35)' };
-
   return (
-    <div className="glass-card rounded-2xl p-5 flex flex-col justify-between h-full"
-         style={{ border: '1px solid rgba(255,255,255,0.07)' }}>
+    <div className="brutal-card p-6 flex flex-col justify-between h-full space-y-4">
       <div className="flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <div className="p-2 rounded-xl" style={{ background: 'rgba(124,58,237,0.15)', border: '1px solid rgba(124,58,237,0.25)' }}>
-            <Gauge className="w-5 h-5" style={{ color: '#A78BFA' }} />
+        <div className="flex items-center gap-3">
+          <div className="w-10 h-10 rounded-xl bg-cyan-500 text-white border-2 border-slate-900 flex items-center justify-center shadow-[2px_2px_0px_#000]">
+            <Gauge className="w-5 h-5" />
           </div>
           <div>
-            <h4 className="text-sm font-bold text-zinc-200">WPM Gauge</h4>
-            <p className="text-xs" style={{ color: 'var(--text-muted)' }}>Words Per Minute</p>
+            <h4 className="text-base font-bold font-heading">WPM Pacing Gauge</h4>
+            <p className="text-xs text-zinc-400">Words Per Minute</p>
           </div>
         </div>
-        <span
-          className="text-xs font-bold px-2.5 py-1 rounded-full"
-          style={{ background: statusStyle.bg, color: statusStyle.color, border: `1px solid ${statusStyle.border}` }}
-        >
+        <span className="brutal-badge bg-cyan-500/20 text-cyan-300 border-cyan-500/40 text-xs font-bold">
           {status || 'N/A'}
         </span>
       </div>
@@ -40,16 +29,16 @@ export default function WpmGauge({ wpm, status, statusColor }) {
         <svg className="w-48 h-24 overflow-visible" viewBox="0 0 200 100">
           {/* Track */}
           <path d="M 20 100 A 80 80 0 0 1 180 100" fill="none"
-                stroke="rgba(255,255,255,0.05)" strokeWidth="16" strokeLinecap="round" />
+                stroke="var(--border-brutal)" strokeWidth="18" strokeLinecap="round" />
           {/* Sweet-spot 120–160 WPM */}
           <path d="M 101 21 A 80 80 0 0 1 143 35" fill="none"
-                stroke="rgba(16,185,129,0.3)" strokeWidth="16" />
+                stroke="#10B981" strokeWidth="18" opacity="0.4" />
           {/* Value arc */}
           <path
             d="M 20 100 A 80 80 0 0 1 180 100"
             fill="none"
-            stroke={hasWpm ? 'url(#wpmGrad)' : 'rgba(255,255,255,0.06)'}
-            strokeWidth="16"
+            stroke={hasWpm ? 'url(#wpmGrad)' : 'var(--border-brutal)'}
+            strokeWidth="18"
             strokeLinecap="round"
             strokeDasharray="251.2"
             strokeDashoffset={hasWpm ? 251.2 * (1 - percentage) : 251.2}
@@ -57,7 +46,7 @@ export default function WpmGauge({ wpm, status, statusColor }) {
           />
           <defs>
             <linearGradient id="wpmGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-              <stop offset="0%"   stopColor="#7C3AED" />
+              <stop offset="0%"   stopColor="#6366F1" />
               <stop offset="45%"  stopColor="#10B981" />
               <stop offset="100%" stopColor="#F43F5E" />
             </linearGradient>
@@ -66,21 +55,21 @@ export default function WpmGauge({ wpm, status, statusColor }) {
 
         <div className="absolute bottom-0 text-center translate-y-1">
           {hasWpm ? (
-            <>
-              <span className="text-3xl font-extrabold font-mono text-white tracking-tight">{wpm}</span>
-              <span className="text-xs ml-1" style={{ color: 'var(--text-muted)' }}>WPM</span>
-            </>
+            <div className="font-mono">
+              <span className="text-3xl font-extrabold font-heading tracking-tight">{wpm}</span>
+              <span className="text-xs ml-1 font-bold text-zinc-400">WPM</span>
+            </div>
           ) : (
-            <span className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>Record first</span>
+            <span className="text-xs font-bold text-zinc-400">Record to calculate</span>
           )}
         </div>
       </div>
 
-      <div className="flex items-center justify-between pt-3 text-xs" style={{ borderTop: '1px solid rgba(255,255,255,0.06)', color: 'var(--text-muted)' }}>
-        <span className="flex items-center gap-1.5 font-medium" style={{ color: '#34D399' }}>
-          <CheckCircle2 className="w-3.5 h-3.5" /> 120–160 WPM Optimal
+      <div className="flex items-center justify-between pt-3 border-t-2 border-slate-700 text-xs font-medium">
+        <span className="flex items-center gap-1.5 font-bold text-emerald-400">
+          <CheckCircle2 className="w-4 h-4" /> 120–160 WPM Optimal
         </span>
-        <span className="font-mono" style={{ color: 'var(--text-muted)' }}>50–220 scale</span>
+        <span className="font-mono text-zinc-400">50–220 scale</span>
       </div>
     </div>
   );

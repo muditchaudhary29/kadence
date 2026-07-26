@@ -1,79 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────────
-   ULTRA NEO-BRUTALISM DESIGN SYSTEM — DARK & LIGHT MODE
+   FUNKY NEO-BRUTALISM DESIGN SYSTEM — DARK & LIGHT MODE
 ───────────────────────────────────────────────────────────── */
 
 :root, .dark {
-  --bg-main:          #0F0F14;
-  --bg-card:          #161620;
-  --bg-card-alt:      #1D1D2B;
-  --bg-inset:         #0A0A0E;
+  --bg-main:          #0D0D12;
+  --bg-card:          #161622;
+  --bg-card-alt:      #1F1F30;
+  --bg-inset:         #0A0A0F;
   
-  --border-brutal:    #3B4252;
-  --shadow-brutal:    5px 5px 0px #000000;
-  --shadow-brutal-lg: 8px 8px 0px #000000;
-  --shadow-hover:     2px 2px 0px #000000;
+  --border-brutal:    #334155;
+  --border-black:     #000000;
+  --shadow-color:     #000000;
 
-  --text-main:        #F8FAFC;
+  --text-main:        #FFFFFF;
   --text-sub:         #CBD5E1;
   --text-muted:       #94A3B8;
 
-  /* Vivid Neo-Brutalism Color Blocks (Dark) */
-  --block-violet:     #312E81;
-  --block-emerald:    #064E3B;
-  --block-amber:      #78350F;
-  --block-rose:       #881337;
-  --block-cyan:       #164E63;
+  /* Funky Vibrant Pop Colors (Dark Mode) */
+  --pop-violet:       #4338CA;
+  --pop-emerald:      #047857;
+  --pop-yellow:       #B45309;
+  --pop-pink:         #BE123C;
+  --pop-cyan:         #0369A1;
 
-  --accent-violet:    #A5B4FC;
-  --accent-emerald:   #6EE7B7;
-  --accent-amber:     #FDE047;
-  --accent-rose:      #FDA4AF;
-  --accent-cyan:      #7DD3FC;
+  --text-on-pop-violet: #E0E7FF;
+  --text-on-pop-emerald:#D1FAE5;
+  --text-on-pop-yellow: #FEF08A;
+  --text-on-pop-pink:   #FFE4E6;
+  --text-on-pop-cyan:   #E0F2FE;
 
-  --ticker-bg:        #1E1B4B;
-  --ticker-text:      #C7D2FE;
+  --ticker-bg:        #FACC15;
+  --ticker-text:      #0F172A;
+  --badge-bg:         #27273A;
 }
 
 .light {
-  --bg-main:          #FFFDF5;
+  --bg-main:          #FEFDF7; /* Funky Soft Butter Cream */
   --bg-card:          #FFFFFF;
-  --bg-card-alt:      #FAF6ED;
-  --bg-inset:         #F3EDE0;
+  --bg-card-alt:      #FFFBEB;
+  --bg-inset:         #F5EFE4;
   
   --border-brutal:    #0F172A;
-  --shadow-brutal:    5px 5px 0px #0F172A;
-  --shadow-brutal-lg: 8px 8px 0px #0F172A;
-  --shadow-hover:     2px 2px 0px #0F172A;
+  --border-black:     #0F172A;
+  --shadow-color:     #0F172A;
 
   --text-main:        #0F172A;
-  --text-sub:         #334155;
-  --text-muted:       #64748B;
+  --text-sub:         #1E293B;
+  --text-muted:       #475569;
 
-  /* Vivid Neo-Brutalism Color Blocks (Light) */
-  --block-violet:     #EEF2FF;
-  --block-emerald:    #ECFDF5;
-  --block-amber:      #FEFCE8;
-  --block-rose:       #FFF1F2;
-  --block-cyan:       #F0F9FF;
+  /* Funky Vibrant Pop Colors (Light Mode) */
+  --pop-violet:       #E0E7FF;
+  --pop-emerald:      #D1FAE5;
+  --pop-yellow:       #FEF08A;
+  --pop-pink:         #FFE4E6;
+  --pop-cyan:         #E0F2FE;
 
-  --accent-violet:    #4F46E5;
-  --accent-emerald:   #059669;
-  --accent-amber:     #D97706;
-  --accent-rose:      #E11D48;
-  --accent-cyan:      #0284C7;
+  --text-on-pop-violet: #312E81;
+  --text-on-pop-emerald:#064E3B;
+  --text-on-pop-yellow: #713F12;
+  --text-on-pop-pink:   #881337;
+  --text-on-pop-cyan:   #0C4A6E;
 
-  --ticker-bg:        #FEF08A;
-  --ticker-text:      #854D0E;
+  --ticker-bg:        #A3E635;
+  --ticker-text:      #0F172A;
+  --badge-bg:         #E2E8F0;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   GLOBAL RESET
+   GLOBAL RESET & TYPOGRAPHY
 ───────────────────────────────────────────────────────────── */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -83,74 +83,74 @@ body {
   font-family: 'Inter', system-ui, sans-serif;
   background-color: var(--bg-main);
   color: var(--text-main);
-  transition: background-color 0.25s ease, color 0.25s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, h4, .font-heading {
+h1, h2, h3, h4, h5, .font-heading {
   font-family: 'Space Grotesk', system-ui, sans-serif;
   letter-spacing: -0.03em;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   NEO-BRUTALIST CARDS & PANELS
+   NEO-BRUTALIST CARDS & CONTAINERS
 ───────────────────────────────────────────────────────────── */
 .glass-card, .card-3d, .brutal-card {
   background-color: var(--bg-card);
   border: 3px solid var(--border-brutal);
-  border-radius: 16px;
-  box-shadow: var(--shadow-brutal);
+  border-radius: 18px;
+  box-shadow: 5px 5px 0px var(--shadow-color);
   transition: transform 0.15s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.15s ease, background-color 0.2s ease;
 }
 
 .glass-card:hover, .card-3d:hover, .brutal-card:hover {
   transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-brutal-lg);
+  box-shadow: 8px 8px 0px var(--shadow-color);
 }
 
 .glass-panel {
   background-color: var(--bg-card);
-  border-bottom: 3px solid var(--border-brutal);
+  border-bottom: 3.5px solid var(--border-brutal);
 }
 
-.neu-inset, .bg-zinc-900, .bg-zinc-950\/60, .bg-zinc-950\/80, .bg-zinc-950\/90 {
+.neu-inset, .bg-zinc-900, .bg-zinc-950, .bg-zinc-950\/60, .bg-zinc-950\/80, .bg-zinc-950\/90 {
   background-color: var(--bg-inset) !important;
   border: 2.5px solid var(--border-brutal) !important;
-  border-radius: 12px;
+  border-radius: 14px;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   NEO-BRUTALIST COLOR BLOCKS
+   FUNKY COLOR BLOCK CARDS
 ───────────────────────────────────────────────────────────── */
 .brutal-block-violet {
-  background-color: var(--block-violet);
-  border: 2.5px solid var(--border-brutal);
-  color: var(--text-main);
+  background-color: var(--pop-violet) !important;
+  color: var(--text-on-pop-violet) !important;
+  border: 3px solid var(--border-brutal) !important;
 }
 
 .brutal-block-emerald {
-  background-color: var(--block-emerald);
-  border: 2.5px solid var(--border-brutal);
-  color: var(--text-main);
+  background-color: var(--pop-emerald) !important;
+  color: var(--text-on-pop-emerald) !important;
+  border: 3px solid var(--border-brutal) !important;
 }
 
 .brutal-block-amber {
-  background-color: var(--block-amber);
-  border: 2.5px solid var(--border-brutal);
-  color: var(--text-main);
+  background-color: var(--pop-yellow) !important;
+  color: var(--text-on-pop-yellow) !important;
+  border: 3px solid var(--border-brutal) !important;
 }
 
 .brutal-block-rose {
-  background-color: var(--block-rose);
-  border: 2.5px solid var(--border-brutal);
-  color: var(--text-main);
+  background-color: var(--pop-pink) !important;
+  color: var(--text-on-pop-pink) !important;
+  border: 3px solid var(--border-brutal) !important;
 }
 
 .brutal-block-cyan {
-  background-color: var(--block-cyan);
-  border: 2.5px solid var(--border-brutal);
-  color: var(--text-main);
+  background-color: var(--pop-cyan) !important;
+  color: var(--text-on-pop-cyan) !important;
+  border: 3px solid var(--border-brutal) !important;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -161,33 +161,33 @@ h1, h2, h3, h4, .font-heading {
   align-items: center;
   gap: 8px;
   padding: 12px 24px;
-  border-radius: 12px;
+  border-radius: 14px;
   font-family: 'Space Grotesk', sans-serif;
   font-size: 0.9375rem;
-  font-weight: 700;
+  font-weight: 800;
   color: #FFFFFF !important;
-  background-color: var(--accent-violet) !important;
-  border: 3px solid var(--border-brutal) !important;
-  box-shadow: var(--shadow-brutal) !important;
+  background-color: #6366F1 !important;
+  border: 3px solid var(--border-black) !important;
+  box-shadow: 4px 4px 0px var(--shadow-color) !important;
   transition: all 0.12s ease;
   cursor: pointer;
 }
 
 .btn-primary:hover {
   transform: translate(-3px, -3px);
-  box-shadow: var(--shadow-brutal-lg) !important;
+  box-shadow: 7px 7px 0px var(--shadow-color) !important;
 }
 
 .btn-primary:active {
   transform: translate(2px, 2px);
-  box-shadow: var(--shadow-hover) !important;
+  box-shadow: 2px 2px 0px var(--shadow-color) !important;
 }
 
 /* Theme Toggle Button */
 .theme-toggle-btn {
   background-color: var(--bg-card);
   border: 3px solid var(--border-brutal);
-  box-shadow: var(--shadow-brutal);
+  box-shadow: 3px 3px 0px var(--shadow-color);
   color: var(--text-main);
   border-radius: 12px;
   transition: all 0.12s ease;
@@ -195,22 +195,22 @@ h1, h2, h3, h4, .font-heading {
 
 .theme-toggle-btn:hover {
   transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-brutal-lg);
+  box-shadow: 5px 5px 0px var(--shadow-color);
 }
 
 .theme-toggle-btn:active {
   transform: translate(2px, 2px);
-  box-shadow: var(--shadow-hover);
+  box-shadow: 1px 1px 0px var(--shadow-color);
 }
 
 /* ─────────────────────────────────────────────────────────────
    NAVIGATION PILLS
 ───────────────────────────────────────────────────────────── */
 .nav-active {
-  background-color: var(--accent-violet) !important;
+  background-color: #6366F1 !important;
   color: #FFFFFF !important;
-  border: 2.5px solid var(--border-brutal) !important;
-  box-shadow: 4px 4px 0px var(--border-brutal) !important;
+  border: 3px solid var(--border-black) !important;
+  box-shadow: 4px 4px 0px var(--shadow-color) !important;
   font-weight: 800 !important;
 }
 
@@ -222,47 +222,33 @@ h1, h2, h3, h4, .font-heading {
 
 .nav-inactive:hover {
   color: var(--text-main) !important;
-  background-color: var(--bg-card-hover) !important;
+  background-color: var(--bg-card-alt) !important;
   border-color: var(--border-brutal) !important;
-  box-shadow: 2px 2px 0px var(--border-brutal) !important;
+  box-shadow: 3px 3px 0px var(--shadow-color) !important;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   NEO-BRUTALIST TICKER BANNER
+   TEXT VISIBILITY OVERRIDES FOR LIGHT & DARK MODE
 ───────────────────────────────────────────────────────────── */
-.ticker-banner {
-  background-color: var(--ticker-bg);
-  color: var(--ticker-text);
-  border-bottom: 3px solid var(--border-brutal);
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  padding: 6px 0;
-  overflow: hidden;
-  white-space: nowrap;
-}
-
-.ticker-track {
-  display: inline-flex;
-  gap: 32px;
-  animation: ticker 30s linear infinite;
-}
-
-@keyframes ticker {
-  from { transform: translateX(0); }
-  to   { transform: translateX(-50%); }
-}
-
-/* ─────────────────────────────────────────────────────────────
-   TEXT & BADGES
-───────────────────────────────────────────────────────────── */
-.text-zinc-100, .text-zinc-200, .text-white {
+.light .text-zinc-100, 
+.light .text-zinc-200, 
+.light .text-zinc-300, 
+.light .text-zinc-400, 
+.light .text-zinc-500,
+.light .text-white:not(.btn-primary *):not(.nav-active *):not(.brutal-badge-dark *) {
   color: var(--text-main) !important;
 }
 
-.text-zinc-300, .text-zinc-400, .text-zinc-500 {
-  color: var(--text-sub) !important;
+.dark .text-zinc-100, 
+.dark .text-zinc-200, 
+.dark .text-white {
+  color: #FFFFFF !important;
+}
+
+.dark .text-zinc-300, 
+.dark .text-zinc-400, 
+.dark .text-zinc-500 {
+  color: #CBD5E1 !important;
 }
 
 .text-gradient, .text-shimmer {
@@ -271,33 +257,60 @@ h1, h2, h3, h4, .font-heading {
   color: var(--text-main) !important;
 }
 
+/* ─────────────────────────────────────────────────────────────
+   NEO-BRUTALIST TICKER BANNER
+───────────────────────────────────────────────────────────── */
+.ticker-banner {
+  background-color: var(--ticker-bg);
+  color: var(--ticker-text);
+  border-bottom: 3.5px solid var(--border-brutal);
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.8125rem;
+  font-weight: 800;
+  padding: 8px 0;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  display: inline-flex;
+  gap: 32px;
+  animation: ticker 25s linear infinite;
+}
+
+@keyframes ticker {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+/* Funky Badge Tags */
 .brutal-badge {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  padding: 4px 10px;
-  border-radius: 8px;
-  border: 2px solid var(--border-brutal);
+  gap: 6px;
+  padding: 5px 12px;
+  border-radius: 10px;
+  border: 2.5px solid var(--border-brutal);
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.75rem;
   font-weight: 800;
-  box-shadow: 2px 2px 0px var(--border-brutal);
+  box-shadow: 3px 3px 0px var(--shadow-color);
 }
 
-/* Background Grid Lines */
+/* Background Pop Pattern */
 .dot-grid {
   background-image: 
-    linear-gradient(to right, var(--border-brutal) 1.5px, transparent 1.5px),
-    linear-gradient(to bottom, var(--border-brutal) 1.5px, transparent 1.5px);
+    linear-gradient(to right, var(--border-brutal) 2px, transparent 2px),
+    linear-gradient(to bottom, var(--border-brutal) 2px, transparent 2px);
   background-size: 32px 32px;
-  opacity: 0.15;
+  opacity: 0.18;
 }
 
 /* Custom Scrollbar */
-::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar { width: 9px; height: 9px; }
 ::-webkit-scrollbar-track { background: var(--bg-main); }
 ::-webkit-scrollbar-thumb {
-  background: var(--accent-violet);
-  border: 2px solid var(--border-brutal);
-  border-radius: 4px;
+  background: #6366F1;
+  border: 2.5px solid var(--border-brutal);
+  border-radius: 6px;
 }
