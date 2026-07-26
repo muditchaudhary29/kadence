@@ -73,15 +73,15 @@ export default function FeedbackPage() {
         </div>
 
         {/* Rating summary badge */}
-        <div className="brutal-card px-5 py-3 rounded-2xl bg-amber-400 text-slate-900 flex items-center gap-3 shrink-0">
-          <div className="flex items-center text-slate-900">
+        <div className="brutal-card px-5 py-3 rounded-2xl !bg-[#FDE68A] dark:!bg-[#78350F] !border-3 !border-slate-900 flex items-center gap-3 shrink-0 shadow-[4px_4px_0px_#0F172A]">
+          <div className="flex items-center gap-0.5">
             {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-4 h-4 fill-slate-900 stroke-slate-900" />
+              <Star key={i} className="w-4.5 h-4.5 !fill-[#F59E0B] !text-[#F59E0B] stroke-[2.5]" />
             ))}
           </div>
           <div>
-            <div className="text-base font-black font-mono leading-none">{avgRating} / 5.0</div>
-            <div className="text-[10px] font-extrabold uppercase mt-0.5 opacity-90">{feedbacks.length} User Review{feedbacks.length !== 1 ? 's' : ''}</div>
+            <div className="text-base font-black font-mono leading-none !text-slate-950 dark:!text-amber-200">{avgRating} / 5.0</div>
+            <div className="text-[10px] font-black uppercase mt-1 tracking-wider !text-slate-900 dark:!text-amber-300">{feedbacks.length} User Review{feedbacks.length !== 1 ? 's' : ''}</div>
           </div>
         </div>
       </div>
