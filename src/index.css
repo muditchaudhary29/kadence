@@ -100,13 +100,16 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   COLOR BLOCK CARDS (Scoped Text & Background Contrast)
+   COLOR BLOCK CARDS (Scoped Vibrant Light & Dark Contrast)
 ───────────────────────────────────────────────────────────── */
 .light .brutal-block-violet {
-  background-color: #EEF2FF !important;
+  background-color: #C7D2FE !important; /* Vivid Light Indigo */
   color: #1E1B4B !important;
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
+}
+.light .brutal-block-violet * {
+  color: #1E1B4B;
 }
 
 .dark .brutal-block-violet {
@@ -117,10 +120,13 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .light .brutal-block-emerald {
-  background-color: #ECFDF5 !important;
+  background-color: #A7F3D0 !important; /* Vivid Light Emerald Green */
   color: #064E3B !important;
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
+}
+.light .brutal-block-emerald * {
+  color: #064E3B;
 }
 
 .dark .brutal-block-emerald {
@@ -131,10 +137,13 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .light .brutal-block-amber {
-  background-color: #FEFCE8 !important;
+  background-color: #FDE68A !important; /* Vivid Light Warm Amber */
   color: #713F12 !important;
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
+}
+.light .brutal-block-amber * {
+  color: #713F12;
 }
 
 .dark .brutal-block-amber {
@@ -145,10 +154,13 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 .light .brutal-block-rose {
-  background-color: #FFF1F2 !important;
+  background-color: #FECDD3 !important; /* Vivid Light Coral Rose */
   color: #881337 !important;
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
+}
+.light .brutal-block-rose * {
+  color: #881337;
 }
 
 .dark .brutal-block-rose {
@@ -159,13 +171,11 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   LIGHT MODE CONTRAST FIXES FOR CARDS & FEEDBACK BOXES
+   LIGHT MODE CARDS & FEEDBACK BOXES
 ───────────────────────────────────────────────────────────── */
 .light .glass-card, .light .card-3d, .light .brutal-card {
-  background-color: #FFFFFF !important;
-  border-color: #0F172A !important;
-  box-shadow: 5px 5px 0px #0F172A !important;
-  color: #0F172A !important;
+  border-color: #0F172A;
+  box-shadow: 5px 5px 0px #0F172A;
 }
 
 .light .text-zinc-100,
@@ -177,7 +187,7 @@ h1, h2, h3, h4, h5, .font-heading {
 .light .text-slate-300,
 .light .text-slate-400,
 .light .text-slate-500 {
-  color: #0F172A !important;
+  color: #0F172A;
 }
 
 .light .neu-inset {
@@ -187,56 +197,6 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 .light .neu-inset * {
   color: #0F172A !important;
-}
-
-/* Green Strengths Feedback Boxes in Light Mode */
-.light .bg-emerald-500\/5,
-.light .bg-emerald-500\/10,
-.light .bg-emerald-500\/15,
-.light .bg-emerald-500\/20 {
-  background-color: #D1FAE5 !important;
-  border: 2px solid #059669 !important;
-  color: #064E3B !important;
-}
-.light .bg-emerald-500\/5 *,
-.light .bg-emerald-500\/10 *,
-.light .bg-emerald-500\/15 *,
-.light .bg-emerald-500\/20 * {
-  color: #064E3B !important;
-  font-weight: 700 !important;
-}
-
-/* Amber Areas for Improvement Boxes in Light Mode */
-.light .bg-amber-500\/5,
-.light .bg-amber-500\/10,
-.light .bg-amber-500\/15,
-.light .bg-amber-500\/20,
-.light .bg-amber-400\/10 {
-  background-color: #FEF3C7 !important;
-  border: 2px solid #D97706 !important;
-  color: #78350F !important;
-}
-.light .bg-amber-500\/5 *,
-.light .bg-amber-500\/10 *,
-.light .bg-amber-500\/15 *,
-.light .bg-amber-500\/20 *,
-.light .bg-amber-400\/10 * {
-  color: #78350F !important;
-  font-weight: 700 !important;
-}
-
-/* Indigo Rewrite Box in Light Mode */
-.light .bg-indigo-500\/10,
-.light .bg-indigo-500\/15,
-.light .bg-indigo-500\/20 {
-  background-color: #EEF2FF !important;
-  border: 2px solid #4338CA !important;
-  color: #1E1B4B !important;
-}
-.light .bg-indigo-500\/10 *,
-.light .bg-indigo-500\/15 *,
-.light .bg-indigo-500\/20 * {
-  color: #1E1B4B !important;
 }
 
 /* Dark Mode Scoped Card Overrides */
