@@ -1,65 +1,57 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────────
-   NEUMORPHIC GLASS DESIGN SYSTEM — DARK & LIGHT THEME
+   NEO-BRUTALISM DESIGN SYSTEM — DARK & LIGHT MODE
 ───────────────────────────────────────────────────────────── */
 
 :root, .dark {
-  --bg-color:         #0F172A;
-  --bg-subtle:        #1E293B;
-  --panel-bg:         rgba(30, 41, 59, 0.75);
-  --card-bg:          rgba(30, 41, 59, 0.65);
-  --card-border:      rgba(255, 255, 255, 0.08);
-  --card-border-hover:rgba(99, 102, 241, 0.35);
+  --bg-main:          #121216;
+  --bg-card:          #1A1A22;
+  --bg-card-hover:    #22222D;
+  --bg-inset:         #0C0C0F;
+  --border-brutal:    #334155;
+  --shadow-brutal:    4px 4px 0px #000000;
+  --shadow-brutal-lg: 6px 6px 0px #000000;
+  --shadow-hover:     2px 2px 0px #000000;
+
   --text-main:        #F8FAFC;
-  --text-muted:       #94A3B8;
-  --text-sub:         #64748B;
-  
-  /* Neumorphic Shadows (Dark) */
-  --neu-shadow-flat:  10px 10px 28px rgba(0, 0, 0, 0.45), -8px -8px 24px rgba(255, 255, 255, 0.03);
-  --neu-shadow-hover: 14px 14px 36px rgba(0, 0, 0, 0.55), -10px -10px 28px rgba(99, 102, 241, 0.12);
-  --neu-shadow-inset: inset 4px 4px 12px rgba(0, 0, 0, 0.5), inset -4px -4px 12px rgba(255, 255, 255, 0.03);
+  --text-sub:         #94A3B8;
+  --text-muted:       #64748B;
 
-  /* Accents */
-  --accent-primary:   #3B82F6; /* Sapphire */
-  --accent-purple:    #8B5CF6;
-  --accent-emerald:   #10B981;
-  --accent-amber:     #F59E0B;
-  --accent-rose:      #EF4444;
+  --accent-violet:    #818CF8;
+  --accent-emerald:   #34D399;
+  --accent-amber:     #FBBF24;
+  --accent-rose:      #FB7185;
+  --accent-cyan:      #38BDF8;
 
-  --orb-1:            rgba(59, 130, 246, 0.14);
-  --orb-2:            rgba(139, 92, 246, 0.12);
+  --badge-bg:         #272738;
 }
 
 .light {
-  --bg-color:         #F1F5F9;
-  --bg-subtle:        #E2E8F0;
-  --panel-bg:         rgba(255, 255, 255, 0.85);
-  --card-bg:          rgba(255, 255, 255, 0.75);
-  --card-border:      rgba(226, 232, 240, 0.9);
-  --card-border-hover:rgba(59, 130, 246, 0.4);
+  --bg-main:          #FAF8F5;
+  --bg-card:          #FFFFFF;
+  --bg-card-hover:    #FFFDF9;
+  --bg-inset:         #F1ECE4;
+  --border-brutal:    #0F172A;
+  --shadow-brutal:    4px 4px 0px #0F172A;
+  --shadow-brutal-lg: 6px 6px 0px #0F172A;
+  --shadow-hover:     2px 2px 0px #0F172A;
+
   --text-main:        #0F172A;
-  --text-muted:       #475569;
-  --text-sub:         #64748B;
+  --text-sub:         #334155;
+  --text-muted:       #64748B;
 
-  /* Neumorphic Shadows (Light) */
-  --neu-shadow-flat:  10px 10px 26px rgba(148, 163, 184, 0.35), -10px -10px 26px #FFFFFF;
-  --neu-shadow-hover: 14px 14px 34px rgba(148, 163, 184, 0.45), -12px -12px 30px #FFFFFF;
-  --neu-shadow-inset: inset 3px 3px 8px rgba(148, 163, 184, 0.25), inset -3px -3px 8px #FFFFFF;
+  --accent-violet:    #6366F1;
+  --accent-emerald:   #10B981;
+  --accent-amber:     #F59E0B;
+  --accent-rose:      #F43F5E;
+  --accent-cyan:      #06B6D4;
 
-  /* Accents */
-  --accent-primary:   #2563EB;
-  --accent-purple:    #7C3AED;
-  --accent-emerald:   #059669;
-  --accent-amber:     #D97706;
-  --accent-rose:      #DC2626;
-
-  --orb-1:            rgba(37, 99, 235, 0.08);
-  --orb-2:            rgba(124, 58, 237, 0.06);
+  --badge-bg:         #E2E8F0;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -70,201 +62,159 @@
 html { scroll-behavior: smooth; }
 
 body {
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
-  background-color: var(--bg-color);
+  font-family: 'Inter', system-ui, sans-serif;
+  background-color: var(--bg-main);
   color: var(--text-main);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
 }
 
-/* ─────────────────────────────────────────────────────────────
-   NEUMORPHIC GLASS CARDS & PANELS
-───────────────────────────────────────────────────────────── */
-.glass-card {
-  background: var(--card-bg);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--neu-shadow-flat);
-  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.25s ease, border-color 0.25s ease, background 0.3s ease;
+h1, h2, h3, .font-heading {
+  font-family: 'Space Grotesk', system-ui, sans-serif;
+  letter-spacing: -0.02em;
 }
 
-.glass-card:hover {
-  border-color: var(--card-border-hover);
-  box-shadow: var(--neu-shadow-hover);
+/* ─────────────────────────────────────────────────────────────
+   NEO-BRUTALIST CARDS & PANELS
+───────────────────────────────────────────────────────────── */
+.glass-card, .card-3d {
+  background-color: var(--bg-card);
+  border: 2.5px solid var(--border-brutal);
+  border-radius: 14px;
+  box-shadow: var(--shadow-brutal);
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.2s ease;
+}
+
+.glass-card:hover, .card-3d:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-brutal-lg);
+  border-color: var(--border-brutal);
 }
 
 .glass-panel {
-  background: var(--panel-bg);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--card-border);
+  background-color: var(--bg-card);
+  border-bottom: 2.5px solid var(--border-brutal);
 }
 
-/* Neumorphic Inset container (for text inputs/transcripts/gauges) */
-.neu-inset {
-  background: var(--bg-color);
-  box-shadow: var(--neu-shadow-inset);
-  border: 1px solid var(--card-border);
+.neu-inset, .bg-zinc-900, .bg-zinc-950\/60, .bg-zinc-950\/80, .bg-zinc-950\/90 {
+  background-color: var(--bg-inset) !important;
+  border: 2px solid var(--border-brutal) !important;
+  border-radius: 10px;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   3D TILT CARDS
-───────────────────────────────────────────────────────────── */
-.card-3d {
-  transform-style: preserve-3d;
-  will-change: transform;
-  cursor: pointer;
-}
-.card-3d::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  border-radius: inherit;
-  background: radial-gradient(
-    circle at var(--mx, 50%) var(--my, 0%),
-    rgba(255,255,255,0.08) 0%,
-    transparent 60%
-  );
-  pointer-events: none;
-  opacity: 0;
-  transition: opacity 0.2s ease;
-}
-.card-3d:hover::after { opacity: 1; }
-
-/* ─────────────────────────────────────────────────────────────
-   NAVIGATION PILLS
-───────────────────────────────────────────────────────────── */
-.nav-active {
-  background: var(--accent-primary);
-  color: #FFFFFF !important;
-  box-shadow: 0 4px 16px rgba(59, 130, 246, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.nav-inactive {
-  color: var(--text-muted);
-  border: 1px solid transparent;
-}
-.nav-inactive:hover {
-  color: var(--text-main);
-  background: var(--card-bg);
-  border-color: var(--card-border);
-}
-
-/* ─────────────────────────────────────────────────────────────
-   BUTTONS
+   TACTILE BRUTALIST BUTTONS
 ───────────────────────────────────────────────────────────── */
 .btn-primary {
   display: inline-flex;
   align-items: center;
   gap: 8px;
   padding: 10px 22px;
-  border-radius: 14px;
-  font-size: 0.8125rem;
-  font-weight: 600;
-  color: #FFFFFF;
-  background: linear-gradient(135deg, var(--accent-primary), var(--accent-purple));
-  box-shadow: 0 4px 18px rgba(59, 130, 246, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.2s ease;
+  border-radius: 10px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: #FFFFFF !important;
+  background-color: var(--accent-violet) !important;
+  border: 2.5px solid var(--border-brutal) !important;
+  box-shadow: var(--shadow-brutal) !important;
+  transition: all 0.12s ease;
   cursor: pointer;
 }
 
 .btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 6px 24px rgba(59, 130, 246, 0.45);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-brutal-lg) !important;
 }
-.btn-primary:active { transform: translateY(1px); }
+
+.btn-primary:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-hover) !important;
+}
 
 /* Theme Toggle Button */
 .theme-toggle-btn {
-  background: var(--card-bg);
-  border: 1px solid var(--card-border);
-  box-shadow: var(--neu-shadow-flat);
+  background-color: var(--bg-card);
+  border: 2.5px solid var(--border-brutal);
+  box-shadow: var(--shadow-brutal);
   color: var(--text-main);
-  transition: all 0.2s ease;
+  border-radius: 10px;
+  transition: all 0.12s ease;
 }
+
 .theme-toggle-btn:hover {
-  box-shadow: var(--neu-shadow-hover);
-  transform: scale(1.05);
+  transform: translate(-2px, -2px);
+  box-shadow: var(--shadow-brutal-lg);
+}
+
+.theme-toggle-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: var(--shadow-hover);
 }
 
 /* ─────────────────────────────────────────────────────────────
-   TYPOGRAPHY & ACCENTS
+   NAVIGATION PILLS
 ───────────────────────────────────────────────────────────── */
-.text-gradient {
-  background: linear-gradient(135deg, var(--text-main) 0%, var(--accent-primary) 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+.nav-active {
+  background-color: var(--accent-violet) !important;
+  color: #FFFFFF !important;
+  border: 2px solid var(--border-brutal) !important;
+  box-shadow: 3px 3px 0px var(--border-brutal) !important;
+  font-weight: 700 !important;
 }
 
-.text-shimmer {
-  background: linear-gradient(
-    90deg,
-    var(--accent-primary) 0%,
-    var(--accent-purple) 33%,
-    var(--text-main) 66%,
-    var(--accent-primary) 100%
-  );
-  background-size: 200% auto;
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
-  animation: shimmer 6s linear infinite;
+.nav-inactive {
+  color: var(--text-sub) !important;
+  border: 2px solid transparent !important;
+  font-weight: 600 !important;
 }
 
-/* Background mesh dot pattern */
+.nav-inactive:hover {
+  color: var(--text-main) !important;
+  background-color: var(--bg-card-hover) !important;
+  border-color: var(--border-brutal) !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TEXT & ACCENTS
+───────────────────────────────────────────────────────────── */
+.text-zinc-100, .text-zinc-200, .text-white {
+  color: var(--text-main) !important;
+}
+
+.text-zinc-300, .text-zinc-400, .text-zinc-500 {
+  color: var(--text-sub) !important;
+}
+
+.text-gradient, .text-shimmer {
+  background: none !important;
+  -webkit-text-fill-color: initial !important;
+  color: var(--text-main) !important;
+}
+
+/* Grid Lines Background for Neo-Brutalism */
 .dot-grid {
-  background-image: radial-gradient(
-    circle,
-    var(--accent-primary) 1px,
-    transparent 1px
-  );
-  background-size: 36px 36px;
-  opacity: 0.08;
+  background-image: 
+    linear-gradient(to right, var(--border-brutal) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border-brutal) 1px, transparent 1px);
+  background-size: 40px 40px;
+  opacity: 0.12;
 }
 
 /* ─────────────────────────────────────────────────────────────
-   ANIMATIONS
+   ANIMATIONS & SCROLLBAR
 ───────────────────────────────────────────────────────────── */
-@keyframes orb-1 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  50%     { transform: translate(60px,-50px) scale(1.1); }
-}
-@keyframes orb-2 {
-  0%,100% { transform: translate(0,0) scale(1); }
-  50%     { transform: translate(-60px,50px) scale(1.1); }
-}
-@keyframes shimmer {
-  from { background-position: -200% center; }
-  to   { background-position:  200% center; }
-}
 @keyframes fade-up {
-  from { opacity:0; transform:translateY(16px); }
-  to   { opacity:1; transform:translateY(0); }
-}
-@keyframes fade-in {
-  from { opacity:0; }
-  to   { opacity:1; }
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
-.animate-orb-1    { animation: orb-1 20s ease-in-out infinite; }
-.animate-orb-2    { animation: orb-2 25s ease-in-out infinite; }
-.animate-fade-up  { animation: fade-up 0.5s ease forwards; }
-.animate-fade-in  { animation: fade-in 0.3s ease forwards; }
+.animate-fade-up { animation: fade-up 0.35s ease forwards; }
 
-.delay-100 { animation-delay: 0.1s; }
-.delay-200 { animation-delay: 0.2s; }
-.delay-300 { animation-delay: 0.3s; }
-.delay-400 { animation-delay: 0.4s; }
-
-/* Custom Scrollbar */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--bg-main); }
 ::-webkit-scrollbar-thumb {
-  background: var(--card-border-hover);
-  border-radius: 99px;
+  background: var(--border-brutal);
+  border-radius: 4px;
 }
