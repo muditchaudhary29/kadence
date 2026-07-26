@@ -100,16 +100,13 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 /* ─────────────────────────────────────────────────────────────
-   HERO PRACTICE METRICS CARD (Strict Mode-Aware Yellow Styling)
+   HERO PRACTICE METRICS CARD (Strict Yellow/Gold Styling)
 ───────────────────────────────────────────────────────────── */
 .light .hero-metrics-card {
   background-color: #FACC15 !important; /* Electric Sunshine Yellow */
   color: #0F172A !important;
   border: 3px solid #0F172A !important;
   box-shadow: 6px 6px 0px #0F172A !important;
-}
-.light .hero-metrics-card * {
-  color: #0F172A !important;
 }
 
 .dark .hero-metrics-card {
@@ -118,8 +115,21 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #0F172A !important;
   box-shadow: 6px 6px 0px #000000 !important;
 }
-.dark .hero-metrics-card * {
+
+.hero-metrics-card h1,
+.hero-metrics-card h2,
+.hero-metrics-card h3,
+.hero-metrics-card h4,
+.hero-metrics-card p,
+.hero-metrics-card div:not(.hero-badge-container) {
   color: #0F172A !important;
+}
+
+/* PRACTICE METRICS Badge Text: Pure White Text on Pitch Black Badge */
+.hero-badge-text,
+.hero-metrics-card .hero-badge-text {
+  color: #FFFFFF !important;
+  background-color: #0F172A !important;
 }
 
 /* ─────────────────────────────────────────────────────────────

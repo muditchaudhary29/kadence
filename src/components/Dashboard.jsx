@@ -147,10 +147,10 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
         {/* Hero Interactive 3D Metric Box (Brighter Sunshine Yellow in Light Mode, Electric Amber Gold in Dark Mode) */}
         <Card3D className="hero-metrics-card w-full md:w-76 p-6 rounded-2xl border-3 border-slate-900 rotate-2 shrink-0 cursor-pointer">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs font-mono font-black uppercase tracking-wider !bg-slate-950 !text-white px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
+            <span className="hero-badge-text text-xs font-mono font-black uppercase tracking-wider px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
               PRACTICE METRICS
             </span>
-            <Target className="w-6 h-6 stroke-[2.5]" />
+            <Target className="w-6 h-6 stroke-[2.5]" style={{ color: '#0F172A' }} />
           </div>
 
           <div className="space-y-3">
