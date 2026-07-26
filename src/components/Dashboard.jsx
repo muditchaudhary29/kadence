@@ -145,32 +145,32 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
         </div>
 
         {/* Hero Interactive 3D Metric Box (Mode-Aware Colors: Royal Indigo in Light Mode, Vivid Amber in Dark Mode) */}
-        <Card3D className="w-full md:w-76 p-6 rounded-2xl bg-indigo-600 text-white dark:bg-amber-400 dark:text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0 cursor-pointer">
+        <Card3D className="w-full md:w-76 p-6 rounded-2xl bg-indigo-600 !text-white dark:!bg-amber-400 dark:!text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0 cursor-pointer">
           <div className="flex items-center justify-between mb-4">
-            <span className="text-xs font-mono font-black uppercase tracking-wider bg-amber-400 text-slate-950 dark:bg-slate-950 dark:text-white px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
+            <span className="text-xs font-mono font-black uppercase tracking-wider !bg-amber-400 !text-slate-950 dark:!bg-slate-950 dark:!text-white px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
               PRACTICE METRICS
             </span>
-            <Target className="w-6 h-6 text-white dark:text-slate-950" />
+            <Target className="w-6 h-6 !text-white dark:!text-slate-950" />
           </div>
 
           <div className="space-y-3">
             <div>
-              <div className="text-4xl font-black font-mono tracking-tight text-white dark:text-slate-950">{total}</div>
-              <div className="text-xs font-black uppercase tracking-wider text-white/90 dark:text-slate-950">Total Practice Sessions</div>
+              <div className="text-4xl font-black font-mono tracking-tight !text-white dark:!text-slate-950">{total}</div>
+              <div className="text-xs font-black uppercase tracking-wider !text-white dark:!text-slate-950">Total Practice Sessions</div>
             </div>
 
-            <div className="pt-2.5 border-t-2 border-white/30 dark:border-slate-950/40 flex justify-between text-xs font-black text-white dark:text-slate-950">
+            <div className="pt-2.5 border-t-2 border-white/40 dark:border-slate-950/40 flex justify-between text-xs font-black !text-white dark:!text-slate-950">
               <span>Avg Confidence:</span>
               <span className="font-mono text-sm font-black">{avgConf}%</span>
             </div>
             {avgWpm && (
-              <div className="flex justify-between text-xs font-black text-white dark:text-slate-950">
+              <div className="flex justify-between text-xs font-black !text-white dark:!text-slate-950">
                 <span>Avg Speaking Speed:</span>
                 <span className="font-mono text-sm font-black">{avgWpm} WPM</span>
               </div>
             )}
             {avgFill !== null && (
-              <div className="flex justify-between text-xs font-black text-white dark:text-slate-950">
+              <div className="flex justify-between text-xs font-black !text-white dark:!text-slate-950">
                 <span>Filler Hesitation:</span>
                 <span className="font-mono text-sm font-black">{avgFill}%</span>
               </div>

@@ -108,7 +108,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
-.light .brutal-block-violet * { color: #1E1B4B !important; }
 
 .dark .brutal-block-violet {
   background-color: #312E81 !important;
@@ -116,7 +115,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #4338CA !important;
   box-shadow: 5px 5px 0px #000000 !important;
 }
-.dark .brutal-block-violet * { color: #EEF2FF !important; }
 
 .light .brutal-block-emerald {
   background-color: #ECFDF5 !important;
@@ -124,7 +122,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
-.light .brutal-block-emerald * { color: #064E3B !important; }
 
 .dark .brutal-block-emerald {
   background-color: #064E3B !important;
@@ -132,7 +129,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #047857 !important;
   box-shadow: 5px 5px 0px #000000 !important;
 }
-.dark .brutal-block-emerald * { color: #ECFDF5 !important; }
 
 .light .brutal-block-amber {
   background-color: #FEFCE8 !important;
@@ -140,7 +136,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
-.light .brutal-block-amber * { color: #713F12 !important; }
 
 .dark .brutal-block-amber {
   background-color: #78350F !important;
@@ -148,7 +143,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #B45309 !important;
   box-shadow: 5px 5px 0px #000000 !important;
 }
-.dark .brutal-block-amber * { color: #FEF08A !important; }
 
 .light .brutal-block-rose {
   background-color: #FFF1F2 !important;
@@ -156,7 +150,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
-.light .brutal-block-rose * { color: #881337 !important; }
 
 .dark .brutal-block-rose {
   background-color: #881337 !important;
@@ -164,7 +157,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #BE123C !important;
   box-shadow: 5px 5px 0px #000000 !important;
 }
-.dark .brutal-block-rose * { color: #FFE4E6 !important; }
 
 /* ─────────────────────────────────────────────────────────────
    LIGHT MODE & DARK MODE CARD CONTRAST
@@ -175,27 +167,12 @@ h1, h2, h3, h4, h5, .font-heading {
   box-shadow: 5px 5px 0px #0F172A;
   color: #0F172A;
 }
-.light .glass-card *, .light .card-3d *, .light .brutal-card * {
-  color: inherit;
-}
-.light .text-zinc-400, .light .text-zinc-500, .light .text-zinc-600 {
-  color: #475569 !important;
-}
-.light .text-zinc-100, .light .text-zinc-200, .light .text-zinc-300 {
-  color: #0F172A !important;
-}
 
 .dark .glass-card, .dark .card-3d, .dark .brutal-card {
   background-color: #161622;
   border-color: #334155;
   box-shadow: 5px 5px 0px #000000;
   color: #FFFFFF;
-}
-.dark .text-zinc-100, .dark .text-zinc-200, .dark .text-white {
-  color: #FFFFFF !important;
-}
-.dark .text-zinc-300, .dark .text-zinc-400, .dark .text-zinc-500 {
-  color: #CBD5E1 !important;
 }
 
 /* ─────────────────────────────────────────────────────────────
