@@ -100,6 +100,29 @@ h1, h2, h3, h4, h5, .font-heading {
 }
 
 /* ─────────────────────────────────────────────────────────────
+   HERO PRACTICE METRICS CARD (Strict Mode-Aware Yellow Styling)
+───────────────────────────────────────────────────────────── */
+.light .hero-metrics-card {
+  background-color: #FACC15 !important; /* Electric Sunshine Yellow */
+  color: #0F172A !important;
+  border: 3px solid #0F172A !important;
+  box-shadow: 6px 6px 0px #0F172A !important;
+}
+.light .hero-metrics-card * {
+  color: #0F172A !important;
+}
+
+.dark .hero-metrics-card {
+  background-color: #F59E0B !important; /* Electric Amber Gold */
+  color: #0F172A !important;
+  border: 3px solid #0F172A !important;
+  box-shadow: 6px 6px 0px #000000 !important;
+}
+.dark .hero-metrics-card * {
+  color: #0F172A !important;
+}
+
+/* ─────────────────────────────────────────────────────────────
    SUMMARY RATING BADGE (Strict Mode-Aware Styling)
 ───────────────────────────────────────────────────────────── */
 .light .summary-rating-badge {
