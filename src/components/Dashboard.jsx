@@ -44,7 +44,7 @@ function Card3D({ children, className = '', onClick }) {
   );
 }
 
-/* ── Bento Card Data with Vibrant High-Contrast Icon Badges ── */
+/* ── Bento Card Data with Ultra High-Contrast Badges & Icons ── */
 const FEATURES = [
   {
     id: 'practice',
@@ -54,8 +54,12 @@ const FEATURES = [
     sub: 'LIVE STT & SPEECH ENGINE',
     desc: 'Practice 12 curated questions with real-time WPM pacing, STAR structure breakdown, and vocal hesitation tracking.',
     badge: '12 QUESTIONS',
-    badgeBg: 'bg-indigo-600 text-white',
-    iconBg: 'bg-indigo-600 text-white',
+    badgeBg: '!bg-[#312E81] dark:!bg-[#312E81] !text-white',
+    iconBg: '!bg-[#312E81] dark:!bg-[#312E81] !text-white',
+    subColor: '!text-[#4338CA] dark:!text-[#C7D2FE]',
+    titleColor: '!text-[#1E1B4B] dark:!text-white',
+    descColor: '!text-[#312E81] dark:!text-slate-200',
+    ctaColor: '!text-[#1E1B4B] dark:!text-white',
     cta: 'Start Practicing',
   },
   {
@@ -66,8 +70,12 @@ const FEATURES = [
     sub: 'ANALYTICS & SCORE TRENDS',
     desc: 'Visualise confidence trends, WPM pacing history, filler rate breakdown, and performance metrics across categories.',
     badge: 'ANALYTICS',
-    badgeBg: 'bg-emerald-600 text-white',
-    iconBg: 'bg-emerald-600 text-white',
+    badgeBg: '!bg-[#064E3B] dark:!bg-[#064E3B] !text-white',
+    iconBg: '!bg-[#064E3B] dark:!bg-[#064E3B] !text-white',
+    subColor: '!text-[#047857] dark:!text-[#A7F3D0]',
+    titleColor: '!text-[#064E3B] dark:!text-white',
+    descColor: '!text-[#065F46] dark:!text-slate-200',
+    ctaColor: '!text-[#064E3B] dark:!text-white',
     cta: 'View Progress',
   },
   {
@@ -78,8 +86,12 @@ const FEATURES = [
     sub: 'USER EXPERIENCE & RATING',
     desc: 'Share your feedback, rate your practice runs, and view reviews submitted by fellow interview practitioners.',
     badge: 'COMMUNITY',
-    badgeBg: 'bg-amber-400 text-slate-900',
-    iconBg: 'bg-amber-500 text-slate-950',
+    badgeBg: '!bg-[#78350F] dark:!bg-[#78350F] !text-white',
+    iconBg: '!bg-[#78350F] dark:!bg-[#78350F] !text-white',
+    subColor: '!text-[#B45309] dark:!text-[#FDE68A]',
+    titleColor: '!text-[#713F12] dark:!text-white',
+    descColor: '!text-[#78350F] dark:!text-slate-200',
+    ctaColor: '!text-[#713F12] dark:!text-white',
     cta: 'Submit Review',
   },
   {
@@ -90,8 +102,12 @@ const FEATURES = [
     sub: 'PDF & FILE QUESTION GENERATOR',
     desc: 'Upload study notes, PDFs, or text files — Kadence AI automatically extracts key topics and builds 8 custom questions.',
     badge: 'PDF / TXT / IMG',
-    badgeBg: 'bg-rose-500 text-white',
-    iconBg: 'bg-rose-600 text-white',
+    badgeBg: '!bg-[#881337] dark:!bg-[#881337] !text-white',
+    iconBg: '!bg-[#881337] dark:!bg-[#881337] !text-white',
+    subColor: '!text-[#BE123C] dark:!text-[#FECDD3]',
+    titleColor: '!text-[#881337] dark:!text-white',
+    descColor: '!text-[#9F1239] dark:!text-slate-200',
+    ctaColor: '!text-[#881337] dark:!text-white',
     cta: 'Upload Notes',
   },
 ];
@@ -144,7 +160,7 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
           </div>
         </div>
 
-        {/* Hero Interactive 3D Metric Box (Mode-Aware Colors: Vibrant Amber Gold in Light Mode, Vivid Amber Gold in Dark Mode) */}
+        {/* Hero Interactive 3D Metric Box (Vivid Amber Gold) */}
         <Card3D className="w-full md:w-76 p-6 rounded-2xl !bg-[#F59E0B] !text-slate-950 dark:!bg-[#F59E0B] dark:!text-slate-950 border-3 border-slate-900 shadow-[6px_6px_0px_#0F172A] rotate-2 shrink-0 cursor-pointer">
           <div className="flex items-center justify-between mb-4">
             <span className="text-xs font-mono font-black uppercase tracking-wider !bg-slate-950 !text-white px-2.5 py-1 rounded-md border border-slate-900 shadow-[1.5px_1.5px_0px_#000]">
@@ -193,27 +209,27 @@ export default function Dashboard({ onNavigate, profile, recentSessions = [] }) 
               <div className="flex items-start justify-between">
                 {/* Pop High-Contrast Icon Container */}
                 <div className={`w-13 h-13 p-3 rounded-2xl ${f.iconBg} border-2.5 border-slate-900 flex items-center justify-center shadow-[3px_3px_0px_#0F172A]`}>
-                  <Icon className="w-6 h-6 stroke-[2.5]" />
+                  <Icon className="w-6 h-6 stroke-[2.5] !text-white" />
                 </div>
 
-                <span className={`text-[11px] font-bold font-mono px-3 py-1 rounded-xl border-2.5 border-slate-900 shadow-[3px_3px_0px_#0F172A] uppercase tracking-wider ${f.badgeBg}`}>
+                <span className={`text-[11px] font-black font-mono px-3.5 py-1.5 rounded-xl border-2.5 border-slate-900 shadow-[3px_3px_0px_#0F172A] uppercase tracking-wider ${f.badgeBg}`}>
                   {f.badge}
                 </span>
               </div>
 
               {/* Card Body */}
               <div className="space-y-1.5">
-                <span className="text-[11px] font-mono font-extrabold tracking-widest uppercase opacity-80 block">
+                <span className={`text-[11px] font-mono font-black tracking-widest uppercase block ${f.subColor}`}>
                   {f.sub}
                 </span>
-                <h2 className="text-2xl font-bold font-heading">{f.title}</h2>
-                <p className="text-xs sm:text-sm leading-relaxed font-medium opacity-90">{f.desc}</p>
+                <h2 className={`text-2xl font-black font-heading ${f.titleColor}`}>{f.title}</h2>
+                <p className={`text-xs sm:text-sm leading-relaxed font-extrabold ${f.descColor}`}>{f.desc}</p>
               </div>
 
               {/* Footer CTA */}
-              <div className="flex items-center gap-2 text-xs font-extrabold font-heading group-hover:gap-3 transition-all pt-2">
+              <div className={`flex items-center gap-2 text-xs font-black font-heading group-hover:gap-3 transition-all pt-2 ${f.ctaColor}`}>
                 <span>{f.cta}</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 stroke-[3]" />
               </div>
             </Card3D>
           );

@@ -108,9 +108,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
-.light .brutal-block-violet * {
-  color: #1E1B4B;
-}
 
 .dark .brutal-block-violet {
   background-color: #312E81 !important;
@@ -124,9 +121,6 @@ h1, h2, h3, h4, h5, .font-heading {
   color: #064E3B !important;
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
-}
-.light .brutal-block-emerald * {
-  color: #064E3B;
 }
 
 .dark .brutal-block-emerald {
@@ -142,9 +136,6 @@ h1, h2, h3, h4, h5, .font-heading {
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
 }
-.light .brutal-block-amber * {
-  color: #713F12;
-}
 
 .dark .brutal-block-amber {
   background-color: #78350F !important;
@@ -158,9 +149,6 @@ h1, h2, h3, h4, h5, .font-heading {
   color: #881337 !important;
   border: 3px solid #0F172A !important;
   box-shadow: 5px 5px 0px #0F172A !important;
-}
-.light .brutal-block-rose * {
-  color: #881337;
 }
 
 .dark .brutal-block-rose {
